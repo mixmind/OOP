@@ -17,16 +17,18 @@ public class Network {
 	 */
 	public void add(WIFI dot)//adding spot to the array of arrays
 	{
-		if(real_size==line.length)
-		{
-			resize();
+		if(dot!=null) {
+			if(real_size==line.length)
+			{
+				resize();
+			}
+			if(checkFS(dot))//if last firstseen== new firstseen put it into one array
+			{
+				line[real_size-1].add(dot);
+			}
+			else
+				line[real_size++]=new Hotspots(dot);
 		}
-		if(checkFS(dot))//if last firstseen== new firstseen put it into one array
-		{
-			line[real_size-1].add(dot);
-		}
-		else
-			line[real_size++]=new Hotspots(dot);
 	}
 	/**
 	 * Resize length of array if its full
@@ -49,7 +51,7 @@ public class Network {
 	private boolean checkFS(WIFI dot)//check date
 	{
 		if(line[0]==null) return false;
-		else if(line[real_size-1].getLine()[0].getFirtseen().equals(dot.getFirtseen())) return true;
+		else if(line[real_size-1].getLine()[0].getFirtseen().equals(dot.getFirtseen())&&real_size>0) return true;
 		return false;
 	}
 	/**

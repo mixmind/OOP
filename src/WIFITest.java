@@ -22,6 +22,7 @@ public class WIFITest {
 	{
 		DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		WIFI test=new WIFI();
+		test.setType(null);
 		test.setAccm(21);
 		test.setAlt(39);
 		test.setAuthmode("TEsting");

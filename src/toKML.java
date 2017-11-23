@@ -51,13 +51,14 @@ public class toKML {
 					break;
 				case 2:
 					System.out.println("Enter date in format:yyyy-MM-dd HH:mm\nBefore and after");
-					while(dat==null) {
+					while(dat==null||dat1==null) {
 						try{
 							dat=format.parse(sc.next()+" "+sc.next());
 							dat1=format.parse(sc.next()+" "+sc.next());
 						}
 						catch(ParseException e){
 							System.out.println(e.getMessage());
+							System.out.println("Enter date in format:yyyy-MM-dd HH:mm\nBefore and after");
 						}
 					}
 					sc.close();
@@ -86,7 +87,7 @@ public class toKML {
 					nt=filterCSV.FilterByRadius(radius, lat, lot, nt);
 					break;
 				default :
-					System.out.println("Making without filter");
+					System.out.println("Making without filter.");
 					sc.close();
 				}
 				br.close();
@@ -124,8 +125,9 @@ public class toKML {
 									String str=format.format(dot);
 									str=str.replace(' ', 'T')+'Z';
 									placemark.createAndSetTimeStamp().setWhen(str);
-									placemark.setDescription("Mac: "+wifiT[j].getMac()+"\nFrequency "+wifiT[j].getFreq()+
-											"\nSignal "+wifiT[j].getRssi());
+									placemark.setDescription("\nSSID: "+wifiT[j].getSsid()+"\nId of phone: "+wifiT[j].getid()+
+											"\nMac: "+wifiT[j].getMac()+"\nFrequency: "+wifiT[j].getFreq()+
+											"\nSignal: "+wifiT[j].getRssi()+"\nDate: "+wifiT[j].getFirtseen()+"\n");
 									if(wifiT[j].getRssi()>-85) placemark.setStyleUrl("green");
 									else if(wifiT[j].getRssi()<-85&&wifiT[j].getRssi()>-95) 
 										placemark.setStyleUrl("yellow");
@@ -145,7 +147,7 @@ public class toKML {
 					}
 					doc.addToFeature(dir);
 					kml.setFeature(doc);
-					kml.marshal(new File(fileT.getParent()+"/b.kml"));
+					kml.marshal(new File(fileT.getParent()+"/complete.kml"));
 					System.out.println("Done creating kml.");
 				} 
 
@@ -155,8 +157,13 @@ public class toKML {
 				}
 			}
 
-		}finally {
-			System.out.println("Function toKml ended");
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println(e.getMessage()+" exception");
+		}
+		finally {
+			System.out.println("Function toKml ended.");
 		}
 	}
 }

@@ -4,16 +4,17 @@ import java.io.File;
 
 import org.junit.Test;
 
-public class csvBaseTest {
-
+public class kmlBaseTest {
 	
 	public void main(String[] args) {
 		add();
 	}
+	
 	@Test
 	public void add()
 	{
-		csvBase.readCSV(null);
-		csvBase.readCSV("C:\\gmon\\complete.kml");
+		File fl=new File("C:\\gmon\\complete.kml");
+		kmlBase.inputCsv(fl);
+		kmlBase.inputCsv(null);
 	}
 }

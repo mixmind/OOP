@@ -70,7 +70,7 @@ public class toCSV {
 			}
 			else System.out.println("File csv not found.");
 
-		} catch (NumberFormatException | IOException e1) {
+		} catch (NumberFormatException | IOException | NullPointerException e1) {
 			System.out.println(e1);
 		}
 	}

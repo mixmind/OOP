@@ -32,7 +32,7 @@ public class Hotspots {
 				line[i]=new WIFI(dot);	
 			}
 		}
-		line[real_size++]=new WIFI(dot);
+		if(dot!=null) line[real_size++]=new WIFI(dot);
 	}
 	/**
 	 * change size of array

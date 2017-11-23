@@ -13,28 +13,30 @@ public class filterCSV
 	{
 		WIFI[] temp=new WIFI[10];
 		int count=0;
-		for(int i=0;i<nt.getReal_size();i++)
+		for(int i=0;i<nt.getReal_size()&&nt.getLine()[i]!=null;i++)
 		{
 			count=0;
 			temp=nt.getLine()[i].getLine();
-			for(int j=0;j<temp.length;j++)
-				if(temp[j]!=null)
+			for(int j=0;j<temp.length;j++) {
+				if(temp[j]!=null&&name!=null)
 				{
 					if(temp[j].getid().equals(name))
 					{
 						temp[j]=null;
 					}
 				}
-			for(int q=0;q<temp.length;q++)
-			{
-				if(temp[q]==null) count++;
-			}
-			if(count==temp.length) 
-			{
-				nt.getLine()[i]=null;
+				for(int q=0;q<temp.length;q++)
+				{
+					if(temp[q]==null) count++;
+				}
+				if(count==temp.length) 
+				{
+					nt.getLine()[i]=null;
+				}
 			}
 		}
 		return nt;
+
 	}
 	/**
 	 * filter
@@ -52,35 +54,35 @@ public class filterCSV
 		checkY.setFirtseen(y);
 		WIFI[] temp=new WIFI[10];
 		int count=0;
-		for(int i=0;i<nt.getReal_size();i++)
+		for(int i=0;i<nt.getReal_size()&&nt.getLine()[i]!=null;i++)
 		{
 			count=0;
 			temp=nt.getLine()[i].getLine();
-			for(int j=0;j<temp.length;j++)
+			for(int j=0;j<temp.length;j++) {
 				if(temp[j]!=null)
-				{try {
-					if(temp[j].getFirtseen().before(checkX.getFirtseen())||
-							temp[j].getFirtseen().after(checkY.getFirtseen()))
+				{ 
+					try {
+						if(temp[j].getFirtseen().before(checkX.getFirtseen())||
+								temp[j].getFirtseen().after(checkY.getFirtseen()))
+						{
+							temp[j]=null;
+						}
+					}
+					catch(NullPointerException e)
 					{
-						temp[j]=null;
+						System.out.println("The date is null ");
 					}
 				}
-				catch(NullPointerException e)
+				for(int q=0;q<temp.length;q++)
 				{
-					System.out.println();
+					if(temp[q]==null) count++;
 				}
+				if(count==temp.length) 
+				{
+					nt.getLine()[i]=null;
 				}
-			for(int q=0;q<temp.length;q++)
-			{
-				if(temp[q]==null) count++;
-			}
-			if(count==temp.length) 
-			{
-				nt.getLine()[i]=null;
 			}
 		}
-		System.out.println();
-
 		return nt;
 	}
 	/**
@@ -95,11 +97,11 @@ public class filterCSV
 	{
 		WIFI[] temp=new WIFI[10];
 		int count=0;
-		for(int i=0;i<nt.getReal_size();i++)
+		for(int i=0;i<nt.getReal_size()&&nt.getLine()[i]!=null;i++)
 		{
 			count=0;
 			temp=nt.getLine()[i].getLine();
-			for(int j=0;j<temp.length;j++)
+			for(int j=0;j<temp.length;j++) {
 				if(temp[j]!=null)
 				{
 					if((temp[j].getLot()>lot+radius||temp[j].getLot()<lot-radius)||
@@ -108,17 +110,16 @@ public class filterCSV
 						temp[j]=null;
 					}
 				}
-			for(int q=0;q<temp.length;q++)
-			{
-				if(temp[q]==null) count++;
-			}
-			if(count==temp.length) 
-			{
-				nt.getLine()[i]=null;
+				for(int q=0;q<temp.length;q++)
+				{
+					if(temp[q]==null) count++;
+				}
+				if(count==temp.length) 
+				{
+					nt.getLine()[i]=null;
+				}
 			}
 		}
-		System.out.println();
-
 		return nt;
 	}
 

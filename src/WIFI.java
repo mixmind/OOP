@@ -52,19 +52,21 @@ public class WIFI {
 	 * @param a Wifi to copy from
 	 */
 	public WIFI(WIFI a) {
-		this.firtseen=a.getFirtseen();
-		this.mac=a.getMac();
-		this.ssid=a.getSsid();
-		this.authmode=a.getAuthmode();
-		this.type=a.getType();
-		this.channel=a.getChannel();
-		this.rssi=a.getRssi();
-		this.lat=a.getLat();
-		this.lot=a.getLot();
-		this.alt=a.getAlt();
-		this.accm=a.getAccm();
-		this.id=a.getid();
-		this.freq=a.getFreq();
+		if(a!=null) {
+			this.firtseen=a.getFirtseen();
+			this.mac=a.getMac();
+			this.ssid=a.getSsid();
+			this.authmode=a.getAuthmode();
+			this.type=a.getType();
+			this.channel=a.getChannel();
+			this.rssi=a.getRssi();
+			this.lat=a.getLat();
+			this.lot=a.getLot();
+			this.alt=a.getAlt();
+			this.accm=a.getAccm();
+			this.id=a.getid();
+			this.freq=a.getFreq();
+		}
 	}
 	/**
 	 * 
@@ -177,7 +179,7 @@ public class WIFI {
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
-	
+
 	/**
 	 * 
 	 * @return Channel of Wifi

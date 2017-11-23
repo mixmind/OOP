@@ -19,8 +19,8 @@ public class kmlBase {
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
-		String csvFile = file.toString();
 		try {
+			String csvFile = file.toString();
 			br = new BufferedReader(new FileReader(csvFile));
 			line = br.readLine();
 			try
@@ -47,18 +47,17 @@ public class kmlBase {
 
 				}
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
+			
 			finally {
-				System.out.println("Function kmlBase ended");
+				System.out.println("Function kmlBase ended.");
 			}	
-
 		}
-		catch (IOException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("File filtered csv not found.");
+		catch (Exception e) {
+			System.out.println(e.getLocalizedMessage()+" error!");
 		}
+		
 		return nt;
 
 	}

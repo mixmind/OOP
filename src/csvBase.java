@@ -18,27 +18,33 @@ public class csvBase {
 	 */
 	public static Network readCSV(String folder) 
 	{
-		File dir = new File(folder);
-		FilenameFilter filter = new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				return name.endsWith(".csv");
-			}
-		};
-		Network nt=new Network();
+		Network nt=null;
 		try {
-			for (File file : dir.listFiles(filter)) {
-				check(file,nt);
+			File dir = new File(folder);
+			FilenameFilter filter = new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					return name.endsWith(".csv");
+				}
+			};
+			nt=new Network();
+			try {
+				for (File file : dir.listFiles(filter)) {
+					check(file,nt);
+				}
+			}
+			finally {
+				System.out.println("Trying to make csv.");
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage()+" I cant reach a file");
+			System.out.println(e.getMessage()+"\nI cant reach a files.");
 		}
-		
+
 		finally {
-			System.out.println("Function csvBase ended");
+			System.out.println("Function csvBase ended.");
 		}
 		return nt;
-		
+
 	}
 	/**
 	 * Adding data from wifi hotspot into object
@@ -112,9 +118,6 @@ public class csvBase {
 			} catch (IOException e) {
 				System.out.println(e);
 
-			}
-			catch (Exception e) {
-			
 			}
 			finally {
 
