@@ -65,18 +65,18 @@ public class toKML {
 					nt=filterCSV.FilterByDate(dat,dat1, nt);
 					break;
 				case 3:
-					System.out.println("Enter Lot");
-					while (!sc.hasNextDouble()) {
-						System.out.println("That's not a number!");
-						sc.next(); // this is important!
-					}
-					double lot=sc.nextDouble();
 					System.out.println("Enter Lat");
 					while (!sc.hasNextDouble()) {
 						System.out.println("That's not a number!");
 						sc.next(); // this is important!
 					}
 					double lat=sc.nextDouble();
+					System.out.println("Enter Lon");
+					while (!sc.hasNextDouble()) {
+						System.out.println("That's not a number!");
+						sc.next(); // this is important!
+					}
+					double lon=sc.nextDouble();
 					System.out.println("Enter radius");
 					while (!sc.hasNextDouble()) {
 						System.out.println("That's not a number!");
@@ -84,7 +84,7 @@ public class toKML {
 					}
 					radius=sc.nextDouble();
 					sc.close();
-					nt=filterCSV.FilterByRadius(radius, lat, lot, nt);
+					nt=filterCSV.FilterByRadius(radius, lat, lon, nt);
 					break;
 				default :
 					System.out.println("Making without filter.");
@@ -121,11 +121,12 @@ public class toKML {
 									placemark.setName(wifiT[j].getSsid());
 									placemark.setVisibility(true);
 									placemark.setOpen(false);
-									dot=wifiT[j].getFirtseen();
+									dot=nt.getLine()[i].getDataOfdot().getFirtseen();
 									String str=format.format(dot);
 									str=str.replace(' ', 'T')+'Z';
 									placemark.createAndSetTimeStamp().setWhen(str);
-									placemark.setDescription("\nSSID: "+wifiT[j].getSsid()+"\nId of phone: "+wifiT[j].getid()+
+									placemark.setDescription("\nSSID: "+wifiT[j].getSsid()+"\nId of phone: "
+											+nt.getLine()[i].getDataOfdot().getId()+
 											"\nMac: "+wifiT[j].getMac()+"\nFrequency: "+wifiT[j].getFreq()+
 											"\nSignal: "+wifiT[j].getRssi()+"\nDate: "+wifiT[j].getFirtseen()+"\n");
 									if(wifiT[j].getRssi()>-85) placemark.setStyleUrl("green");
@@ -137,7 +138,8 @@ public class toKML {
 									point.setExtrude(false);
 									point.setAltitudeMode(AltitudeMode.CLAMP_TO_GROUND);
 									// Add coordinates>.
-									point.getCoordinates().add(new Coordinate(wifiT[j].getLot(),wifiT[j].getLat(),wifiT[j].getAlt()));
+									point.getCoordinates().add(new Coordinate(nt.getLine()[i].getDataOfdot().getLon()
+											,nt.getLine()[i].getDataOfdot().getLat(),nt.getLine()[i].getDataOfdot().getAlt()));
 									placemark.setGeometry(point);    
 									dir.addToFeature(placemark); 
 								}
@@ -147,7 +149,7 @@ public class toKML {
 					}
 					doc.addToFeature(dir);
 					kml.setFeature(doc);
-					kml.marshal(new File(fileT.getParent()+"/complete.kml"));
+					kml.marshal(new File(fileT.getParent()+"/complete1.kml"));
 					System.out.println("Done creating kml.");
 				} 
 

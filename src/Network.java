@@ -12,22 +12,43 @@ public class Network {
 		real_size=0;
 	}
 	/**
+	 * Constructor of Arrays of Hotspots
+	 */
+	public Network(int size)
+	{
+		line=new Hotspots[size];
+		real_size=0;
+	}
+	public Network(Hotspots[] a)
+	{
+		line=new Hotspots[a.length];
+		for(int i=0;i<a.length;i++)
+		{
+			line[i]=new Hotspots(a[i]);
+			line[i].setDataOfdot(a[i].getDataOfdot());
+		}
+		real_size=a.length;
+	}
+	/**
 	 * 
 	 * @param dot Input Wifi into Arrays
 	 */
-	public void add(WIFI dot)//adding spot to the array of arrays
+	public void add(WIFI dot,GeoModDat geo)//adding spot to the array of arrays
 	{
 		if(dot!=null) {
 			if(real_size==line.length)
 			{
 				resize();
 			}
-			if(checkFS(dot))//if last firstseen== new firstseen put it into one array
+			if(checkFS(dot))//if last firstseen == new firstseen put it into one array
 			{
 				line[real_size-1].add(dot);
 			}
 			else
+			{
 				line[real_size++]=new Hotspots(dot);
+				line[real_size-1].setDataOfdot(geo);
+			}
 		}
 	}
 	/**
@@ -60,13 +81,6 @@ public class Network {
 	 */
 	public Hotspots[] getLine() {
 		return line;
-	}
-	/**
-	 * Set Array of Wifis
-	 * @param line Hotpots to set
-	 */
-	public void setLine(Hotspots[] line) {
-		this.line = line;
 	}
 	/**
 	 * 

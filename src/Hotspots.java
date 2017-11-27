@@ -1,10 +1,9 @@
 public class Hotspots {
-	public void setLine(WIFI[] line) {
-		this.line = line;
-	}
+	
 	private WIFI [] line;
 	private int real_size;
 	private final int INIT_SIZE=1,RESIZE =1,MAX_SIZE=10;
+	private GeoModDat dataOfdot;
 	/**
 	 * Constructor
 	 */
@@ -13,17 +12,26 @@ public class Hotspots {
 		line=new WIFI[INIT_SIZE];
 		real_size=0;
 	}
+	public Hotspots(Hotspots a)
+	{
+		line=new WIFI[a.getReal_size()];
+		for(int i=0;i<a.getReal_size();i++)
+		{
+			line[i]=new WIFI(a.getLine()[i]);
+		}
+		real_size=a.getReal_size();
+	}
+	
 	/**
 	 * Constructor with Wifi to input
 	 * @param dot Input Wifi into Wifi array
 	 */
+	
 	public Hotspots(WIFI dot)
 	{
 		if(line==null) line=new WIFI[INIT_SIZE];
-		if(real_size==line.length)
-		{
-			resize();
-		}
+			
+		if(real_size==line.length)	resize();
 		if(real_size==MAX_SIZE)
 		{
 			int i=checkSignal(dot);
@@ -34,6 +42,7 @@ public class Hotspots {
 		}
 		if(dot!=null) line[real_size++]=new WIFI(dot);
 	}
+
 	/**
 	 * change size of array
 	 */
@@ -70,6 +79,25 @@ public class Hotspots {
 		else line[real_size++]=new WIFI(dot);
 	}
 	/**
+	 * @return the dataOfdot
+	 */
+	public GeoModDat getDataOfdot() {
+		return dataOfdot;
+	}
+	/**
+	 * @param dataOfdot the dataOfdot to set
+	 */
+	public void setDataOfdot(GeoModDat dataOfdot) {
+		this.dataOfdot = dataOfdot;
+	}
+	public boolean equalGeo(GeoModDat check)
+	{
+		return check.getAlt()==dataOfdot.getAlt()&&check.getLon()==dataOfdot.getLon()&&
+				check.getAlt()==dataOfdot.getAlt()&&check.getFirtseen().equals(dataOfdot.getFirtseen())&&
+				check.getId().equals(dataOfdot.getId());
+				
+	}
+	/**
 	 * 
 	 * @return Returning size of array
 	 */
@@ -103,5 +131,6 @@ public class Hotspots {
 		if(max<=dot.getRssi()) return index;
 		else return -1;
 	}
+
 
 }

@@ -17,7 +17,7 @@ public class filterCSVTest {
 		Network nt=new Network();
 		WIFI wi=new WIFI();
 		wi.setAlt(221);
-		nt.add(wi);
+		nt.add(wi,null);
 		Date x=null;
 		Date y=null;
 		filterCSV.FilterByDate(x, y, nt);

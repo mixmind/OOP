@@ -15,6 +15,7 @@ public class toCSV {
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			nt = csvBase.readCSV(folder);
+			nt= new Network(Sort.mergeSort(nt));
 			if(nt.getReal_size()!=0) {
 				System.out.println("Read csv complete.");
 				PrintWriter pw = new PrintWriter(new File(folder+currTime+".csv"));
@@ -37,8 +38,9 @@ public class toCSV {
 						{
 							temp=nt.getLine()[i].getLine();
 							if(temp[j]!=null) {
-								sb.append(format.format(temp[j].getFirtseen())+","+temp[j].getid()+","+temp[j].getLat()+","+
-										temp[j].getLot()+","+temp[j].getAlt()+","+temp.length+",");
+								sb.append(format.format(nt.getLine()[i].getDataOfdot().getFirtseen())+","
+							+nt.getLine()[i].getDataOfdot().getId()+","+nt.getLine()[i].getDataOfdot().getLat()+","+
+							nt.getLine()[i].getDataOfdot().getLon()+","+nt.getLine()[i].getDataOfdot().getAlt()+","+temp.length+",");
 								for(;j<temp.length&&temp[j]!=null;j++)
 								{
 									if(temp[j]!=null) 

@@ -7,11 +7,10 @@ public class WIFI {
 	 * 
 	 * 
 	 */
-
 	private Date firtseen;
 	private String mac,ssid,authmode,type,id,freq;
 	private int channel,rssi;
-	private double lat,lot,alt,accm;
+	private double lat,lon,alt,accm;
 	/**
 	 * COnstructor
 	 */
@@ -26,25 +25,18 @@ public class WIFI {
 	 * @param firtseen of Wifi
 	 * @param channel of Wifi
 	 * @param rssi of Wifi
-	 * @param lat of Wifi
-	 * @param lot of Wifi
-	 * @param alt of Wifi
 	 * @param accm of Wifi
 	 * @param type of Wifi
 	 */
 	public WIFI(String mac,String ssid,String 
-			authmode,Date firtseen,int channel,int rssi,double lat,
-			double lot,double alt,double accm,String type) {
-		this.firtseen=firtseen;
+			authmode,int channel,int rssi,double accm,String type,Date firstseen) {
 		this.mac=mac;
 		this.ssid=ssid;
 		this.authmode=authmode;
 		this.type=type;
+		this.firtseen=firstseen;
 		this.channel=channel;
 		this.rssi=rssi;
-		this.lat=lat;
-		this.lot=lot;
-		this.alt=alt;
 		this.accm=accm;
 	}
 	/**
@@ -61,7 +53,7 @@ public class WIFI {
 			this.channel=a.getChannel();
 			this.rssi=a.getRssi();
 			this.lat=a.getLat();
-			this.lot=a.getLot();
+			this.lon=a.getLon();
 			this.alt=a.getAlt();
 			this.accm=a.getAccm();
 			this.id=a.getid();
@@ -152,34 +144,6 @@ public class WIFI {
 	public void setFirtseen(Date firtseen) throws ParseException {
 		this.firtseen = firtseen;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(accm);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(alt);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((authmode == null) ? 0 : authmode.hashCode());
-		result = prime * result + channel;
-		result = prime * result + ((firtseen == null) ? 0 : firtseen.hashCode());
-		result = prime * result + ((freq == null) ? 0 : freq.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		temp = Double.doubleToLongBits(lat);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(lot);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((mac == null) ? 0 : mac.hashCode());
-		result = prime * result + rssi;
-		result = prime * result + ((ssid == null) ? 0 : ssid.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
-	}
-
 	/**
 	 * 
 	 * @return Channel of Wifi
@@ -224,17 +188,17 @@ public class WIFI {
 	}
 	/**
 	 * 
-	 * @return Lot of WIfi
+	 * @return Lon of WIfi
 	 */
-	public double getLot() {
-		return lot;
+	public double getLon() {
+		return lon;
 	}
 	/**
-	 * Set lot of Wifi
-	 * @param lot Set lot
+	 * Set Lon of Wifi
+	 * @param Lon Set Lon
 	 */
-	public void setLot(double lot) {
-		this.lot = lot;
+	public void setLon(double lon) {
+		this.lon = lon;
 	}
 	/**
 	 * 
@@ -264,9 +228,6 @@ public class WIFI {
 	public void setAccm(double accm) {
 		this.accm = accm;
 	}
-	/**
-	 * print all data of Wifi
-	 */
 	/**
 	 * 
 	 * @return freq of WIfi
@@ -320,7 +281,7 @@ public class WIFI {
 			return false;
 		if (Double.doubleToLongBits(lat) != Double.doubleToLongBits(other.lat))
 			return false;
-		if (Double.doubleToLongBits(lot) != Double.doubleToLongBits(other.lot))
+		if (Double.doubleToLongBits(lon) != Double.doubleToLongBits(other.lon))
 			return false;
 		if (mac == null) {
 			if (other.mac != null)
@@ -341,6 +302,9 @@ public class WIFI {
 			return false;
 		return true;
 	}
+	/**
+	 * print all data of Wifi
+	 */
 	public String toString() {
 		return   "mac:"+mac +"\nssid:"+ ssid +"\nProtection:"+ authmode + "\nDate:"+firtseen + "\nFrequency:"+
 				channel + "\nPower:"+ rssi +"\nType:"+type+"\nID:"+id ;

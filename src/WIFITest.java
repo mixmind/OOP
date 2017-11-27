@@ -10,12 +10,12 @@ import org.junit.Test;
 
 public class WIFITest {
 
-	
+
 	public void main(String[] args) throws ParseException 
 	{
 		test_set_get();
 		test_add();
-		
+
 	}
 	@Test
 	public void test_set_get() throws ParseException
@@ -31,7 +31,7 @@ public class WIFITest {
 		test.setFreq("241");
 		test.setId("nice?");
 		test.setLat(312);
-		test.setLot(1221);
+		test.setLon(1221);
 		test.setMac("23421");
 		test.setRssi(124);
 		test.setSsid("check");
@@ -68,8 +68,8 @@ public class WIFITest {
 			System.err.println(test.getMac()+" != "+"23421");
 			throw new RuntimeException("Error: Wifi get isn't working fine");		
 		}
-		if(test.getLot()!=1221) {
-			System.err.println(test.getLot()+" != "+"1221");
+		if(test.getLon()!=1221) {
+			System.err.println(test.getLon()+" != "+"1221");
 			throw new RuntimeException("Error: Wifi get isn't working fine");		
 		}
 		if(test.getLat()!=312) {
@@ -88,34 +88,29 @@ public class WIFITest {
 			System.err.println(test.getType()+" != "+"124");
 			throw new RuntimeException("Error: Wifi get isn't working fine");		
 		}
-		
-		
-		
+
+
+
 	}
-	
+
 	@Test
 	public void test_add() throws ParseException
 	{
 		DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		WIFI test=new WIFI();
-		
+
 		test.setAccm(21);
-		test.setAlt(39);
 		test.setAuthmode("TEsting");
 		test.setChannel(21);
-		test.setFirtseen(format.parse("2017-10-19 15:36:99"));
 		test.setFreq("241");
 		test.setId("nice?");
-		test.setLat(312);
-		test.setLot(1221);
 		test.setMac("23421");
 		test.setRssi(124);
 		test.setSsid("check");
 		test.setType("wifi");
 		WIFI test1=new WIFI(test);
 		WIFI test2=new WIFI(test.getMac(), test.getSsid(), test.getAuthmode(),
-				test.getFirtseen(),test.getChannel(), test.getRssi(),
-				test.getLat(),test.getLot(),test.getAlt(),test.getAccm(),test.getType());
+				test.getChannel(), test.getRssi(),test.getAccm(),test.getType(), null);
 		test2.setFreq(test1.getFreq());
 		test2.setId(test.getid());
 		if(!test.equals(test1))
@@ -128,5 +123,6 @@ public class WIFITest {
 			System.err.println(test1.toString()+"\n != "+test2.toString());
 			throw new RuntimeException("Error: Wifi add isn't working fine");	
 		}
+
 	}
 }

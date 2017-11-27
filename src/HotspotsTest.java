@@ -9,7 +9,7 @@ public class HotspotsTest {
 	}
 	@Test
 	public void test() {
-		Hotspots hs =new Hotspots(null);
+		Hotspots hs =new Hotspots();
 		WIFI wi=new WIFI();
 		wi.setAlt(221);
 		hs.add(wi);

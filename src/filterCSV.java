@@ -11,29 +11,16 @@ public class filterCSV
 	 */
 	public static Network FilterId(String name,Network nt)
 	{
-		WIFI[] temp=new WIFI[10];
-		int count=0;
 		for(int i=0;i<nt.getReal_size()&&nt.getLine()[i]!=null;i++)
 		{
-			count=0;
-			temp=nt.getLine()[i].getLine();
-			for(int j=0;j<temp.length;j++) {
-				if(temp[j]!=null&&name!=null)
-				{
-					if(temp[j].getid().equals(name))
-					{
-						temp[j]=null;
-					}
-				}
-				for(int q=0;q<temp.length;q++)
-				{
-					if(temp[q]==null) count++;
-				}
-				if(count==temp.length) 
+			if(nt.getLine()[i]!=null&&name!=null)
+			{
+				if(nt.getLine()[i].getDataOfdot().getId().equals(name))
 				{
 					nt.getLine()[i]=null;
 				}
 			}
+
 		}
 		return nt;
 
@@ -52,34 +39,20 @@ public class filterCSV
 		checkX.setFirtseen(x);
 		WIFI checkY=new WIFI();
 		checkY.setFirtseen(y);
-		WIFI[] temp=new WIFI[10];
-		int count=0;
 		for(int i=0;i<nt.getReal_size()&&nt.getLine()[i]!=null;i++)
 		{
-			count=0;
-			temp=nt.getLine()[i].getLine();
-			for(int j=0;j<temp.length;j++) {
-				if(temp[j]!=null)
-				{ 
-					try {
-						if(temp[j].getFirtseen().before(checkX.getFirtseen())||
-								temp[j].getFirtseen().after(checkY.getFirtseen()))
-						{
-							temp[j]=null;
-						}
-					}
-					catch(NullPointerException e)
+			if(nt.getLine()[i]!=null)
+			{ 
+				try {
+					if(nt.getLine()[i].getDataOfdot().getFirtseen().before(checkX.getFirtseen())||
+							nt.getLine()[i].getDataOfdot().getFirtseen().after(checkY.getFirtseen()))
 					{
-						System.out.println("The date is null ");
+						nt.getLine()[i]=null;
 					}
 				}
-				for(int q=0;q<temp.length;q++)
+				catch(NullPointerException e)
 				{
-					if(temp[q]==null) count++;
-				}
-				if(count==temp.length) 
-				{
-					nt.getLine()[i]=null;
+					System.out.println("The date is null ");
 				}
 			}
 		}
@@ -93,29 +66,16 @@ public class filterCSV
 	 * @param nt database for filter
 	 * @return filtered database
 	 */
-	public static Network FilterByRadius(double radius,double lat,double lot,Network nt)
+	public static Network FilterByRadius(double radius,double lat,double lon,Network nt)
 	{
-		WIFI[] temp=new WIFI[10];
-		int count=0;
 		for(int i=0;i<nt.getReal_size()&&nt.getLine()[i]!=null;i++)
 		{
-			count=0;
-			temp=nt.getLine()[i].getLine();
-			for(int j=0;j<temp.length;j++) {
-				if(temp[j]!=null)
-				{
-					if(Math.pow((temp[j].getLot()-lot), 2)+Math.pow((temp[j].getLat()-lat), 2)>Math.pow(radius, 2))
-						temp[j]=null;
-			
-				}
-				for(int q=0;q<temp.length;q++)
-				{
-					if(temp[q]==null) count++;
-				}
-				if(count==temp.length) 
-				{
+			if(nt.getLine()[i]!=null)
+			{
+				if(Math.pow((nt.getLine()[i].getDataOfdot().getLon()-lon), 2)+
+				   Math.pow((nt.getLine()[i].getDataOfdot().getLat()-lat), 2)>Math.pow(radius, 2))
 					nt.getLine()[i]=null;
-				}
+
 			}
 		}
 		return nt;

@@ -46,28 +46,7 @@ public class csvBase {
 		return nt;
 
 	}
-	/**
-	 * Adding data from wifi hotspot into object
-	 * @param power Array of data for input into Wifi
-	 * @return WIfi with data inside
-	 * @throws NumberFormatException Error of Data format	
-	 * @throws ParseException Error while parsing
-	 */
-	private static WIFI add(String []power) 
-	{
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		WIFI temp=null;
-		try {
-			temp = new WIFI(power[0],power[1],power[2],format.parse(power[3]),Integer.parseInt(power[4]),
-					Integer.parseInt(power[5]),Double.parseDouble(power[6]),
-					Double.parseDouble(power[7]),Double.parseDouble(power[8]),
-					Double.parseDouble(power[9]),power[10]);
-		} catch (NumberFormatException | ParseException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e);
-		}
-		return temp;
-	}
+
 	/**
 	 * Reading csv file and placing data into Wifi class and Network
 	 * @param file File csv to check if it have data to input	
@@ -82,6 +61,7 @@ public class csvBase {
 		String line = "";
 		String cvsSplitBy = ",";
 		String csvFile = file.toString();
+
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
 			line = br.readLine();
@@ -96,10 +76,11 @@ public class csvBase {
 						line = br.readLine();
 						line = br.readLine();
 						power=line.split(cvsSplitBy);
-
 						WIFI temp=add(power);
-						temp.setId(id);
-						nt.add(temp);
+						GeoModDat geoData=addGeo(power);
+						geoData.setId(id);
+						nt.add(temp,geoData);
+						
 
 					}
 					if(power.length>10&&power.length!=46)
@@ -107,8 +88,9 @@ public class csvBase {
 						while ((line = br.readLine()) != null) {
 							power = line.split(cvsSplitBy);
 							WIFI temp=add(power);
-							temp.setId(id);
-							nt.add(temp);
+							GeoModDat geoData=addGeo(power);
+							geoData.setId(id);
+							nt.add(temp,geoData);
 						}
 					}
 				}
@@ -134,7 +116,40 @@ public class csvBase {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-
+	}
+	/**
+	 * Adding data from wifi hotspot into object
+	 * @param power Array of data for input into Wifi
+	 * @return WIfi with data inside
+	 * @throws NumberFormatException Error of Data format	
+	 * @throws ParseException Error while parsing
+	 */
+	private static WIFI add(String []power) 
+	{
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		WIFI temp=null;
+		try {
+			temp = new WIFI(power[0],power[1],power[2],Integer.parseInt(power[4]),
+					Integer.parseInt(power[5]),	Double.parseDouble(power[9]),power[10],
+					format.parse(power[3]));
+		} catch (NumberFormatException | ParseException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}
+		return temp;
+	}
+	private static GeoModDat addGeo(String [] power)
+	{
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		GeoModDat temp=null;
+		try {
+			temp= new GeoModDat(format.parse(power[3]),Double.parseDouble(power[6]), 
+					Double.parseDouble(power[7]), Double.parseDouble(power[8]));
+		}
+		catch (NumberFormatException | ParseException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}
+		return temp;
 	}
 }

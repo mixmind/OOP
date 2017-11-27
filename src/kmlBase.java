@@ -31,16 +31,17 @@ public class kmlBase {
 						for(int i=6;i<power.length&&power[i]!=null;) {
 							power = line.split(cvsSplitBy);
 							WIFI temp=new WIFI();
+							GeoModDat geoData=new GeoModDat(format.parse(power[0]),
+									Double.parseDouble(power[2]),
+									Double.parseDouble(power[3]), 
+									Double.parseDouble(power[4]));
+							geoData.setId(power[1]);
 							temp.setFirtseen(format.parse(power[0]));
-							temp.setId(power[1]);
-							temp.setLat(Double.parseDouble(power[2]));
-							temp.setLot(Double.parseDouble(power[3]));
-							temp.setAlt(Double.parseDouble(power[4]));
 							temp.setSsid(power[i]);
 							temp.setMac(power[i+1]);
 							temp.setFreq(power[i+2]);
 							temp.setRssi(Integer.parseInt(power[i+3]));
-							nt.add(temp);
+							nt.add(temp,geoData);
 							i+=4;
 						}
 					}
