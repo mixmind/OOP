@@ -104,11 +104,9 @@ public class filterCSV
 			for(int j=0;j<temp.length;j++) {
 				if(temp[j]!=null)
 				{
-					if((temp[j].getLot()>lot+radius||temp[j].getLot()<lot-radius)||
-							(temp[j].getLat()>lat+radius||temp[j].getLat()<lat-radius))
-					{
+					if(Math.pow((temp[j].getLot()-lot), 2)+Math.pow((temp[j].getLat()-lat), 2)>Math.pow(radius, 2))
 						temp[j]=null;
-					}
+			
 				}
 				for(int q=0;q<temp.length;q++)
 				{
