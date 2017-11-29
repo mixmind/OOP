@@ -17,7 +17,7 @@ public class csvBase {
 	 * @throws NumberFormatException Error of Data format	
 	 */
 	public static Network readCSV(String folder) 
-	{
+	{//TEST
 		Network nt=null;
 		try {
 			File dir = new File(folder);
