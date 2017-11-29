@@ -46,6 +46,7 @@ public class Network {
 			}
 			else
 			{
+				if(real_size>0)	line[real_size-1].sortRSSI();
 				line[real_size++]=new Hotspots(dot);
 				line[real_size-1].setDataOfdot(geo);
 			}

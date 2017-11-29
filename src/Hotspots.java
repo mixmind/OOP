@@ -111,6 +111,33 @@ public class Hotspots {
 	public WIFI[] getLine() {
 		return line;
 	}
+	public void sortRSSI()
+	{
+		selectionSort(line);
+	}
+	private static void selectionSort(WIFI[] a) {
+		int minIndex;
+		for (int i = 0; i < a.length; i++) {
+			minIndex = getMinIndex(a,i);
+			swap(a,i,minIndex);
+		}
+	}
+	
+	private static void swap(WIFI[] a, int i, int j) {
+		WIFI t = a[i];
+		a[i] = new WIFI(a[j]);
+		a[j] = new WIFI(t);
+	}
+
+	private static int getMinIndex(WIFI[] a, int start) {
+		int index = start;
+		for (int i = start; i < a.length; i++) {
+			if(a[i].getRssi()>a[index].getRssi()){
+				index = i;
+			}
+		}
+		return index;
+	}
 	/**
 	 * Check signal of Wifi before import
 	 * @param dot Wifi to check

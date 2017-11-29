@@ -9,7 +9,7 @@ public class test {
 	public static void main(String[] args) throws NumberFormatException, FileNotFoundException, IOException, ParserConfigurationException, ParseException, TransformerException {
 		// TODO Auto-generated method stub
 		toCSV k1=new toCSV("d:/data/");
-	  // toKML a = new toKML("d:/data/2017-11-27 19.20.59.csv");
+	//  toKML a = new toKML("d:/data/2017-11-28 01.27.50.csv");
 	}
 	
 	
