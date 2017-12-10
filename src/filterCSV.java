@@ -15,7 +15,7 @@ public class filterCSV
 		{
 			if(nt.getLine()[i]!=null&&name!=null)
 			{
-				if(nt.getLine()[i].getDataOfdot().getId().equals(name))
+				if(!nt.getLine()[i].getDataOfdot().getId().equals(name))
 				{
 					nt.getLine()[i]=null;
 				}
