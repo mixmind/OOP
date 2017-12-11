@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class toCSV {
 	/**
@@ -10,12 +11,13 @@ public class toCSV {
 	 * @param folder Receive folder of csv's to check and merge
 	 */
 	public toCSV(String folder) 	{
-		Network nt;
+		Network nt;int count=0;
 		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			nt = csvBase.readCSV(folder);
-			nt= new Network(Sort.mergeSort(nt));
+			//nt= new Network(Sort.mergeSort(nt));
+			routerAsp(nt);
 			if(nt.getReal_size()!=0) {
 				System.out.println("Read csv complete.");
 				PrintWriter pw = new PrintWriter(new File(folder+currTime+".csv"));
@@ -38,22 +40,23 @@ public class toCSV {
 						{
 							temp=nt.getLine()[i].getLine();
 							if(temp[j]!=null) {
+								count++;
 								sb.append(format.format(nt.getLine()[i].getDataOfdot().getFirtseen())+","
-							+nt.getLine()[i].getDataOfdot().getId()+","+nt.getLine()[i].getDataOfdot().getLat()+","+
-							nt.getLine()[i].getDataOfdot().getLon()+","+nt.getLine()[i].getDataOfdot().getAlt()+","+temp.length+",");
+										+nt.getLine()[i].getDataOfdot().getId()+","+nt.getLine()[i].getDataOfdot().getLat()+","+
+										nt.getLine()[i].getDataOfdot().getLon()+","+nt.getLine()[i].getDataOfdot().getAlt()+","+temp.length+",");
 								for(;j<temp.length&&temp[j]!=null;j++)
 								{
 									if(temp[j]!=null) 
 									{
-										String freq;
+										/*String freq;
 										if(temp[j].getChannel()==0)
 										{
 											freq="gsm";
 										}
 										else if(temp[j].getChannel()>35)
 											freq= "5 GHZ";
-										else freq= "2.4 GHZ";
-										sb.append(temp[j].getSsid()+","+temp[j].getMac()+","+freq+","+temp[j].getRssi()+",");
+										else freq= "2.4 GHZ";                               /*freq*/
+										sb.append(temp[j].getSsid()+","+temp[j].getMac()+","+temp[j].getChannel()+","+temp[j].getRssi()+",");
 									}
 								}
 							}
@@ -66,6 +69,7 @@ public class toCSV {
 				}
 				finally {
 					System.out.println("Write csv file complete.");
+					System.out.println(count);
 				}
 				pw.append(sb.toString());
 				pw.close();
@@ -75,5 +79,11 @@ public class toCSV {
 		} catch (NumberFormatException | IOException | NullPointerException e1) {
 			System.out.println(e1);
 		}
+	}
+
+	private void routerAsp(Network nt)
+	{
+		ArrayList<RouterPlace> temp=Algo1.routerPlace(nt);
+		System.out.println();
 	}
 }

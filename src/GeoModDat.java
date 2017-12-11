@@ -3,6 +3,14 @@ import java.util.Date;
 public class GeoModDat {
 	private Date firtseen;
 	private String Id;
+	private double lat,lon,alt;
+	
+	public GeoModDat(double lat, double lon, double alt)
+	{
+		this.lat = lat;
+		this.lon = lon;
+		this.alt = alt;
+	}
 	
 	public GeoModDat(Date firtseen, double lat, double lon, double alt) {
 		super();
@@ -23,7 +31,7 @@ public class GeoModDat {
 	public void setId(String id) {
 		Id = id;
 	}
-	private double lat,lon,alt;
+	
 	
 
 	/**
@@ -74,4 +82,14 @@ public class GeoModDat {
 	public void setAlt(double alt) {
 		this.alt = alt;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "GeoModDat [firtseen=" + firtseen + ", Id=" + Id + ", lat=" + lat + ", lon=" + lon + ", alt=" + alt
+				+ "]";
+	}
+	
 }

@@ -43,10 +43,11 @@ public class Network {
 			if(checkFS(dot))//if last firstseen == new firstseen put it into one array
 			{
 				line[real_size-1].add(dot);
+				
 			}
 			else
 			{
-				if(real_size>0)	line[real_size-1].sortRSSI();
+				//if(real_size>0) line[real_size-1].sortRSSI();
 				line[real_size++]=new Hotspots(dot);
 				line[real_size-1].setDataOfdot(geo);
 			}
@@ -73,8 +74,9 @@ public class Network {
 	private boolean checkFS(WIFI dot)//check date
 	{
 		if(line[0]==null) return false;
-		else if(line[real_size-1].getLine()[0].getFirtseen().equals(dot.getFirtseen())&&real_size>0) return true;
-		return false;
+		else if(line[real_size-1].getLine()[0].getFirtseen().equals(dot.getFirtseen())&&real_size>0) 
+			return true;
+	 return false;
 	}
 	/**
 	 * 
