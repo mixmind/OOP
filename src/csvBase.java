@@ -13,7 +13,7 @@ public class csvBase {
 	/**
 	 * Reading Csv files before input into dbase
 	 * @param folder Take folder for input into database
-	 * @return Object with all data about Wifi 
+	 * @return Object with all data about Wifi /
 	 * @throws NumberFormatException Error of Data format	
 	 */
 	public static Network readCSV(String folder) 
