@@ -61,7 +61,8 @@ public class csvBase {
 		String line = "";
 		String cvsSplitBy = ",";
 		String csvFile = file.toString();
-
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		boolean test=false;
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
 			line = br.readLine();
@@ -70,6 +71,7 @@ public class csvBase {
 				if(line!=null) {
 					String[] power=line.split(cvsSplitBy);
 					String id="";
+					if(power.length==46) test=true;
 					if(power.length==8)
 					{
 						id=power[2];
@@ -80,22 +82,45 @@ public class csvBase {
 						GeoModDat geoData=addGeo(power);
 						geoData.setId(id);
 						nt.add(temp,geoData);
-						
-
 					}
 					if(power.length>10&&power.length!=46)
 					{	
 						while ((line = br.readLine()) != null) {
 							power = line.split(cvsSplitBy);
+							if(!power[10].equals("GSM")) {
 							WIFI temp=add(power);
 							GeoModDat geoData=addGeo(power);
 							geoData.setId(id);
 							nt.add(temp,geoData);
+							}
+						}
+					}
+					if(test)
+					{
+						while ((line = br.readLine()) != null) {
+							int i=6;
+							power = line.split(cvsSplitBy);
+							while(i<power.length) {
+								WIFI temp=new WIFI();
+								GeoModDat geoData=new GeoModDat(format.parse(power[0]),
+										Double.parseDouble(power[2]), 
+										Double.parseDouble(power[3]), 
+										Double.parseDouble(power[4]));
+								geoData.setId(power[1]);
+								temp.setSsid(power[i]);
+								temp.setMac(power[i+1]);
+								temp.setFreq(power[i+2]);
+								temp.setId(power[1]);
+								temp.setFirtseen(format.parse(power[0]));
+								temp.setRssi(Integer.parseInt(power[i+3]));
+								nt.add(temp,geoData);
+								i+=4;
+							}
 						}
 					}
 				}
 			}
-			catch (FileNotFoundException e) {
+			catch (NumberFormatException | ParseException | FileNotFoundException e) {
 				System.out.println(e);
 			} catch (IOException e) {
 				System.out.println(e);
