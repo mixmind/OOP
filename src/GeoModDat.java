@@ -19,6 +19,14 @@ public class GeoModDat {
 		this.lon = lon;
 		this.alt = alt;
 	}
+	public GeoModDat(Date firtseen, double lat, double lon, double alt,String Id) {
+		super();
+		this.firtseen = firtseen;
+		this.lat = lat;
+		this.lon = lon;
+		this.alt = alt;
+		this.Id=Id;
+	}
 	/**
 	 * @return the id
 	 */

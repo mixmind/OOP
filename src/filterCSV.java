@@ -72,9 +72,16 @@ public class filterCSV
 		{
 			if(nt.getLine()[i]!=null)
 			{
-				if(Math.pow((nt.getLine()[i].getDataOfdot().getLon()-lon), 2)+
+				try
+				{
+					if(Math.pow((nt.getLine()[i].getDataOfdot().getLon()-lon), 2)+
 				   Math.pow((nt.getLine()[i].getDataOfdot().getLat()-lat), 2)>Math.pow(radius, 2))
 					nt.getLine()[i]=null;
+				}
+				catch(NullPointerException e)
+				{
+					System.out.println(e.getMessage());
+				}
 
 			}
 		}

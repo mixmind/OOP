@@ -1,8 +1,9 @@
+import java.util.Date;
 
 public class RouterPlace {
 
-private String mac;
-private int signal;
+private String mac,SSID;
+private int signal,channel;
 private GeoModDat position;
 
 public RouterPlace()
@@ -11,21 +12,79 @@ public RouterPlace()
 }
 public RouterPlace(RouterPlace other)
 {
-	this(other.getMac(), other.getSignal(),
+	this(	other.getPosition().getId(),
+			other.getPosition().getFirtseen(),
+			other.getMac(), 
+			other.getSignal(),
 			other.getPosition().getLat(), 
 			other.getPosition().getLon(),
 			other.getPosition().getAlt());
+	
 }
-
+public RouterPlace(RouterPlace other,String Id,Date first)
+{
+	this(	Id,
+			first,
+			other.getMac(), 
+			other.getSignal(),
+			other.getPosition().getLat(), 
+			other.getPosition().getLon(),
+			other.getPosition().getAlt());
+	
+}
 
 public RouterPlace(String mac,int signal,double lat,double lon,double alt)
 {	
 	this.mac=mac;
 	this.signal=signal;
 	position=new GeoModDat(lat,lon,alt);
+
 	
 }
 
+public RouterPlace(String id,Date firstseen,String mac,int signal,double lat,double lon,double alt)
+{	
+	this.mac=mac;
+	this.signal=signal;
+	position=new GeoModDat(firstseen,lat,lon,alt,id);
+
+	
+}
+public RouterPlace(String id,String SSID,Date firstseen,String mac,int signal,int channel,double lat,double lon,double alt)
+{	
+	this.mac=mac;
+	this.signal=signal;
+	this.SSID=SSID;
+	this.channel=channel;
+	position=new GeoModDat(firstseen,lat,lon,alt,id);
+
+	
+}
+
+/**
+ * @return the sSID
+ */
+public String getSSID() {
+	return SSID;
+}
+/**
+ * @param sSID the sSID to set
+ */
+public void setSSID(String sSID) {
+	SSID = sSID;
+}
+/**
+ * @return the channel
+ */
+public int getChannel() {
+	return channel;
+}
+/**
+ * @param channel the channel to set
+ */
+public void setChannel(int channel) {
+	this.channel = channel;
+}
 /**
  * @return the mac
  */

@@ -1,16 +1,23 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import de.micromata.opengis.kml.v_2_2_0.Placemark;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 
 public class Algo1 {
-	private final int numDots=3;
+	//private final int numDots=3;
 
 	public static ArrayList<RouterPlace> routerPlace(Network nt)
 	{
 		ArrayList<RouterPlace> rp=add(nt);
+		Collections.sort(rp, new Comparator<RouterPlace>() {
+			@Override
+			public int compare(RouterPlace router1, RouterPlace router2)
+			{
+
+				return  router1.getMac().compareTo(router2.getMac());
+			}
+		});
 		ArrayList<ArrayList<RouterPlace>> routSorted=sortMac(rp);
 		sortSignal(routSorted);
 		ArrayList<RouterPlace> alg=math(routSorted);
@@ -25,6 +32,8 @@ public class Algo1 {
 		{
 			RouterPlace w_center=solve(al.get(i));
 			w_center.setMac(al.get(i).get(0).getMac());
+			w_center.setSSID(al.get(i).get(0).getSSID());
+			w_center.setChannel(al.get(i).get(0).getChannel());
 			temp.add(w_center);
 		}
 		return temp;
@@ -51,6 +60,8 @@ public class Algo1 {
 			if(i==check.size()-1)
 			{
 				GeoModDat position=new GeoModDat(wLat/weight, wLon/weight, wAlt/weight);
+				position.setId(check.get(i).getPosition().getId());
+				position.setFirtseen(check.get(i).getPosition().getFirtseen());
 				w_sum.setPosition(position);
 			}
 		}
@@ -64,12 +75,13 @@ public class Algo1 {
 		{
 			for(int j=0;j<nt.getLine()[i].getReal_size()&&nt.getLine()[i]!=null&&nt.getLine()[i].getLine()[j]!=null;j++)
 			{				
-				temp.add(new RouterPlace(
-						nt.getLine()[i].getLine()[j].getMac(),
-						nt.getLine()[i].getLine()[j].getRssi(),
-						nt.getLine()[i].getDataOfdot().getLat(),
-						nt.getLine()[i].getDataOfdot().getLon(),
-						nt.getLine()[i].getDataOfdot().getAlt()));
+				GeoModDat position=new GeoModDat(nt.getLine()[i].getDataOfdot().getLat(), 
+						nt.getLine()[i].getDataOfdot().getLon(), 
+						nt.getLine()[i].getDataOfdot().getAlt());
+				position.setFirtseen(nt.getLine()[i].getDataOfdot().getFirtseen());
+				position.setId(nt.getLine()[i].getDataOfdot().getId());
+				temp.add(addRouter(nt.getLine()[i].getLine()[j],position));
+
 			}
 		}
 		return temp;
@@ -86,12 +98,21 @@ public class Algo1 {
 				if(rp.get(j).getMac().equals(rp.get(i).getMac()))
 				{
 					router.add(rp.get(j));
-					rp.remove(j);
+					if(j+1<rp.size())
+					{
+						if(!rp.get(j+1).getMac().equals(rp.get(i).getMac()))
+						{
+							i=j;
+						}
+					}
+					else if(j+1>=rp.size())
+					{
+						i=j;
+					}
 				}
+
 			}
-			rp.remove(i);
-			if(router.size()>1)
-				temp.add(router);
+			temp.add(router);
 		}
 		return temp;
 	}
@@ -128,7 +149,20 @@ public class Algo1 {
 		}
 		return index;
 	}
-
+	private static RouterPlace addRouter(WIFI a,GeoModDat position)
+	{
+		RouterPlace temp=new RouterPlace(
+				position.getId(),
+				a.getSsid(),
+				position.getFirtseen(),
+				a.getMac(),
+				a.getRssi(),
+				a.getChannel(),
+				position.getLat(),
+				position.getLon(),
+				position.getAlt());
+		return temp;
+	}
 
 
 
