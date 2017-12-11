@@ -1,6 +1,7 @@
 # OOP
 
 Reuven and Gal
+
 Our mission was to collect data about Wi-FI Networks in different area. Sort it to 10 powerfull wifi in every time of collecting ,and after that to create Kml file that will work with google earth.
 
 1.To succed in that challenge we gethered data from application Wigle wifi (https://play.google.com/store/apps/details?id=net.wigle.wigleandroid&hl=ru);
