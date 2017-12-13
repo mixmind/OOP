@@ -163,7 +163,4 @@ public class Algo1 {
 				position.getAlt());
 		return temp;
 	}
-
-
-
 }

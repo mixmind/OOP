@@ -79,6 +79,7 @@ public class csvBase {
 						line = br.readLine();
 						power=line.split(cvsSplitBy);
 						WIFI temp=add(power);
+						temp.setId(id);
 						GeoModDat geoData=addGeo(power);
 						geoData.setId(id);
 						nt.add(temp,geoData);
@@ -89,6 +90,7 @@ public class csvBase {
 							power = line.split(cvsSplitBy);
 							if(!power[10].equals("GSM")) {
 							WIFI temp=add(power);
+							temp.setId(id);
 							GeoModDat geoData=addGeo(power);
 							geoData.setId(id);
 							nt.add(temp,geoData);

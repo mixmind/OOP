@@ -17,7 +17,7 @@ public class toCSV {
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			nt = csvBase.readCSV(folder);
-			//nt= new Network(Sort.mergeSort(nt));
+			nt= new Network(Sort.mergeSort(nt));
 			routerAsp(nt,folder);
 			if(nt.getReal_size()!=0) {
 				System.out.println("Read csv complete.");

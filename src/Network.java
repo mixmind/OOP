@@ -2,7 +2,7 @@
 public class Network {
 	private Hotspots[] line;
 	private int real_size;
-	private final int INIT_SIZE=3,RESIZE=5;
+	private final int INIT_SIZE=1,RESIZE=1;
 	/**
 	 * Constructor of Arrays of Hotspots
 	 */
@@ -40,14 +40,14 @@ public class Network {
 			{
 				resize();
 			}
-			if(checkFS(dot))//if last firstseen == new firstseen put it into one array
+			if(checkFS(dot)&&dot.getid().equals(line[real_size-1].getDataOfdot().getId()))//if last firstseen == new firstseen put it into one array
 			{
 				line[real_size-1].add(dot);
 				
 			}
 			else
 			{
-				//if(real_size>0) line[real_size-1].sortRSSI();
+				if(real_size>0) line[real_size-1].sortRSSI();
 				line[real_size++]=new Hotspots(dot);
 				line[real_size-1].setDataOfdot(geo);
 			}
