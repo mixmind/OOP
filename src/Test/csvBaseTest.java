@@ -1,4 +1,8 @@
+package Test;
 import org.junit.Test;
+import WiFi_data.*;
+
+import DataBase.csvBase;
 
 public class csvBaseTest {
 

@@ -1,3 +1,4 @@
+package WiFi_data;
 import java.util.Date;
 
 public class GeoModDat {
@@ -5,6 +6,10 @@ public class GeoModDat {
 	private String Id;
 	private double lat,lon,alt;
 	
+	public GeoModDat()
+	{
+		
+	}
 	public GeoModDat(double lat, double lon, double alt)
 	{
 		this.lat = lat;

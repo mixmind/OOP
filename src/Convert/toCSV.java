@@ -1,3 +1,4 @@
+package Convert;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -5,6 +6,13 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+import Algo.Algo;
+import DataBase.csvBase;
+import WiFi_data.Network;
+import WiFi_data.RouterPlace;
+import WiFi_data.Sort;
+import WiFi_data.WIFI;
 
 public class toCSV {
 	/**
@@ -37,14 +45,14 @@ public class toCSV {
 					for(int i=0;i<max;i++)
 					{
 						j=0;
-						if(nt.getLine()[i]!=null)
+						if(nt.getHotspots()[i]!=null)
 						{
-							temp=nt.getLine()[i].getLine();
+							temp=nt.getHotspots()[i].getWIFI();
 							if(temp[j]!=null) {
 								count++;
-								sb.append(format.format(nt.getLine()[i].getDataOfdot().getFirtseen())+","
-										+nt.getLine()[i].getDataOfdot().getId()+","+nt.getLine()[i].getDataOfdot().getLat()+","+
-										nt.getLine()[i].getDataOfdot().getLon()+","+nt.getLine()[i].getDataOfdot().getAlt()+","+temp.length+",");
+								sb.append(format.format(nt.getHotspots()[i].getDataOfdot().getFirtseen())+","
+										+nt.getHotspots()[i].getDataOfdot().getId()+","+nt.getHotspots()[i].getDataOfdot().getLat()+","+
+										nt.getHotspots()[i].getDataOfdot().getLon()+","+nt.getHotspots()[i].getDataOfdot().getAlt()+","+temp.length+",");
 								for(;j<temp.length&&temp[j]!=null;j++)
 								{
 									if(temp[j]!=null) 
@@ -85,20 +93,22 @@ public class toCSV {
 	private void routerAsp(Network nt,String folder)
 	{
 		try {
-		ArrayList<RouterPlace> temp=Algo1.routerPlace(nt);
+		ArrayList<RouterPlace> temp=Algo.routerPlaceAlgo1(nt);
 		StringBuilder sb = new StringBuilder();
-		PrintWriter pw = new PrintWriter(new File(folder+"wCenter.csv"));
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
+		PrintWriter pw = new PrintWriter(new File(folder+currTime+"wCenter.csv"));
 		
 			for(int i=0;i<temp.size();i++)
 			{
-				sb.append(temp.get(i).getPosition().getFirtseen()+","
+				sb.append(format.format(temp.get(i).getPosition().getFirtseen())+","
 						+temp.get(i).getPosition().getId()+","
 						+temp.get(i).getPosition().getLat()+","
 						+temp.get(i).getPosition().getLon()+","
 						+temp.get(i).getPosition().getAlt()+",1,"
 						+temp.get(i).getSSID()+","
 						+temp.get(i).getMac()+","
-						+temp.get(i).getChannel());
+						+temp.get(i).getChannel()+",1");
 				sb.append("\n");
 			}
 			pw.append(sb.toString());

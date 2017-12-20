@@ -1,9 +1,14 @@
+package DataBase;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+import WiFi_data.Network;
+import WiFi_data.WIFI;
 
 public class kmlBase {
 	/**
@@ -14,6 +19,7 @@ public class kmlBase {
 	public static Network inputCsv(File file)
 	{
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		DateFormat format1 = new SimpleDateFormat("mm/dd/yy hh:mm aa",Locale.getDefault());
 		Network nt=new Network();
 		BufferedReader br = null;
 		String line = "";
@@ -30,17 +36,16 @@ public class kmlBase {
 						for(int i=6;i<power.length&&power[i]!=null;) {
 							power = line.split(cvsSplitBy);
 							WIFI temp=new WIFI();
-							GeoModDat geoData=new GeoModDat(format.parse(power[0]),
-									Double.parseDouble(power[2]),
-									Double.parseDouble(power[3]), 
-									Double.parseDouble(power[4]));
-							geoData.setId(power[1]);
+							temp.setLat(Double.parseDouble(power[2]));
+							temp.setLon(Double.parseDouble(power[3]));
+							temp.setAlt(Double.parseDouble(power[4]));
+							temp.setId(power[1]);
 							temp.setFirtseen(format.parse(power[0]));
-							temp.setSsid(power[i]);
-							temp.setMac(power[i+1]);
+							temp.setSsid(power[i+1]);
+							temp.setMac(power[i]);
 							temp.setFreq(power[i+2]);
-							temp.setRssi(Integer.parseInt(power[i+3]));
-							nt.add(temp,geoData);
+							temp.setRssi((int)Double.parseDouble(power[i+3]));
+							nt.add(temp);
 							i+=4;
 						}
 					}
@@ -49,7 +54,7 @@ public class kmlBase {
 			} catch (ParseException e) {
 				System.out.println(e.getMessage());
 			}
-			
+
 			finally {
 				System.out.println("Function kmlBase ended.");
 			}	
@@ -57,7 +62,7 @@ public class kmlBase {
 		catch (Exception e) {
 			System.out.println(e.getLocalizedMessage()+" error!");
 		}
-		
+
 		return nt;
 
 	}

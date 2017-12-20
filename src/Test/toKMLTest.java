@@ -1,3 +1,4 @@
+package Test;
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -5,6 +6,8 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.junit.Test;
+
+import Convert.toKML;
 
 public class toKMLTest {
 

@@ -1,11 +1,12 @@
+package WiFi_data;
 
 public class Sort {
 	public static Hotspots[] mergeSort(Network a) {
 		Hotspots[] temp =new Hotspots[a.getReal_size()];
 		for(int i=0;i<temp.length;i++)
 		{
-			temp[i]=new Hotspots(a.getLine()[i]);
-			temp[i].setDataOfdot(a.getLine()[i].getDataOfdot());
+			temp[i]=new Hotspots(a.getHotspots()[i]);
+			temp[i].setDataOfdot(a.getHotspots()[i].getDataOfdot());
 		}
 		mergeSort(temp,0,temp.length);
 		return temp;

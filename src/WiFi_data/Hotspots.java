@@ -1,3 +1,6 @@
+package WiFi_data;
+import java.util.Arrays;
+
 public class Hotspots {
 	
 	private WIFI [] line;
@@ -17,7 +20,7 @@ public class Hotspots {
 		line=new WIFI[a.getReal_size()];
 		for(int i=0;i<a.getReal_size();i++)
 		{
-			line[i]=new WIFI(a.getLine()[i]);
+			line[i]=new WIFI(a.getWIFI()[i]);
 		}
 		real_size=a.getReal_size();
 	}
@@ -108,7 +111,7 @@ public class Hotspots {
 	 * 
 	 * @return returning Array of Wifis
 	 */
-	public WIFI[] getLine() {
+	public WIFI[] getWIFI() {
 		return line;
 	}
 	public void sortRSSI()
@@ -158,6 +161,45 @@ public class Hotspots {
 		if(max<=dot.getRssi()) return index;
 		else return -1;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return " real_size=" + real_size;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Hotspots other = (Hotspots) obj;
+		if (INIT_SIZE != other.INIT_SIZE)
+			return false;
+		if (MAX_SIZE != other.MAX_SIZE)
+			return false;
+		if (RESIZE != other.RESIZE)
+			return false;
+		if (dataOfdot == null) {
+			if (other.dataOfdot != null)
+				return false;
+		} else if (!dataOfdot.equals(other.dataOfdot))
+			return false;
+		if (!Arrays.equals(line, other.line))
+			return false;
+		if (real_size != other.real_size)
+			return false;
+		return true;
+	}
+	
+	
 
 
 }

@@ -1,3 +1,4 @@
+package WiFi_data;
 import java.util.Date;
 
 public class RouterPlace {
@@ -133,5 +134,37 @@ public void setPosition(GeoModDat position) {
 public String toString() {
 	return "RouterPlace [mac=" + mac + ", signal=" + signal + ", position=" + position + "]";
 }
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	RouterPlace other = (RouterPlace) obj;
+	if (SSID == null) {
+		if (other.SSID != null)
+			return false;
+	} else if (!SSID.equals(other.SSID))
+		return false;
+	if (channel != other.channel)
+		return false;
+	if (mac == null) {
+		if (other.mac != null)
+			return false;
+	} else if (!mac.equals(other.mac))
+		return false;
+	if (position == null) {
+		if (other.position != null)
+			return false;
+	} else if (!position.equals(other.position))
+		return false;
+	if (signal != other.signal)
+		return false;
+	return true;
+}
+
 
 }

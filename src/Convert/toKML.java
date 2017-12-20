@@ -1,3 +1,4 @@
+package Convert;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,6 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import DataBase.kmlBase;
+import Filter.filterCSV;
+import WiFi_data.Network;
+import WiFi_data.WIFI;
 import de.micromata.opengis.kml.v_2_2_0.*;
 
 
@@ -34,7 +39,7 @@ public class toKML {
 			Scanner sc=new Scanner(System.in);
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			String line = "";
-			if(nt.getLine()[0]!=null) {
+			if(nt.getHotspots()[0]!=null) {
 				System.out.println("What filter do you want to do?\n1.Id\n2.Date\n3.Radius");
 				while (!sc.hasNextInt()) {
 					System.out.println("That's not a number!");
@@ -113,20 +118,20 @@ public class toKML {
 					WIFI[] wifiT=new WIFI[10];
 					// Create <Placemark> and set values.
 					for (int i = 0; i <nt.getReal_size(); i++) {
-						if(nt.getLine()[i]!=null) {
-							wifiT=nt.getLine()[i].getLine();
+						if(nt.getHotspots()[i]!=null) {
+							wifiT=nt.getHotspots()[i].getWIFI();
 							if(wifiT!=null) {
 								for(int j=0;j<wifiT.length&&wifiT[j]!=null;j++) {
 									Placemark placemark = KmlFactory.createPlacemark();
 									placemark.setName(wifiT[j].getSsid());
 									placemark.setVisibility(true);
 									placemark.setOpen(false);
-									dot=nt.getLine()[i].getDataOfdot().getFirtseen();
+									dot=wifiT[j].getFirtseen();
 									String str=format.format(dot);
 									str=str.replace(' ', 'T')+'Z';
 									placemark.createAndSetTimeStamp().setWhen(str);
 									placemark.setDescription("\nSSID: "+wifiT[j].getSsid()+"\nId of phone: "
-											+nt.getLine()[i].getDataOfdot().getId()+
+											+wifiT[j].getid()+
 											"\nMac: "+wifiT[j].getMac()+"\nFrequency: "+wifiT[j].getFreq()+
 											"\nSignal: "+wifiT[j].getRssi()+"\nDate: "+wifiT[j].getFirtseen()+"\n");
 									if(wifiT[j].getRssi()>-85) placemark.setStyleUrl("green");
@@ -138,8 +143,8 @@ public class toKML {
 									point.setExtrude(false);
 									point.setAltitudeMode(AltitudeMode.CLAMP_TO_GROUND);
 									// Add coordinates>.
-									point.getCoordinates().add(new Coordinate(nt.getLine()[i].getDataOfdot().getLon()
-											,nt.getLine()[i].getDataOfdot().getLat(),nt.getLine()[i].getDataOfdot().getAlt()));
+									point.getCoordinates().add(new Coordinate(wifiT[j].getLon()
+											,wifiT[j].getLat(),wifiT[j].getAlt()));
 									placemark.setGeometry(point);    
 									dir.addToFeature(placemark); 
 								}

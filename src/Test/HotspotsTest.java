@@ -1,4 +1,8 @@
+package Test;
 import org.junit.Test;
+
+import WiFi_data.Hotspots;
+import WiFi_data.WIFI;
 
 public class HotspotsTest {
 
@@ -12,7 +16,7 @@ public class HotspotsTest {
 		wi.setAlt(221);
 		hs.add(wi);
 		if(hs.getReal_size()!=1) throw new RuntimeException("Error of input");
-		if(!hs.getLine()[0].equals(wi)) throw new RuntimeException("Error of input");
+		if(!hs.getWIFI()[0].equals(wi)) throw new RuntimeException("Error of input");
 	}
 
 }

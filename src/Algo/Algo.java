@@ -1,30 +1,35 @@
+package Algo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
+
+import WiFi_data.GeoModDat;
+import WiFi_data.Network;
+import WiFi_data.RouterPlace;
+import WiFi_data.WIFI;
+
+public class Algo {
 
 
-
-public class Algo1 {
-	//private final int numDots=3;
-
-	public static ArrayList<RouterPlace> routerPlace(Network nt)
+	public static ArrayList<RouterPlace> routerPlaceAlgo1(Network nt)
 	{
 		ArrayList<RouterPlace> rp=add(nt);
-		Collections.sort(rp, new Comparator<RouterPlace>() {
-			@Override
+		List<RouterPlace> list = rp;
+		Collections.sort(list, new Comparator<RouterPlace>() {
 			public int compare(RouterPlace router1, RouterPlace router2)
 			{
-
 				return  router1.getMac().compareTo(router2.getMac());
 			}
 		});
-		ArrayList<ArrayList<RouterPlace>> routSorted=sortMac(rp);
+		ArrayList<ArrayList<RouterPlace>> routSorted=sortMac(list);
 		sortSignal(routSorted);
 		ArrayList<RouterPlace> alg=math(routSorted);
 		return alg;
 
 	}
 
+	
 	private static ArrayList<RouterPlace> math(ArrayList<ArrayList<RouterPlace>> al)
 	{
 		ArrayList<RouterPlace> temp=new ArrayList<>();
@@ -45,9 +50,10 @@ public class Algo1 {
 		double wAlt=0;
 		double wLat=0;
 		double wLon=0;
+		int count=0;
 		for(int i=0;i<check.size();i++)
 		{
-			if(check.get(i).getSignal()!=0) {
+			if(check.get(i).getSignal()!=0&&count<3) {
 				double tempWeight=1/(double)(check.get(i).getSignal()*check.get(i).getSignal());
 				double tempwAlt=check.get(i).getPosition().getAlt()*tempWeight;
 				double tempwLon=check.get(i).getPosition().getLon()*tempWeight;
@@ -71,22 +77,22 @@ public class Algo1 {
 	private static  ArrayList<RouterPlace> add(Network nt)
 	{
 		ArrayList<RouterPlace> temp=new ArrayList<RouterPlace>();
-		for(int i=0;i<nt.getReal_size()&&nt.getLine()!=null;i++)
+		for(int i=0;i<nt.getReal_size()&&nt.getHotspots()!=null;i++)
 		{
-			for(int j=0;j<nt.getLine()[i].getReal_size()&&nt.getLine()[i]!=null&&nt.getLine()[i].getLine()[j]!=null;j++)
+			for(int j=0;j<nt.getHotspots()[i].getReal_size()&&nt.getHotspots()[i]!=null&&nt.getHotspots()[i].getWIFI()[j]!=null;j++)
 			{				
-				GeoModDat position=new GeoModDat(nt.getLine()[i].getDataOfdot().getLat(), 
-						nt.getLine()[i].getDataOfdot().getLon(), 
-						nt.getLine()[i].getDataOfdot().getAlt());
-				position.setFirtseen(nt.getLine()[i].getDataOfdot().getFirtseen());
-				position.setId(nt.getLine()[i].getDataOfdot().getId());
-				temp.add(addRouter(nt.getLine()[i].getLine()[j],position));
+				GeoModDat position=new GeoModDat(nt.getHotspots()[i].getDataOfdot().getLat(), 
+						nt.getHotspots()[i].getDataOfdot().getLon(), 
+						nt.getHotspots()[i].getDataOfdot().getAlt());
+				position.setFirtseen(nt.getHotspots()[i].getDataOfdot().getFirtseen());
+				position.setId(nt.getHotspots()[i].getDataOfdot().getId());
+				temp.add(addRouter(nt.getHotspots()[i].getWIFI()[j],position));
 
 			}
 		}
 		return temp;
 	}
-	private static ArrayList<ArrayList<RouterPlace>> sortMac(ArrayList<RouterPlace> rp)
+	private static ArrayList<ArrayList<RouterPlace>> sortMac(List<RouterPlace> rp)
 	{
 		ArrayList<ArrayList<RouterPlace>> temp=new ArrayList<ArrayList<RouterPlace>>();
 		for(int i=0;i<rp.size();i++)

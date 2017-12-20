@@ -1,9 +1,12 @@
+package Test;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.junit.Test;
+
+import WiFi_data.WIFI;
 
 public class WIFITest {
 

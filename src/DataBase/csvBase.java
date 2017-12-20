@@ -1,3 +1,4 @@
+package DataBase;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,6 +8,12 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+import WiFi_data.GeoModDat;
+import WiFi_data.Hotspots;
+import WiFi_data.Network;
+import WiFi_data.WIFI;
 
 
 public class csvBase {
@@ -55,14 +62,16 @@ public class csvBase {
 	 * @throws ParseException Error while parsing
 	 * @throws IOException Error of I/O
 	 */
-	private static void check(File file,Network nt)
+	public static void check(File file,Network nt)
 	{
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
 		String csvFile = file.toString();
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		boolean test=false;
+		DateFormat format1 = new SimpleDateFormat("mm/dd/yy hh:mm aa",Locale.getDefault());
+		boolean readyCsv=false;
+		boolean wigleCsv=false;
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
 			line = br.readLine();
@@ -71,9 +80,33 @@ public class csvBase {
 				if(line!=null) {
 					String[] power=line.split(cvsSplitBy);
 					String id="";
-					if(power.length==46) test=true;
+					if(power[2].equals("?"))
+					{	
+						while (line != null) {
+							Hotspots data=new Hotspots();
+							int i=6;
+							power = line.split(cvsSplitBy);
+							while(i<power.length) {
+								if(power[i]!=null) {
+									WIFI temp=new WIFI();
+									temp.setSsid(power[i]);
+									temp.setMac(power[i+1]);
+									temp.setFreq(power[i+2]);
+									temp.setId(power[1]);
+									temp.setFirtseen(format1.parse(power[0]));
+									temp.setRssi((int)Double.parseDouble(power[i+3]));
+									data.add(temp);
+									i+=4;
+								}
+							}
+							line= br.readLine();
+							nt.add(data);;
+						}
+					}
+					if(power.length==46) readyCsv=true;
 					if(power.length==8)
 					{
+						wigleCsv=true;
 						id=power[2];
 						line = br.readLine();
 						line = br.readLine();
@@ -84,20 +117,20 @@ public class csvBase {
 						geoData.setId(id);
 						nt.add(temp,geoData);
 					}
-					if(power.length>10&&power.length!=46)
+					if(wigleCsv)
 					{	
 						while ((line = br.readLine()) != null) {
 							power = line.split(cvsSplitBy);
 							if(!power[10].equals("GSM")) {
-							WIFI temp=add(power);
-							temp.setId(id);
-							GeoModDat geoData=addGeo(power);
-							geoData.setId(id);
-							nt.add(temp,geoData);
+								WIFI temp=add(power);
+								temp.setId(id);
+								GeoModDat geoData=addGeo(power);
+								geoData.setId(id);
+								nt.add(temp,geoData);
 							}
 						}
 					}
-					if(test)
+					if(true)
 					{
 						while ((line = br.readLine()) != null) {
 							int i=6;
@@ -114,7 +147,7 @@ public class csvBase {
 								temp.setFreq(power[i+2]);
 								temp.setId(power[1]);
 								temp.setFirtseen(format.parse(power[0]));
-								temp.setRssi(Integer.parseInt(power[i+3]));
+								temp.setRssi((int)Double.parseDouble(power[i+3]));
 								nt.add(temp,geoData);
 								i+=4;
 							}
@@ -141,7 +174,7 @@ public class csvBase {
 
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.out.println(e1.getMessage());
 		}
 	}
 	/**

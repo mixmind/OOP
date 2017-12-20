@@ -1,3 +1,4 @@
+package WiFi_data;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ public class WIFI {
 	private String mac,ssid,authmode,type,id,freq;
 	private int channel,rssi;
 	private double lat,lon,alt,accm;
+	private GeoModDat position;
 	/**
 	 * COnstructor
 	 */
@@ -241,6 +243,24 @@ public class WIFI {
 	 */
 	public void setFreq(String freq) {
 		this.freq = freq;
+	}
+	/**
+	 * @return the position
+	 */
+	public GeoModDat getPosition() {
+		return position;
+	}
+	/**
+	 * @param position the position to set
+	 */
+	public void setPosition(GeoModDat position) {
+		this.position = position;
+	}
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
 	}
 	/* (non-Javadoc) Checking equels
 	 * @see java.lang.Object#equals(java.lang.Object)

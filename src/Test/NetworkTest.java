@@ -1,5 +1,9 @@
+package Test;
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import WiFi_data.Network;
+import WiFi_data.WIFI;
 
 public class NetworkTest {
 
@@ -13,7 +17,7 @@ public class NetworkTest {
 		WIFI wi=new WIFI();
 		wi.setAlt(221);
 		Network nt=new Network();
-		nt.add(null, null);
+		//nt.add(null, null);
 		nt.add(wi, null);
 		if(nt.getReal_size()!=1) throw new RuntimeException("Error of input"); 
 	}
