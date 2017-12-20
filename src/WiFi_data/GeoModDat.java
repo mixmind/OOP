@@ -5,18 +5,30 @@ public class GeoModDat {
 	private Date firtseen;
 	private String Id;
 	private double lat,lon,alt;
-	
+
 	public GeoModDat()
 	{
-		
+
 	}
+	/**
+	 * 
+	 * @param lat insert lat
+	 * @param lon insert lon
+	 * @param alt insert alt
+	 */
 	public GeoModDat(double lat, double lon, double alt)
 	{
 		this.lat = lat;
 		this.lon = lon;
 		this.alt = alt;
 	}
-	
+	/**
+	 * 
+	 * @param firtseen insert date
+	 * @param lat insert lat
+	 * @param lon insert lon
+	 * @param alt insert alt
+	 */
 	public GeoModDat(Date firtseen, double lat, double lon, double alt) {
 		super();
 		this.firtseen = firtseen;
@@ -24,6 +36,14 @@ public class GeoModDat {
 		this.lon = lon;
 		this.alt = alt;
 	}
+	/**
+	 * 
+	 * @param firtseen insert date
+	 * @param lat insert lat
+	 * @param lon insert lon
+	 * @param alt insert alt
+	 * @param Id insert id
+	 */
 	public GeoModDat(Date firtseen, double lat, double lon, double alt,String Id) {
 		super();
 		this.firtseen = firtseen;
@@ -44,8 +64,6 @@ public class GeoModDat {
 	public void setId(String id) {
 		Id = id;
 	}
-	
-	
 
 	/**
 	 * @return the firtseen
@@ -104,5 +122,5 @@ public class GeoModDat {
 		return "GeoModDat [firtseen=" + firtseen + ", Id=" + Id + ", lat=" + lat + ", lon=" + lon + ", alt=" + alt
 				+ "]";
 	}
-	
+
 }

@@ -6,10 +6,15 @@ public class ClientPlace {
 	private WIFI wifi;
 	private int signal;
 	private double weight;
-	
+
 	public ClientPlace() {
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * 
+	 * @param pos Set position
+	 * @param a Set wifi
+	 */
 	public ClientPlace(GeoModDat pos,WIFI a)
 	{
 		position=pos;
@@ -33,11 +38,11 @@ public class ClientPlace {
 	public WIFI getWifi() {
 		return wifi;
 	}
-	
+
 	/**
 	 * @param wifi the wifi to set
 	 */
-	
+
 	public void setWifi(WIFI wifi) {
 		this.wifi = wifi;
 	}
@@ -53,10 +58,6 @@ public class ClientPlace {
 	public void setSignal(int signal) {
 		this.signal = signal;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	
 	/**
 	 * @return the weight
 	 */
@@ -97,5 +98,5 @@ public class ClientPlace {
 			return false;
 		return true;
 	}
-	
+
 }

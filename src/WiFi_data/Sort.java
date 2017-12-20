@@ -1,6 +1,11 @@
 package WiFi_data;
 
 public class Sort {
+	/**
+	 * 
+	 * @param a Network to be sorted
+	 * @return
+	 */
 	public static Hotspots[] mergeSort(Network a) {
 		Hotspots[] temp =new Hotspots[a.getReal_size()];
 		for(int i=0;i<temp.length;i++)
@@ -11,7 +16,12 @@ public class Sort {
 		mergeSort(temp,0,temp.length);
 		return temp;
 	}
-
+	/**
+	 * 
+	 * @param a Hotspots
+	 * @param low index min
+	 * @param high index max
+	 */
 	private static void mergeSort(Hotspots[] a, int low, int high) {
 		int n = high - low;
 		if(n <= 1) return;

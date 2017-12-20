@@ -2,7 +2,7 @@ package WiFi_data;
 import java.util.Arrays;
 
 public class Hotspots {
-	
+
 	private WIFI [] line;
 	private int real_size;
 	private final int INIT_SIZE=1,RESIZE =1,MAX_SIZE=10;
@@ -15,6 +15,10 @@ public class Hotspots {
 		line=new WIFI[INIT_SIZE];
 		real_size=0;
 	}
+	/**
+	 * 
+	 * @param a copy constructor
+	 */
 	public Hotspots(Hotspots a)
 	{
 		line=new WIFI[a.getReal_size()];
@@ -24,16 +28,16 @@ public class Hotspots {
 		}
 		real_size=a.getReal_size();
 	}
-	
+
 	/**
 	 * Constructor with Wifi to input
 	 * @param dot Input Wifi into Wifi array
 	 */
-	
+
 	public Hotspots(WIFI dot)
 	{
 		if(line==null) line=new WIFI[INIT_SIZE];
-			
+
 		if(real_size==line.length)	resize();
 		if(real_size==MAX_SIZE)
 		{
@@ -93,12 +97,17 @@ public class Hotspots {
 	public void setDataOfdot(GeoModDat dataOfdot) {
 		this.dataOfdot = dataOfdot;
 	}
+	/**
+	 * 
+	 * @param check if GeoData is equal
+	 * @return
+	 */
 	public boolean equalGeo(GeoModDat check)
 	{
 		return check.getAlt()==dataOfdot.getAlt()&&check.getLon()==dataOfdot.getLon()&&
 				check.getAlt()==dataOfdot.getAlt()&&check.getFirtseen().equals(dataOfdot.getFirtseen())&&
 				check.getId().equals(dataOfdot.getId());
-				
+
 	}
 	/**
 	 * 
@@ -114,10 +123,17 @@ public class Hotspots {
 	public WIFI[] getWIFI() {
 		return line;
 	}
+	/**
+	 * Sort by signal
+	 */
 	public void sortRSSI()
 	{
 		selectionSort(line);
 	}
+	/**
+	 * 
+	 * @param a Wifis to sort
+	 */
 	private static void selectionSort(WIFI[] a) {
 		int minIndex;
 		for (int i = 0; i < a.length; i++) {
@@ -125,13 +141,23 @@ public class Hotspots {
 			swap(a,i,minIndex);
 		}
 	}
-	
+	/**
+	 * 
+	 * @param a Wifis
+	 * @param i index from swap
+	 * @param j index to swap
+	 */
 	private static void swap(WIFI[] a, int i, int j) {
 		WIFI t = a[i];
 		a[i] = new WIFI(a[j]);
 		a[j] = new WIFI(t);
 	}
-
+	/**
+	 * 
+	 * @param a Wifis
+	 * @param start start point for check
+	 * @return index of max
+	 */
 	private static int getMinIndex(WIFI[] a, int start) {
 		int index = start;
 		for (int i = start; i < a.length; i++) {
@@ -198,8 +224,8 @@ public class Hotspots {
 			return false;
 		return true;
 	}
-	
-	
+
+
 
 
 }

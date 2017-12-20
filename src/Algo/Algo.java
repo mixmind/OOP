@@ -18,7 +18,10 @@ import WiFi_data.WIFI;
 
 public class Algo {
 
-
+	/**
+	 * 
+	 * @param file File to find approx location of router
+	 */
 	public static void routerPlaceAlgo1(String file)
 	{
 		Network nt=new Network();
@@ -36,11 +39,15 @@ public class Algo {
 		sortSignal(routSorted);
 		ArrayList<RouterPlace> alg=math(routSorted);
 		routerAsp(alg, t.getParent()+"/");
-		
+
 
 	}
 
-
+	/**
+	 * 
+	 * @param al Do algo insert of data
+	 * @return Sorted data
+	 */
 	private static ArrayList<RouterPlace> math(ArrayList<ArrayList<RouterPlace>> al)
 	{
 		ArrayList<RouterPlace> temp=new ArrayList<>();
@@ -54,6 +61,11 @@ public class Algo {
 		}
 		return temp;
 	}
+	/**
+	 * 
+	 * @param check Data for math
+	 * @return Router data 
+	 */
 	private static RouterPlace solve(ArrayList<RouterPlace> check)
 	{
 		RouterPlace w_sum=new RouterPlace();
@@ -84,7 +96,11 @@ public class Algo {
 		}
 		return w_sum;
 	}
-
+	/**
+	 * 
+	 * @param nt Add router to network
+	 * @return full network
+	 */
 	private static  ArrayList<RouterPlace> add(Network nt)
 	{
 		ArrayList<RouterPlace> temp=new ArrayList<RouterPlace>();
@@ -103,6 +119,11 @@ public class Algo {
 		}
 		return temp;
 	}
+	/**
+	 * 
+	 * @param rp Routers to sort
+	 * @return sorted database
+	 */
 	private static ArrayList<ArrayList<RouterPlace>> sortMac(List<RouterPlace> rp)
 	{
 		ArrayList<ArrayList<RouterPlace>> temp=new ArrayList<ArrayList<RouterPlace>>();
@@ -133,7 +154,11 @@ public class Algo {
 		}
 		return temp;
 	}
-
+	/**
+	 * 
+	 * @param check Routers to sort
+	 * @return sorted by signal
+	 */
 	private static ArrayList<RouterPlace> sortSignal(ArrayList<ArrayList<RouterPlace>> check)
 	{
 		for(int i=0;i<check.size();i++)
@@ -142,7 +167,10 @@ public class Algo {
 		}
 		return null;
 	}
-
+	/**
+	 * 
+	 * @param a Routers to sort
+	 */
 	private static void selectionSort(ArrayList<RouterPlace> a) {
 		int minIndex;
 		for (int i = 0; i < a.size(); i++) {
@@ -150,13 +178,23 @@ public class Algo {
 			swap(a,i,minIndex);
 		}
 	}
-
+	/**
+	 * 
+	 * @param a Routers for swap
+	 * @param i swap from
+	 * @param j swap to
+	 */
 	private static void swap(ArrayList<RouterPlace> a, int i, int j) {
 		RouterPlace t = a.get(i);
 		a.set(i, a.get(j));
 		a.set(j, t);
 	}
-
+	/**
+	 * 
+	 * @param a Routers for find
+	 * @param start place to search
+	 * @return max index
+	 */
 	private static int getMinIndex(ArrayList<RouterPlace> a, int start) {
 		int index = start;
 		for (int i = start; i < a.size(); i++) {
@@ -166,6 +204,12 @@ public class Algo {
 		}
 		return index;
 	}
+	/**
+	 * 
+	 * @param a WIfi
+	 * @param position Geodata
+	 * @return Router data fixed
+	 */
 	private static RouterPlace addRouter(WIFI a,GeoModDat position)
 	{
 		RouterPlace temp=new RouterPlace(
@@ -180,14 +224,19 @@ public class Algo {
 				position.getAlt());
 		return temp;
 	}
+	/**
+	 * 
+	 * @param temp Routers data
+	 * @param folder place to print
+	 */
 	private static void routerAsp(ArrayList<RouterPlace> temp,String folder)
 	{
 		try {
-		StringBuilder sb = new StringBuilder();
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
-		PrintWriter pw = new PrintWriter(new File(folder+currTime+"wCenter.csv"));
-		
+			StringBuilder sb = new StringBuilder();
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
+			PrintWriter pw = new PrintWriter(new File(folder+currTime+"wCenter.csv"));
+
 			for(int i=0;i<temp.size();i++)
 			{
 				sb.append(format.format(temp.get(i).getPosition().getFirtseen())+","
@@ -207,6 +256,6 @@ public class Algo {
 		{
 			System.out.println(e1.getMessage());
 		}
-		
+
 	}
 }

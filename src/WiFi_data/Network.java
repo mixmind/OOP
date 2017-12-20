@@ -22,6 +22,11 @@ public class Network {
 		line=new Hotspots[size];
 		real_size=0;
 	}
+	/**
+	 * 
+	 * @param a Add Hotspots
+	 */
+
 	public Network(Hotspots[] a)
 	{
 		line=new Hotspots[a.length];
@@ -56,6 +61,10 @@ public class Network {
 			}
 		}
 	}
+	/**
+	 * 
+	 * @param dot Add Wifi
+	 */
 	public void add(WIFI dot)//adding spot to the array of arrays
 	{
 		if(dot!=null) {
@@ -75,7 +84,11 @@ public class Network {
 			}
 		}
 	}
-	public void add(Hotspots a)//adding spot to the array of arrays
+	/**
+	 * 
+	 * @param a adding spot to the array of arrays
+	 */
+	public void add(Hotspots a)
 	{
 		if(a!=null) {
 			if(real_size==line.length)
@@ -85,7 +98,12 @@ public class Network {
 			line[real_size++]=new Hotspots(a);
 		}
 	}
-	public void add(Hotspots a,GeoModDat data)//adding spot to the array of arrays
+	/**
+	 * 
+	 * @param a Add Hotspots
+	 * @param data add GeoData
+	 */
+	public void add(Hotspots a,GeoModDat data)
 	{
 		if(a!=null) {
 			if(real_size==line.length)
@@ -135,9 +153,9 @@ public class Network {
 	public int getReal_size() {
 		return real_size;
 	}
-	
-	
-	
+
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -146,6 +164,9 @@ public class Network {
 		return "Network [line=" + Arrays.toString(line) + ", real_size=" + real_size + ", INIT_SIZE=" + INIT_SIZE
 				+ ", RESIZE=" + RESIZE + "]";
 	}
+	/**
+	 * Sorting by Size
+	 */
 	public void Sort()
 	{
 		int maxInd;
@@ -155,6 +176,12 @@ public class Network {
 			swapPlaces(line,i,maxInd);
 		}
 	}
+	/**
+	 * 
+	 * @param a Hotspots 
+	 * @param start Place for start
+	 * @return place of biggest index
+	 */
 	private static int getMinPlace(Hotspots[] a, int start) {
 		int index = start;
 		for (int i = start; i < a.length; i++) {
@@ -165,6 +192,12 @@ public class Network {
 		}
 		return index;
 	}
+	/**
+	 * 
+	 * @param a Hotspots
+	 * @param i place from swap
+	 * @param j place to swap
+	 */
 	private static void swapPlaces(Hotspots[] a, int i, int j) {
 		Hotspots t = a[i];
 		a[i]=a[j];

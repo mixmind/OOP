@@ -203,6 +203,11 @@ public class csvBase {
 		}
 		return temp;
 	}
+	/**
+	 * 
+	 * @param power String for executing date
+	 * @return GeodData
+	 */
 	private static GeoModDat addGeo(String [] power)
 	{
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
