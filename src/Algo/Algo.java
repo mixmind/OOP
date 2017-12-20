@@ -1,9 +1,16 @@
 package Algo;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import Convert.*;
+import DataBase.csvBase;
 import WiFi_data.GeoModDat;
 import WiFi_data.Network;
 import WiFi_data.RouterPlace;
@@ -12,8 +19,11 @@ import WiFi_data.WIFI;
 public class Algo {
 
 
-	public static ArrayList<RouterPlace> routerPlaceAlgo1(Network nt)
+	public static void routerPlaceAlgo1(String file)
 	{
+		Network nt=new Network();
+		File t=new File(file);
+		csvBase.check(t, nt);
 		ArrayList<RouterPlace> rp=add(nt);
 		List<RouterPlace> list = rp;
 		Collections.sort(list, new Comparator<RouterPlace>() {
@@ -25,11 +35,12 @@ public class Algo {
 		ArrayList<ArrayList<RouterPlace>> routSorted=sortMac(list);
 		sortSignal(routSorted);
 		ArrayList<RouterPlace> alg=math(routSorted);
-		return alg;
+		routerAsp(alg, t.getParent()+"/");
+		
 
 	}
 
-	
+
 	private static ArrayList<RouterPlace> math(ArrayList<ArrayList<RouterPlace>> al)
 	{
 		ArrayList<RouterPlace> temp=new ArrayList<>();
@@ -168,5 +179,34 @@ public class Algo {
 				position.getLon(),
 				position.getAlt());
 		return temp;
+	}
+	private static void routerAsp(ArrayList<RouterPlace> temp,String folder)
+	{
+		try {
+		StringBuilder sb = new StringBuilder();
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
+		PrintWriter pw = new PrintWriter(new File(folder+currTime+"wCenter.csv"));
+		
+			for(int i=0;i<temp.size();i++)
+			{
+				sb.append(format.format(temp.get(i).getPosition().getFirtseen())+","
+						+temp.get(i).getPosition().getId()+","
+						+temp.get(i).getPosition().getLat()+","
+						+temp.get(i).getPosition().getLon()+","
+						+temp.get(i).getPosition().getAlt()+",1,"
+						+temp.get(i).getSSID()+","
+						+temp.get(i).getMac()+","
+						+temp.get(i).getChannel()+",1");
+				sb.append("\n");
+			}
+			pw.append(sb.toString());
+			pw.close();
+		}
+		catch(FileNotFoundException e1)
+		{
+			System.out.println(e1.getMessage());
+		}
+		
 	}
 }

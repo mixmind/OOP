@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import WiFi_data.GeoModDat;
@@ -69,7 +70,7 @@ public class csvBase {
 		String cvsSplitBy = ",";
 		String csvFile = file.toString();
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		DateFormat format1 = new SimpleDateFormat("mm/dd/yy hh:mm aa",Locale.getDefault());
+		DateFormat parseFormat = new SimpleDateFormat("mm/dd/yy hh:mm aa",Locale.getDefault());
 		boolean readyCsv=false;
 		boolean wigleCsv=false;
 		try {
@@ -93,8 +94,12 @@ public class csvBase {
 									temp.setMac(power[i+1]);
 									temp.setFreq(power[i+2]);
 									temp.setId(power[1]);
-									temp.setFirtseen(format1.parse(power[0]));
+									temp.setFirtseen(parseFormat.parse(power[0]));
 									temp.setRssi((int)Double.parseDouble(power[i+3]));
+									GeoModDat pos=new GeoModDat();
+									pos.setFirtseen(parseFormat.parse(power[0]));
+									pos.setId(power[1]);
+									data.setDataOfdot(pos);
 									data.add(temp);
 									i+=4;
 								}

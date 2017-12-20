@@ -26,7 +26,6 @@ public class toCSV {
 		try {
 			nt = csvBase.readCSV(folder);
 			nt= new Network(Sort.mergeSort(nt));
-			routerAsp(nt,folder);
 			if(nt.getReal_size()!=0) {
 				System.out.println("Read csv complete.");
 				PrintWriter pw = new PrintWriter(new File(folder+currTime+".csv"));
@@ -90,34 +89,5 @@ public class toCSV {
 		}
 	}
 
-	private void routerAsp(Network nt,String folder)
-	{
-		try {
-		ArrayList<RouterPlace> temp=Algo.routerPlaceAlgo1(nt);
-		StringBuilder sb = new StringBuilder();
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
-		PrintWriter pw = new PrintWriter(new File(folder+currTime+"wCenter.csv"));
-		
-			for(int i=0;i<temp.size();i++)
-			{
-				sb.append(format.format(temp.get(i).getPosition().getFirtseen())+","
-						+temp.get(i).getPosition().getId()+","
-						+temp.get(i).getPosition().getLat()+","
-						+temp.get(i).getPosition().getLon()+","
-						+temp.get(i).getPosition().getAlt()+",1,"
-						+temp.get(i).getSSID()+","
-						+temp.get(i).getMac()+","
-						+temp.get(i).getChannel()+",1");
-				sb.append("\n");
-			}
-			pw.append(sb.toString());
-			pw.close();
-		}
-		catch(FileNotFoundException e1)
-		{
-			System.out.println(e1.getMessage());
-		}
-		
-	}
+	
 }

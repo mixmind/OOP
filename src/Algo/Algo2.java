@@ -1,6 +1,10 @@
 package Algo;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,9 +15,12 @@ import javax.swing.event.CaretListener;
 
 import DataBase.csvBase;
 import WiFi_data.ClientPlace;
+import WiFi_data.GeoModDat;
 import WiFi_data.Hotspots;
 import WiFi_data.Network;
 import WiFi_data.RouterPlace;
+import WiFi_data.Sort;
+import WiFi_data.WIFI;
 
 public class Algo2 {
 	private static double power=2;
@@ -23,10 +30,11 @@ public class Algo2 {
 	private static double sigDifnotList=100;
 	private static double minDif=3;
 
-	public static ArrayList<RouterPlace> clientPlaceAlgo2(String file1,String file2)
+	public static void clientPlaceAlgo2(String file1,String file2)
 	{
 		File base=new File(file1);
 		File test=new File(file2);
+		Network fixGeo =new Network();
 		FilenameFilter filter = new FilenameFilter() {
 			public boolean accept(File file, String name) {
 				return name.endsWith(".csv");
@@ -36,271 +44,185 @@ public class Algo2 {
 		if(filter.accept(base, base.getAbsolutePath())&&filter.accept(test, test.getAbsolutePath())) {
 			Network data= new Network();
 			csvBase.check(base, data);
-			Network fixGeo =new Network();
+			fixGeo =new Network();
 			csvBase.check(test, fixGeo);
-			//ArrayList<RouterPlace> rp=add(data);
-			//math1(rp, fixGeo);
-			math1(data,fixGeo);
+			math(data,fixGeo);
 		}
 		else {
 			System.out.println("Input correct file : *.csv");
 		}
 
-		return null;
+		toCSV(fixGeo, test.getAbsolutePath());;
 	}
-	private static ArrayList<RouterPlace> math1(Network data,Network fix)
+	private static void math(Network data,Network fix)
 	{
-		Network [] allData=new Network[fix.getReal_size()];
 		for(int i=0;i<fix.getReal_size();i++)
 		{
 			checkSim(data, fix.getHotspots()[i]);
 		}
-		for(int i=0;i<fix.getReal_size();i++)
-		{
-			//solvePlace(allData[i], fix.getHotspots()[i]);
-		}
-		System.out.println();
-		return null;
 	}
 	public static void checkSim(Network data,Hotspots fix)
 	{
+		ArrayList<ClientPlace> arr=new ArrayList<ClientPlace>();
+		int count=0;
 		for(int i=0;i<data.getReal_size();i++)
 		{
-			find(data.getHotspots()[i],fix);
+			if(find(data.getHotspots()[i],fix).getWeight()!=-100)
+				arr.add(find(data.getHotspots()[i],fix));
 		}
-	}
-	public static void find(Hotspots data,Hotspots fix)
-	{
-		
-	}
-
-
-	private static void sortSig(ArrayList<ClientPlace> data)
-	{
-		int minInd;
-		for(int i=0;i<data.size();i++)
+		sort(arr);
+		double wAlt=0;
+		double wLat=0;
+		double wLon=0;
+		double weight=0;
+		for(int i=0;i<arr.size()&&i<3;i++)
 		{
-			minInd=minSig(data, i);
-			swapSig(data,i,minInd);
+			wLat+=arr.get(i).getPosition().getLat()*arr.get(i).getWeight();
+			wLon+=arr.get(i).getPosition().getLon()*arr.get(i).getWeight();
+			wAlt+=arr.get(i).getPosition().getAlt()*arr.get(i).getWeight();
+			weight+=arr.get(i).getWeight();
+		}
+		if(weight!=0) {
+			wAlt/=weight;
+			wLon/=weight;
+			wLat/=weight;
+			GeoModDat tempDat=new GeoModDat();
+			tempDat.setAlt(wAlt);
+			tempDat.setLat(wLat);
+			tempDat.setLon(wLon);
+			fix.setDataOfdot(tempDat);
+		}
+
+	}
+	private static void toCSV(Network nt,String folder) 	{
+		int count=0;
+		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		File t=new File(folder);
+		try {
+			if(nt.getReal_size()!=0) {
+				System.out.println("Read csv complete.");
+				PrintWriter pw = new PrintWriter(new File(t.getParent()+"/"+currTime+".csv"));
+				StringBuilder sb = new StringBuilder();
+				sb.append("Time,ID,LAT,LON,ALT,#WiFi networks,");
+				try 
+				{
+					for(int i=1;i<=10;i++)
+					{
+						sb.append("SSID"+ i +",Mac"+ i +",Frequncy"+ i +",Signal"+ i +"," );
+					}
+					sb.append("\n");
+					int max=nt.getReal_size();
+					WIFI[] temp=new WIFI[10];
+					int j=0;
+					for(int i=0;i<max;i++)
+					{
+						j=0;
+						if(nt.getHotspots()[i]!=null)
+						{
+							temp=nt.getHotspots()[i].getWIFI();
+							if(temp[j]!=null) {
+								count++;
+								sb.append(format.format(temp[j].getFirtseen())+","+temp[j].getId()+","+nt.getHotspots()[i].getDataOfdot().getLat()+","+
+										nt.getHotspots()[i].getDataOfdot().getLon()+","+nt.getHotspots()[i].getDataOfdot().getAlt()+","+temp.length+",");
+								for(;j<temp.length&&temp[j]!=null;j++)
+								{
+									if(temp[j]!=null) 
+									{
+										/*String freq;
+										if(temp[j].getChannel()==0)
+										{
+											freq="gsm";
+										}
+										else if(temp[j].getChannel()>35)
+											freq= "5 GHZ";
+										else freq= "2.4 GHZ";                               /*freq*/
+										sb.append(temp[j].getSsid()+","+temp[j].getMac()+","+temp[j].getChannel()+","+temp[j].getRssi()+",");
+									}
+								}
+							}
+							sb.append("\n");
+						}
+					}
+				}
+				catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				finally {
+					System.out.println("Write csv file complete.");
+					System.out.println(count);
+				}
+				pw.append(sb.toString());
+				pw.close();
+			}
+			else System.out.println("File csv not found.");
+
+		} catch (NumberFormatException | IOException | NullPointerException e1) {
+			System.out.println(e1);
 		}
 	}
-	private static int minSig(ArrayList<ClientPlace> data,int start)
+	public static ClientPlace find(Hotspots data,Hotspots fix)
+
+	{
+		ClientPlace emt=new ClientPlace();
+		boolean test=false;
+		double tempWeight=-100;
+		int signal=0;
+		double tempDiff=0;
+		for(int i=0;i<fix.getReal_size();i++)
+		{
+			test=false;
+			signal=Math.abs(fix.getWIFI()[i].getRssi());
+			for(int j=0;j<data.getReal_size();j++)
+			{
+				tempDiff=Math.abs(data.getWIFI()[j].getRssi()+signal);
+				if(fix.getWIFI()[i].getMac().equals(data.getWIFI()[j].getMac()))
+				{
+					if(tempWeight==-100) tempWeight=1;
+					if(tempDiff==1||tempDiff==0) tempDiff=minDif;
+					tempWeight*=norm/(Math.pow(tempDiff, sigDif)*Math.pow(signal, power));
+					emt.setPosition(data.getDataOfdot());
+					test=true;
+				}
+				else if(test)
+				{
+					if(tempDiff!=0) {
+						if(tempWeight==-100) tempWeight=1;
+						tempWeight*=norm/(Math.pow(sigDifnotList, sigDif)*Math.pow(signal, power));
+					}
+				}
+			}
+		}
+		emt.setWeight(tempWeight);
+		return emt;
+	}
+
+	public static void sort(ArrayList<ClientPlace> arr)
+	{
+		int index;
+		for(int i=0;i<arr.size();i++)
+		{
+			index=maxInd(arr,i);
+			swap(arr,i,index);
+		}
+	}
+	public static int maxInd(ArrayList<ClientPlace> arr,int start)
 	{
 		int index=start;
-		for(int i=start;i<data.size();i++)
+		for(int i=start;i<arr.size();i++)
 		{
-			if(data.get(i).getWifi().getRssi()>data.get(index).getWifi().getRssi())
+			if(arr.get(i).getWeight()>arr.get(index).getWeight())
 			{
 				index=i;
 			}
 		}
 		return index;
 	}
-	private static void swapSig(ArrayList<ClientPlace> data,int i,int index)
+
+	public static void swap(ArrayList<ClientPlace> arr,int i,int index)
 	{
-		ClientPlace temp=data.get(i);
-		data.set(i, data.get(index));
-		data.set(index, temp);
+		ClientPlace temp=arr.get(i);
+		arr.set(i,arr.get(index));
+		arr.set(index, temp);
 	}
-
-
-	/*	
-	 * 
-	private static Network checkSim(Network data,Hotspots fix)
-	{
-		boolean test=false;
-		Network nex=new Network();
-		for(int i=0;i<data.getReal_size();i++)
-		{
-			test=false;
-			for(int j=0;j<data.getHotspots()[i].getReal_size()&&!test;j++)
-			{
-
-				for(int k=0;k<fix.getReal_size()&&!test;k++)
-				{
-					if(data.getHotspots()[i].getWIFI()[j].getMac().equals(fix.getWIFI()[k].getMac()))
-					{	
-						Hotspots time=addHot(data.getHotspots()[i],fix);
-						nex.add(time,time.getDataOfdot());
-						test=true;
-					}
-				}
-			}
-		}
-		nex.Sort();
-		return nex;
-	}
-
-	private static Hotspots addHot(Hotspots data,Hotspots fix)
-	{
-		Hotspots temp=new Hotspots();
-		temp.setDataOfdot(data.getDataOfdot());
-		for(int i=0;i<fix.getReal_size();i++)
-		{
-			for(int j=0;j<data.getReal_size();j++)
-			{
-				if(fix.getWIFI()[i].getMac().equals(data.getWIFI()[j].getMac()))
-				{
-					temp.add(data.getWIFI()[j]);
-				}
-			}
-		}
-		return temp;
-	}
-
-	private static void solvePlace(Network data,Hotspots fix)
-	{
-		ArrayList<ClientPlace> temp=new ArrayList<ClientPlace>();
-		if(data.getHotspots()[0].getReal_size()==1)
-		{
-			for(int i=0;i<data.getReal_size();i++)
-			{
-				ClientPlace one=new ClientPlace(data.getHotspots()[i].getDataOfdot(),
-						data.getHotspots()[i].getWIFI()[0]);
-				temp.add(one);
-			}
-			sortSig(temp);
-		}
-		else {
-			WIFI [][] mat=new WIFI[4][data.getHotspots()[0].getReal_size()];
-			for(int i=0;i<data.getHotspots()[0].getReal_size();i++)
-			{
-				for(int j=0;j<fix.getReal_size();j++) {
-					if(data.getHotspots()[0].getWIFI()[i].getMac().equals(fix.getWIFI()[j].ma))
-					{
-						mat[0][i]=fix.getWIFI()[j];
-					}
-				}
-			}
-			for(int i=0;i<data.getReal_size()&&i<3;i++)
-			{
-				for(int j=0;j<data.getHotspots()[i].getReal_size();j++)
-				{
-					for(int k=0;k<mat[i].length;k++)
-					{
-						if(data.getHotspots()[i].getWIFI()[j].getMac().equals(mat[0][k].getMac()))
-						{
-							WIFI my=data.getHotspots()[i].getWIFI()[j];
-							my.setPosition(data.getHotspots()[i].getDataOfdot());
-							mat[i+1][k]=my;
-						}
-					}
-				}
-			}
-			double weight=0;
-			double wAlt=0;
-			double wLat=0;
-			double wLon=0;
-			double tempWeight[]=new double[3];
-			double tempwAlt=0;
-			double tempwLon=0;
-			double tempwLat=0;
-			int count=0;
-			int signal=0;
-			double tempDiff=0;
-			for(int i=1;i<mat.length;i++)
-			{
-				count=0;
-
-				for(int j=0;j<mat[i].length;j++)
-				{
-					signal=Math.abs(mat[0][j].getRssi());
-					if(mat[i][j]!=null)
-					{
-						tempDiff=Math.abs(mat[i][j].getRssi()+signal);
-						if(tempDiff!=0) {
-							if(tempWeight[j]==0) tempWeight[j]=1;
-							if(tempDiff==1) tempDiff=minDif;
-							tempWeight[j]*=norm/(Math.pow(tempDiff, sigDif)*Math.pow(signal, power));
-						}
-					}
-					else
-					{
-						if(tempDiff!=0) {
-							if(tempWeight[j]==0) tempWeight[j]=1;
-							tempWeight[j]*=norm/(Math.pow(sigDifnotList, sigDif)*Math.pow(signal, power));
-						}
-					}
-					count++;
-				}
-			}
-		}
-	}
-
-	 * 
-	 * 
-	 * 
-	 * private static ArrayList<RouterPlace> math1(ArrayList<RouterPlace> data,Network fix)
-	{
-
-		ArrayList<ArrayList<ArrayList<RouterPlace>>> allData=new ArrayList<ArrayList<ArrayList<RouterPlace>>>();
-		for(int i=0;i<fix.getReal_size();i++)
-		{
-
-			allData.add(check(fix.getHotspots()[i],data));
-			solvePlace(fix.getHotspots()[i],allData.get(i));
-
-		}
-		System.out.println();
-		return null;
-	}
-	private static void solvePlace(Hotspots a,ArrayList<ArrayList<RouterPlace>> data)
-	{
-		double weight=0;
-		double wAlt=0;
-		double wLat=0;
-		double wLon=0;
-		double tempWeight[]=new double[3];
-		double tempwAlt=0;
-		double tempwLon=0;
-		double tempwLat=0;
-		int count=0;
-		int signal=0;
-		double tempDiff=0;
-		for(int i=0;i<a.getReal_size();i++)
-		{
-			count=0;
-			signal=Math.abs(a.getWIFI()[i].getRssi());
-			for(int j=0;j<data.get(i).size()&&count<3;j++)
-			{
-				if(data.get(i).get(j)!=null)
-				{
-					tempDiff=Math.abs(data.get(i).get(j).getSignal()+signal);
-					if(tempDiff!=0) {
-						if(tempWeight[j]==0) tempWeight[j]=1;
-						if(tempDiff==1) tempDiff=minDif;
-						tempWeight[j]*=norm/(Math.pow(tempDiff, sigDif)*Math.pow(signal, power));
-					}
-				}
-				else
-				{
-					if(tempDiff!=0) {
-						if(tempWeight[j]==0) tempWeight[j]=1;
-						tempWeight[j]*=norm/(Math.pow(sigDifnotList, sigDif)*Math.pow(signal, power));
-					}
-				}
-				count++;
-			}
-		}
-	}
-	private static ArrayList<ArrayList<RouterPlace>> check(Hotspots a,ArrayList<RouterPlace> data)
-	{
-		ArrayList<ArrayList<RouterPlace>> rout=new ArrayList<ArrayList<RouterPlace>>();
-		for(int i=0;i<a.getReal_size();i++) {
-
-			ArrayList<RouterPlace> forCheck=new ArrayList<RouterPlace>();
-			for(int j=0;j<data.size();j++)
-			{
-				if(a.getWIFI()[i].getMac().equals(data.get(j).getMac()))
-				{
-					forCheck.add(data.get(j));
-				}
-
-			}
-			selectionSort(forCheck);
-			rout.add(forCheck);
-		}
-		return rout;
-	}*/
-
 }

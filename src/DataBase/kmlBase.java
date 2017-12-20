@@ -19,7 +19,7 @@ public class kmlBase {
 	public static Network inputCsv(File file)
 	{
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		DateFormat format1 = new SimpleDateFormat("mm/dd/yy hh:mm aa",Locale.getDefault());
+	//	DateFormat format1 = new SimpleDateFormat("mm/dd/yy hh:mm aa",Locale.getDefault());
 		Network nt=new Network();
 		BufferedReader br = null;
 		String line = "";
