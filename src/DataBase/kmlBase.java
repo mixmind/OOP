@@ -41,8 +41,8 @@ public class kmlBase {
 							temp.setAlt(Double.parseDouble(power[4]));
 							temp.setId(power[1]);
 							temp.setFirtseen(format.parse(power[0]));
-							temp.setSsid(power[i+1]);
-							temp.setMac(power[i]);
+							temp.setSsid(power[i]);
+							temp.setMac(power[i+1]);
 							temp.setFreq(power[i+2]);
 							temp.setRssi((int)Double.parseDouble(power[i+3]));
 							nt.add(temp);

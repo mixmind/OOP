@@ -105,79 +105,15 @@ public class Algo2 {
 			tempDat.setLon(wLon);
 			fix.setDataOfdot(tempDat);
 		}
-
-	}
-	/**
-	 * 
-	 * @param nt Fixed wifis
-	 * @param folder Output folder
-	 */
-	private static void toCSV(Network nt,String folder) 	{
-		int count=0;
-		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		File t=new File(folder);
-		try {
-			if(nt.getReal_size()!=0) {
-				System.out.println("Read csv complete.");
-				PrintWriter pw = new PrintWriter(new File(t.getParent()+"/"+currTime+".csv"));
-				StringBuilder sb = new StringBuilder();
-				sb.append("Time,ID,LAT,LON,ALT,#WiFi networks,");
-				try 
-				{
-					for(int i=1;i<=10;i++)
-					{
-						sb.append("SSID"+ i +",Mac"+ i +",Frequncy"+ i +",Signal"+ i +"," );
-					}
-					sb.append("\n");
-					int max=nt.getReal_size();
-					WIFI[] temp=new WIFI[10];
-					int j=0;
-					for(int i=0;i<max;i++)
-					{
-						j=0;
-						if(nt.getHotspots()[i]!=null)
-						{
-							temp=nt.getHotspots()[i].getWIFI();
-							if(temp[j]!=null) {
-								count++;
-								sb.append(format.format(temp[j].getFirtseen())+","+temp[j].getId()+","+nt.getHotspots()[i].getDataOfdot().getLat()+","+
-										nt.getHotspots()[i].getDataOfdot().getLon()+","+nt.getHotspots()[i].getDataOfdot().getAlt()+","+temp.length+",");
-								for(;j<temp.length&&temp[j]!=null;j++)
-								{
-									if(temp[j]!=null) 
-									{
-										/*String freq;
-										if(temp[j].getChannel()==0)
-										{
-											freq="gsm";
-										}
-										else if(temp[j].getChannel()>35)
-											freq= "5 GHZ";
-										else freq= "2.4 GHZ";                               /*freq*/
-										sb.append(temp[j].getSsid()+","+temp[j].getMac()+","+temp[j].getChannel()+","+temp[j].getRssi()+",");
-									}
-								}
-							}
-							sb.append("\n");
-						}
-					}
-				}
-				catch (Exception e) {
-					System.out.println(e.getMessage());
-				}
-				finally {
-					System.out.println("Write csv file complete.");
-					System.out.println(count);
-				}
-				pw.append(sb.toString());
-				pw.close();
-			}
-			else System.out.println("File csv not found.");
-
-		} catch (NumberFormatException | IOException | NullPointerException e1) {
-			System.out.println(e1);
+		if(weight==0)
+		{
+			GeoModDat tempDat=new GeoModDat();
+			tempDat.setAlt(0);
+			tempDat.setLat(0);
+			tempDat.setLon(0);
+			fix.setDataOfdot(tempDat);
 		}
+
 	}
 	/**
 	 * 
@@ -193,9 +129,10 @@ public class Algo2 {
 		double tempWeight=-100;
 		int signal=0;
 		double tempDiff=0;
+		int count=0;
+		int countCH=3;
 		for(int i=0;i<fix.getReal_size();i++)
 		{
-			test=false;
 			signal=Math.abs(fix.getWIFI()[i].getRssi());
 			for(int j=0;j<data.getReal_size();j++)
 			{
@@ -207,15 +144,20 @@ public class Algo2 {
 					tempWeight*=norm/(Math.pow(tempDiff, sigDif)*Math.pow(signal, power));
 					emt.setPosition(data.getDataOfdot());
 					test=true;
+					count++;
 				}
-				else if(test)
+				if(test&&i==fix.getReal_size()-1&&j==data.getReal_size()-1)
 				{
-					if(tempDiff!=0) {
-						if(tempWeight==-100) tempWeight=1;
-						tempWeight*=norm/(Math.pow(sigDifnotList, sigDif)*Math.pow(signal, power));
-					}
+					if(count<countCH)
+						if(tempDiff!=0)
+						{
+							if(tempWeight==-100) tempWeight=1;
+							tempWeight*=norm/(Math.pow(sigDifnotList, sigDif)*Math.pow(signal, power));
+							count--;
+						}
 				}
 			}
+
 		}
 		emt.setWeight(tempWeight);
 		return emt;
@@ -262,5 +204,77 @@ public class Algo2 {
 		ClientPlace temp=arr.get(i);
 		arr.set(i,arr.get(index));
 		arr.set(index, temp);
+	}
+	/**
+	 * 
+	 * @param nt Fixed wifis
+	 * @param folder Output folder
+	 */
+	private static void toCSV(Network nt,String folder) 	{
+		int count=0;
+		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		File t=new File(folder);
+		try {
+			if(nt.getReal_size()!=0) {
+				System.out.println("Read csv complete.");
+				PrintWriter pw = new PrintWriter(new File(t.getParent()+"/"+currTime+"CLientPlace.csv"));
+				StringBuilder sb = new StringBuilder();
+				sb.append("Time,ID,LAT,LON,ALT,#WiFi networks,");
+				try 
+				{
+					for(int i=1;i<=10;i++)
+					{
+						sb.append("SSID"+ i +",Mac"+ i +",Frequncy"+ i +",Signal"+ i +"," );
+					}
+					sb.append("\n");
+					int max=nt.getReal_size();
+					WIFI[] temp=new WIFI[10];
+					int j=0;
+					for(int i=0;i<max;i++)
+					{
+						j=0;
+						if(nt.getHotspots()[i]!=null)
+						{
+							temp=nt.getHotspots()[i].getWIFI();
+							if(temp[j]!=null) {
+								count++;
+								sb.append(format.format(temp[j].getFirtseen())+","+temp[j].getId()+","+nt.getHotspots()[i].getDataOfdot().getLat()+","+
+										nt.getHotspots()[i].getDataOfdot().getLon()+","+nt.getHotspots()[i].getDataOfdot().getAlt()+","+temp.length+",");
+								for(;j<temp.length&&temp[j]!=null;j++)
+								{
+									if(temp[j]!=null) 
+									{
+										/*String freq;
+										if(temp[j].getChannel()==0)
+										{
+											freq="gsm";
+										}
+										else if(temp[j].getChannel()>35)
+											freq= "5 GHZ";
+										else freq= "2.4 GHZ";                               /*freq*/
+										sb.append(temp[j].getSsid()+","+temp[j].getMac()+","+temp[j].getFreq()+","+temp[j].getRssi()+",");
+									}
+								}
+							}
+							sb.append("\n");
+						}
+					}
+				}
+				catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				finally {
+					System.out.println("Write csv file complete.");
+					System.out.println(count);
+				}
+				pw.append(sb.toString());
+				pw.close();
+			}
+			else System.out.println("File csv not found.");
+
+		} catch (NumberFormatException | IOException | NullPointerException e1) {
+			System.out.println(e1);
+		}
 	}
 }
