@@ -50,13 +50,18 @@ public class Algo2 {
 			csvBase.check(base, data);
 			fixGeo =new Network();
 			csvBase.check(test, fixGeo);
+			System.out.println("Start working on base: "+base
+							+"\nStart working on test: "+test);
 			math(data,fixGeo);
+			toCSV(fixGeo, test.getAbsolutePath());
+			System.out.println("AlgoPlace ended.");
 		}
 		else {
 			System.out.println("Input correct file : *.csv");
 		}
 
-		toCSV(fixGeo, test.getAbsolutePath());;
+		
+		
 	}
 	/**
 	 * 
@@ -112,6 +117,7 @@ public class Algo2 {
 			tempDat.setLat(0);
 			tempDat.setLon(0);
 			fix.setDataOfdot(tempDat);
+			System.out.println("mac: "+fix.getWIFI()[0].getMac()+" not found. His place will be 0,0,0.");
 		}
 
 	}
@@ -217,8 +223,7 @@ public class Algo2 {
 		File t=new File(folder);
 		try {
 			if(nt.getReal_size()!=0) {
-				System.out.println("Read csv complete.");
-				PrintWriter pw = new PrintWriter(new File(t.getParent()+"/"+currTime+"CLientPlace.csv"));
+				PrintWriter pw = new PrintWriter(new File(t.getParent()+"/"+currTime+"-CLientPlace.csv"));
 				StringBuilder sb = new StringBuilder();
 				sb.append("Time,ID,LAT,LON,ALT,#WiFi networks,");
 				try 
@@ -265,8 +270,7 @@ public class Algo2 {
 					System.out.println(e.getMessage());
 				}
 				finally {
-					System.out.println("Write csv file complete.");
-					System.out.println(count);
+					System.out.println("Number of lines: "+count+".");
 				}
 				pw.append(sb.toString());
 				pw.close();

@@ -1,6 +1,7 @@
 package Algo;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -26,19 +27,31 @@ public class Algo {
 	{
 		Network nt=new Network();
 		File t=new File(file);
-		csvBase.check(t, nt);
-		ArrayList<RouterPlace> rp=add(nt);
-		List<RouterPlace> list = rp;
-		Collections.sort(list, new Comparator<RouterPlace>() {
-			public int compare(RouterPlace router1, RouterPlace router2)
-			{
-				return  router1.getMac().compareTo(router2.getMac());
+		FilenameFilter filter = new FilenameFilter() {
+			public boolean accept(File file, String name) {
+				return name.endsWith(".csv");
 			}
-		});
-		ArrayList<ArrayList<RouterPlace>> routSorted=sortMac(list);
-		sortSignal(routSorted);
-		ArrayList<RouterPlace> alg=math(routSorted);
-		routerAsp(alg, t.getParent()+"/");
+
+		};
+		if(filter.accept(t, t.getAbsolutePath()))
+		{
+			System.out.println("Starting working on: "+t);
+			csvBase.check(t, nt);
+			ArrayList<RouterPlace> rp=add(nt);
+			List<RouterPlace> list = rp;
+			Collections.sort(list, new Comparator<RouterPlace>() {
+				public int compare(RouterPlace router1, RouterPlace router2)
+				{
+					return  router1.getMac().compareTo(router2.getMac());
+				}
+			});
+			ArrayList<ArrayList<RouterPlace>> routSorted=sortMac(list);
+			sortSignal(routSorted);
+			ArrayList<RouterPlace> alg=math(routSorted);
+			routerAsp(alg, t.getParent()+"/");
+			System.out.println("AlgoRouter ended");
+		}
+		else System.out.println("Invalid input");
 
 
 	}
@@ -57,6 +70,7 @@ public class Algo {
 			w_center.setMac(al.get(i).get(0).getMac());
 			w_center.setSSID(al.get(i).get(0).getSSID());
 			w_center.setChannel(al.get(i).get(0).getChannel());
+			w_center.setNum_of_macs(al.get(i).size());
 			temp.add(w_center);
 		}
 		return temp;
@@ -235,15 +249,15 @@ public class Algo {
 			StringBuilder sb = new StringBuilder();
 			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
-			PrintWriter pw = new PrintWriter(new File(folder+currTime+"wCenter.csv"));
-
+			PrintWriter pw = new PrintWriter(new File(folder+currTime+"-wCenter.csv"));
 			for(int i=0;i<temp.size();i++)
 			{
 				sb.append(format.format(temp.get(i).getPosition().getFirtseen())+","
 						+temp.get(i).getPosition().getId()+","
 						+temp.get(i).getPosition().getLat()+","
 						+temp.get(i).getPosition().getLon()+","
-						+temp.get(i).getPosition().getAlt()+",1,"
+						+temp.get(i).getPosition().getAlt()+","
+						+temp.get(i).getNum_of_macs()+","
 						+temp.get(i).getSSID()+","
 						+temp.get(i).getMac()+","
 						+temp.get(i).getChannel()+",1");

@@ -7,6 +7,7 @@ public class RouterPlace {
 	private String mac,SSID;
 	private int signal,channel;
 	private GeoModDat position;
+	private int num_of_macs;
 	/**
 	 * Default Constructor
 	 */
@@ -167,6 +168,18 @@ public class RouterPlace {
 	 */
 	public void setPosition(GeoModDat position) {
 		this.position = position;
+	}
+	/**
+	 * @return the num_of_macs
+	 */
+	public int getNum_of_macs() {
+		return num_of_macs;
+	}
+	/**
+	 * @param num_of_macs the num_of_macs to set
+	 */
+	public void setNum_of_macs(int num_of_macs) {
+		this.num_of_macs = num_of_macs;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
