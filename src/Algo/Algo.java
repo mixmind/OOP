@@ -232,7 +232,7 @@ public class Algo {
 				position.getFirtseen(),
 				a.getMac(),
 				a.getRssi(),
-				a.getChannel(),
+				(int)Integer.parseInt(a.getFreq()),
 				position.getLat(),
 				position.getLon(),
 				position.getAlt());
@@ -250,6 +250,7 @@ public class Algo {
 			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
 			PrintWriter pw = new PrintWriter(new File(folder+currTime+"-wCenter.csv"));
+			sb.append("Time,ID,LAT,LON,ALT,Number of similar WiFis,SSID,Mac,Frequncy\n");
 			for(int i=0;i<temp.size();i++)
 			{
 				sb.append(format.format(temp.get(i).getPosition().getFirtseen())+","
@@ -260,7 +261,7 @@ public class Algo {
 						+temp.get(i).getNum_of_macs()+","
 						+temp.get(i).getSSID()+","
 						+temp.get(i).getMac()+","
-						+temp.get(i).getChannel()+",1");
+						+temp.get(i).getChannel());
 				sb.append("\n");
 			}
 			pw.append(sb.toString());
