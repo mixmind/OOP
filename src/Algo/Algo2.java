@@ -51,7 +51,7 @@ public class Algo2 {
 			fixGeo =new Network();
 			csvBase.check(test, fixGeo);
 			System.out.println("Start working on base: "+base
-							+"\nStart working on test: "+test);
+					+"\nStart working on test: "+test);
 			math(data,fixGeo);
 			toCSV(fixGeo, test.getAbsolutePath());
 			System.out.println("AlgoPlace ended.");
@@ -60,8 +60,8 @@ public class Algo2 {
 			System.out.println("Input correct file : *.csv");
 		}
 
-		
-		
+
+
 	}
 	/**
 	 * 
@@ -85,8 +85,8 @@ public class Algo2 {
 		ArrayList<ClientPlace> arr=new ArrayList<ClientPlace>();
 		for(int i=0;i<data.getReal_size();i++)
 		{
-			if(find(data.getHotspots()[i],fix).getWeight()!=-100)
-				arr.add(find(data.getHotspots()[i],fix));
+			ClientPlace temp=find(data.getHotspots()[i],fix);
+			if(temp.getWeight()!=-100) arr.add(temp);
 		}
 		sort(arr);
 		double wAlt=0;
@@ -152,15 +152,16 @@ public class Algo2 {
 					test=true;
 					count++;
 				}
-				if(test&&i==fix.getReal_size()-1&&j==data.getReal_size()-1)
+				if(test&&(i==fix.getReal_size()-1&&j==data.getReal_size()-1))
 				{
-					if(count<countCH)
+					while(count++<countCH) {
 						if(tempDiff!=0)
 						{
 							if(tempWeight==-100) tempWeight=1;
 							tempWeight*=norm/(Math.pow(sigDifnotList, sigDif)*Math.pow(signal, power));
-							count--;
+
 						}
+					}
 				}
 			}
 
