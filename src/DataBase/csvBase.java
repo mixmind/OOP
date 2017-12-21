@@ -126,7 +126,7 @@ public class csvBase {
 					{	
 						while ((line = br.readLine()) != null) {
 							power = line.split(cvsSplitBy);
-							if(!power[10].equals("GSM")) {
+							if(true) {//!power[10].equals("GSM")
 								WIFI temp=add(power);
 								temp.setId(id);
 								GeoModDat geoData=addGeo(power);
