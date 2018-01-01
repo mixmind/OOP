@@ -60,8 +60,6 @@ public class csvBase {
 	 * @param file File csv to check if it have data to input	
 	 * @param nt Network to store data
 	 * @throws NumberFormatException Error of Data format	
-	 * @throws ParseException Error while parsing
-	 * @throws IOException Error of I/O
 	 */
 	public static void check(File file,Network nt)
 	{

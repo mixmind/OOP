@@ -15,7 +15,8 @@ public class Network {
 		real_size=0;
 	}
 	/**
-	 * Constructor of Arrays of Hotspots
+	 * 
+	 * @param size of hotspots
 	 */
 	public Network(int size)
 	{
@@ -38,8 +39,8 @@ public class Network {
 		real_size=a.length;
 	}
 	/**
-	 * 
 	 * @param dot Input Wifi into Arrays
+	 * @param geo input geo
 	 */
 	public void add(WIFI dot,GeoModDat geo)//adding spot to the array of arrays
 	{
@@ -97,7 +98,7 @@ public class Network {
 			}
 			line[real_size++]=new Hotspots(a);
 			line[real_size-1].setDataOfdot(a.getDataOfdot());
-			
+
 		}
 	}
 	/**

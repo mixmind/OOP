@@ -21,7 +21,7 @@ public class toKML {
 	 * 
 	 * @param file Take file for convert to KML
 	 * @throws ParseException error of parsing
-	 * @throws IOException 
+	 * @throws IOException throws exception
 	 */
 	public toKML(String file) throws ParseException, IOException
 	{

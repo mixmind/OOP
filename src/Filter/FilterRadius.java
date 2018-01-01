@@ -6,7 +6,11 @@ public class FilterRadius {
 	private double radius, lat, lon;
 
 
-
+	/**
+	 * @param radius radius for filter
+	 * @param lat Lat for filter
+	 * @param lon Lot for filter	
+	 */
 	public FilterRadius(double radius,double lat,double lon)
 	{
 		this.radius=radius;
@@ -16,12 +20,8 @@ public class FilterRadius {
 
 
 	/**
-	 * 
-	 * @param radius radius for filter
-	 * @param lat Lat for filter
-	 * @param lot Lot for filter	
+	 *
 	 * @param nt database for filter
-	 * @return filtered database
 	 */
 	public void runOn(Network nt)
 	{

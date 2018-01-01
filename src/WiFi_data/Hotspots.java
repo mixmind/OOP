@@ -101,7 +101,7 @@ public class Hotspots {
 	/**
 	 * 
 	 * @param check if GeoData is equal
-	 * @return
+	 * @return if true
 	 */
 	public boolean equalGeo(GeoModDat check)
 	{

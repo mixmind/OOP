@@ -19,16 +19,17 @@ public class WIFI {
 	public WIFI() {
 		super();
 	}
+
 	/**
 	 * Constructor with all data about WIfi
 	 * @param mac of Wifi
 	 * @param ssid of Wifi
 	 * @param authmode of Wifi
-	 * @param firtseen of Wifi
 	 * @param channel of Wifi
 	 * @param rssi of Wifi
 	 * @param accm of Wifi
 	 * @param type of Wifi
+	 * @param firstseen of Wifi
 	 */
 	public WIFI(String mac,String ssid,String 
 			authmode,int channel,int rssi,double accm,String type,Date firstseen) {
@@ -142,6 +143,7 @@ public class WIFI {
 	/**
 	 * Set firstseen of Wifi
 	 * @param firtseen set Date
+	 * @throws ParseException throws exception
 	 */
 	public void setFirtseen(Date firtseen) throws ParseException {
 		this.firtseen = firtseen;
@@ -197,7 +199,7 @@ public class WIFI {
 	}
 	/**
 	 * Set Lon of Wifi
-	 * @param Lon Set Lon
+	 * @param lon Set Lon
 	 */
 	public void setLon(double lon) {
 		this.lon = lon;

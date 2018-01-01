@@ -5,15 +5,16 @@ import WiFi_data.Network;
 public class FilterId {
 	private String name;
 
+	/**
+	 * 
+	 * @param name ID for filter	
+	 */
 	public FilterId(String name)
 	{
 		this.name=name;
 	}
 	/**
-	 * 
-	 * @param name ID for filter	
 	 * @param nt database of wifi's
-	 * @return filtered database
 	 */
 	public void runOn(Network nt)
 	{

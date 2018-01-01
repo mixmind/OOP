@@ -8,18 +8,20 @@ import WiFi_data.WIFI;
 
 public class FilterDate {
 	private Date start, end;
-	
-public FilterDate(Date x,Date y)
-{
-	start=x;
-	end=y;
-}
+
 	/**
-	 * filter
+	 * 
 	 * @param x from date
 	 * @param y to date 
+	 */
+	public FilterDate(Date x,Date y)
+	{
+		start=x;
+		end=y;
+	}
+	/**
+	 * filter
 	 * @param nt database for filter
-	 * @return filtered data base
 	 * @throws ParseException error parsing
 	 */
 	public void runOn(Network nt) throws ParseException
@@ -30,7 +32,7 @@ public FilterDate(Date x,Date y)
 			{ 
 				try {
 					if(nt.getHotspots()[i].getDataOfdot().getFirtseen().before(start)||
-					   nt.getHotspots()[i].getDataOfdot().getFirtseen().after(end))
+							nt.getHotspots()[i].getDataOfdot().getFirtseen().after(end))
 					{
 						nt.getHotspots()[i]=null;
 					}

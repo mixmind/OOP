@@ -4,7 +4,7 @@ public class Sort {
 	/**
 	 * 
 	 * @param a Network to be sorted
-	 * @return
+	 * @return array of hotspots
 	 */
 	public static Hotspots[] mergeSort(Network a) {
 		Hotspots[] temp =new Hotspots[a.getReal_size()];

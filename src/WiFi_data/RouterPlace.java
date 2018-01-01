@@ -89,6 +89,7 @@ public class RouterPlace {
 	 * @param firstseen set date
 	 * @param mac set mac
 	 * @param signal set signal
+ 	 * @param channel set channel
 	 * @param lat set lat
 	 * @param lon set lon
 	 * @param alt set alt
