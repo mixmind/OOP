@@ -7,6 +7,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import WiFi_data.GeoModDat;
+import WiFi_data.Hotspots;
 import WiFi_data.Network;
 import WiFi_data.WIFI;
 
@@ -33,21 +35,24 @@ public class kmlBase {
 				if(line!=null) {
 					String[] power=line.split(cvsSplitBy);
 					while ((line = br.readLine()) != null) {
+						Hotspots lineOfBest=new Hotspots();
 						for(int i=6;i<power.length&&power[i]!=null;) {
 							power = line.split(cvsSplitBy);
 							WIFI temp=new WIFI();
-							temp.setLat(Double.parseDouble(power[2]));
-							temp.setLon(Double.parseDouble(power[3]));
-							temp.setAlt(Double.parseDouble(power[4]));
-							temp.setId(power[1]);
-							temp.setFirtseen(format.parse(power[0]));
+							GeoModDat geoData=new GeoModDat(format.parse(power[0]),
+									Double.parseDouble(power[2]), 
+									Double.parseDouble(power[3]),
+									Double.parseDouble(power[4]),
+									power[1]);
 							temp.setSsid(power[i]);
 							temp.setMac(power[i+1]);
 							temp.setFreq(power[i+2]);
 							temp.setRssi((int)Double.parseDouble(power[i+3]));
-							nt.add(temp);
+							lineOfBest.setDataOfdot(geoData);
+							lineOfBest.add(temp);
 							i+=4;
 						}
+						nt.add(lineOfBest);
 					}
 
 				}

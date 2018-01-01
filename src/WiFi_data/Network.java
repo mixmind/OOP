@@ -96,6 +96,8 @@ public class Network {
 				resize();
 			}
 			line[real_size++]=new Hotspots(a);
+			line[real_size-1].setDataOfdot(a.getDataOfdot());
+			
 		}
 	}
 	/**

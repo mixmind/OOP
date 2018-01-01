@@ -108,6 +108,8 @@ public class Algo2 {
 			tempDat.setAlt(wAlt);
 			tempDat.setLat(wLat);
 			tempDat.setLon(wLon);
+			tempDat.setFirtseen(fix.getDataOfdot().getFirtseen());
+			tempDat.setId(fix.getDataOfdot().getId());
 			fix.setDataOfdot(tempDat);
 		}
 		if(weight==0)
@@ -116,6 +118,8 @@ public class Algo2 {
 			tempDat.setAlt(0);
 			tempDat.setLat(0);
 			tempDat.setLon(0);
+			tempDat.setFirtseen(fix.getDataOfdot().getFirtseen());
+			tempDat.setId(fix.getDataOfdot().getId());
 			fix.setDataOfdot(tempDat);
 			System.out.println("mac: "+fix.getWIFI()[0].getMac()+" not found. His place will be 0,0,0.");
 		}
@@ -245,8 +249,11 @@ public class Algo2 {
 							temp=nt.getHotspots()[i].getWIFI();
 							if(temp[j]!=null) {
 								count++;
-								sb.append(format.format(temp[j].getFirtseen())+","+temp[j].getId()+","+nt.getHotspots()[i].getDataOfdot().getLat()+","+
-										nt.getHotspots()[i].getDataOfdot().getLon()+","+nt.getHotspots()[i].getDataOfdot().getAlt()+","+temp.length+",");
+								sb.append(format.format(nt.getHotspots()[i].getDataOfdot().getFirtseen())+
+										","+nt.getHotspots()[i].getDataOfdot().getId()
+										+","+nt.getHotspots()[i].getDataOfdot().getLat()+","+
+										nt.getHotspots()[i].getDataOfdot().getLon()
+										+","+nt.getHotspots()[i].getDataOfdot().getAlt()+","+temp.length+",");
 								for(;j<temp.length&&temp[j]!=null;j++)
 								{
 									if(temp[j]!=null) 

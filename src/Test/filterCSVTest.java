@@ -22,9 +22,9 @@ public class filterCSVTest {
 		nt.add(wi,null);
 		Date x=null;
 		Date y=null;
-		filterCSV.FilterByDate(x, y, nt);
-		filterCSV.FilterByRadius(124, Integer.MIN_VALUE, Integer.MAX_VALUE, nt);
-		filterCSV.FilterId(null, nt);
+		//filterCSV.FilterByDate(x, y, nt);
+		//filterCSV.FilterByRadius(124, Integer.MIN_VALUE, Integer.MAX_VALUE, nt);
+		//filterCSV.FilterId(null, nt);
 	}
 
 }

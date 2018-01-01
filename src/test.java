@@ -15,9 +15,9 @@ public class test {
 		// TODO Auto-generated method stub
 // toCSV k1=new toCSV("d:\\dd\\");
 	//	Network test=csvBase.readCSV("d:\\data\\");
-	//Algo.routerPlaceAlgo1("d:\\dd\\2017-12-21 11.57.05.csv");
-	Algo2.clientPlaceAlgo2("d:\\data\\_comb_all_BM2_.csv","d:\\data\\_comb_no_gps_ts1.csv");
-		//toKML a = new toKML("d://data//2017-12-20 22.43.19CLientPlace.csv");
+	Algo.routerPlaceAlgo1("c:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\files\\input\\Ex2\\_comb_all_BM2_.csv");
+	//Algo2.clientPlaceAlgo2("c:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\files\\input\\Ex2\\_comb_all_BM2_.csv","c:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\files\\input\\Ex2\\_comb_no_gps_ts1.csv");
+		//toKML a = new toKML("d://dd//2017-12-21 10.45.20.csv");
 	}
 	
 	

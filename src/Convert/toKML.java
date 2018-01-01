@@ -10,10 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-import DataBase.kmlBase;
-import Filter.filterCSV;
-import WiFi_data.Network;
-import WiFi_data.WIFI;
+import DataBase.*;
+import Filter.*;
+import WiFi_data.*;
 import de.micromata.opengis.kml.v_2_2_0.*;
 
 
@@ -52,7 +51,8 @@ public class toKML {
 					System.out.println("Enter id:");
 					line=br.readLine();
 					id=line;
-					nt=filterCSV.FilterId(id, nt);
+					FilterId filterById =new FilterId(id);
+					filterById.runOn(nt);
 					break;
 				case 2:
 					System.out.println("Enter date in format:yyyy-MM-dd HH:mm\nBefore and after");
@@ -67,7 +67,7 @@ public class toKML {
 						}
 					}
 					sc.close();
-					nt=filterCSV.FilterByDate(dat,dat1, nt);
+				//	nt=filterCSV.FilterByDate(dat,dat1, nt);
 					break;
 				case 3:
 					System.out.println("Enter Lat");
@@ -89,7 +89,7 @@ public class toKML {
 					}
 					radius=sc.nextDouble();
 					sc.close();
-					nt=filterCSV.FilterByRadius(radius, lat, lon, nt);
+				//	nt=filterCSV.FilterByRadius(radius, lat, lon, nt);
 					break;
 				default :
 					System.out.println("Making without filter.");
@@ -126,14 +126,14 @@ public class toKML {
 									placemark.setName(wifiT[j].getSsid());
 									placemark.setVisibility(true);
 									placemark.setOpen(false);
-									dot=wifiT[j].getFirtseen();
+									dot=nt.getHotspots()[i].getDataOfdot().getFirtseen();
 									String str=format.format(dot);
 									str=str.replace(' ', 'T')+'Z';
 									placemark.createAndSetTimeStamp().setWhen(str);
 									placemark.setDescription("\nSSID: "+wifiT[j].getSsid()+"\nId of phone: "
-											+wifiT[j].getid()+
+											+nt.getHotspots()[i].getDataOfdot().getId()+
 											"\nMac: "+wifiT[j].getMac()+"\nFrequency: "+wifiT[j].getFreq()+
-											"\nSignal: "+wifiT[j].getRssi()+"\nDate: "+wifiT[j].getFirtseen()+"\n");
+											"\nSignal: "+wifiT[j].getRssi()+"\nDate: "+nt.getHotspots()[i].getDataOfdot().getFirtseen()+"\n");
 									if(wifiT[j].getRssi()>-85) placemark.setStyleUrl("green");
 									else if(wifiT[j].getRssi()<-85&&wifiT[j].getRssi()>-95) 
 										placemark.setStyleUrl("yellow");
@@ -143,8 +143,10 @@ public class toKML {
 									point.setExtrude(false);
 									point.setAltitudeMode(AltitudeMode.CLAMP_TO_GROUND);
 									// Add coordinates>.
-									point.getCoordinates().add(new Coordinate(wifiT[j].getLon()
-											,wifiT[j].getLat(),wifiT[j].getAlt()));
+									point.getCoordinates().add(new Coordinate(
+											nt.getHotspots()[i].getDataOfdot().getLon()
+											,nt.getHotspots()[i].getDataOfdot().getLat(),
+											nt.getHotspots()[i].getDataOfdot().getAlt()));
 									placemark.setGeometry(point);    
 									dir.addToFeature(placemark); 
 								}

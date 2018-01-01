@@ -27,6 +27,7 @@ public class Hotspots {
 			line[i]=new WIFI(a.getWIFI()[i]);
 		}
 		real_size=a.getReal_size();
+		
 	}
 
 	/**
