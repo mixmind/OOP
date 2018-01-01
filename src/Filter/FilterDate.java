@@ -6,7 +6,14 @@ import java.util.Date;
 import WiFi_data.Network;
 import WiFi_data.WIFI;
 
-public class filterDate {
+public class FilterDate {
+	private Date start, end;
+	
+public FilterDate(Date x,Date y)
+{
+	start=x;
+	end=y;
+}
 	/**
 	 * filter
 	 * @param x from date
@@ -15,19 +22,15 @@ public class filterDate {
 	 * @return filtered data base
 	 * @throws ParseException error parsing
 	 */
-	public static Network FilterByDate(Date x,Date y,Network nt) throws ParseException
+	public void runOn(Network nt) throws ParseException
 	{
-		WIFI checkX=new WIFI();
-		checkX.setFirtseen(x);
-		WIFI checkY=new WIFI();
-		checkY.setFirtseen(y);
 		for(int i=0;i<nt.getReal_size()&&nt.getHotspots()[i]!=null;i++)
 		{
 			if(nt.getHotspots()[i]!=null)
 			{ 
 				try {
-					if(nt.getHotspots()[i].getDataOfdot().getFirtseen().before(checkX.getFirtseen())||
-							nt.getHotspots()[i].getDataOfdot().getFirtseen().after(checkY.getFirtseen()))
+					if(nt.getHotspots()[i].getDataOfdot().getFirtseen().before(start)||
+					   nt.getHotspots()[i].getDataOfdot().getFirtseen().after(end))
 					{
 						nt.getHotspots()[i]=null;
 					}
@@ -38,8 +41,5 @@ public class filterDate {
 				}
 			}
 		}
-		return nt;
 	}
-	
-
 }

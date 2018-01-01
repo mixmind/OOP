@@ -26,6 +26,7 @@ public class toKML {
 	public toKML(String file) throws ParseException, IOException
 	{
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
 		File fileT;
 		try{
 			fileT=new File(file);
@@ -67,7 +68,8 @@ public class toKML {
 						}
 					}
 					sc.close();
-				//	nt=filterCSV.FilterByDate(dat,dat1, nt);
+					FilterDate filterByDate =new FilterDate(dat,dat1);
+					filterByDate.runOn(nt);
 					break;
 				case 3:
 					System.out.println("Enter Lat");
@@ -89,7 +91,8 @@ public class toKML {
 					}
 					radius=sc.nextDouble();
 					sc.close();
-				//	nt=filterCSV.FilterByRadius(radius, lat, lon, nt);
+					FilterRadius filterByRadius =new FilterRadius(radius, lat, lon);
+					filterByRadius.runOn(nt);
 					break;
 				default :
 					System.out.println("Making without filter.");
@@ -156,7 +159,7 @@ public class toKML {
 					}
 					doc.addToFeature(dir);
 					kml.setFeature(doc);
-					kml.marshal(new File(fileT.getParent()+"/complete1.kml"));
+					kml.marshal(new File(fileT.getParent()+"/"+currTime+" - completed.kml"));
 					System.out.println("Done creating kml.");
 				} 
 

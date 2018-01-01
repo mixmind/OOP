@@ -2,7 +2,19 @@ package Filter;
 
 import WiFi_data.Network;
 
-public class filterRadius {
+public class FilterRadius {
+	private double radius, lat, lon;
+
+
+
+	public FilterRadius(double radius,double lat,double lon)
+	{
+		this.radius=radius;
+		this.lat=lat;
+		this.lon=lon;
+	}
+
+
 	/**
 	 * 
 	 * @param radius radius for filter
@@ -11,7 +23,7 @@ public class filterRadius {
 	 * @param nt database for filter
 	 * @return filtered database
 	 */
-	public static Network FilterByRadius(double radius,double lat,double lon,Network nt)
+	public void runOn(Network nt)
 	{
 		for(int i=0;i<nt.getReal_size()&&nt.getHotspots()[i]!=null;i++)
 		{
@@ -20,8 +32,8 @@ public class filterRadius {
 				try
 				{
 					if(Math.pow((nt.getHotspots()[i].getDataOfdot().getLon()-lon), 2)+
-				   Math.pow((nt.getHotspots()[i].getDataOfdot().getLat()-lat), 2)>Math.pow(radius, 2))
-					nt.getHotspots()[i]=null;
+							Math.pow((nt.getHotspots()[i].getDataOfdot().getLat()-lat), 2)>Math.pow(radius, 2))
+						nt.getHotspots()[i]=null;
 				}
 				catch(NullPointerException e)
 				{
@@ -30,6 +42,5 @@ public class filterRadius {
 
 			}
 		}
-		return nt;
 	}
 }
