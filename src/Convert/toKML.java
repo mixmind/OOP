@@ -18,7 +18,7 @@ import de.micromata.opengis.kml.v_2_2_0.*;
 
 public class toKML {
 	/**
-	 * 
+	 * s
 	 * @param file Take file for convert to KML
 	 * @throws ParseException error of parsing
 	 * @throws IOException throws exception

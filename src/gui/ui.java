@@ -85,7 +85,7 @@ public class ui {
 		initialize();
 	}
 
-	/**
+	/**s
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
