@@ -1,6 +1,8 @@
 package WiFi_data;
 
-public class Sort {
+import java.io.Serializable;
+
+public class Sort implements Serializable{
 	/**
 	 * 
 	 * @param a Network to be sorted

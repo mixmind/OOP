@@ -1,16 +1,11 @@
 package Filter;
-
-import java.text.ParseException;
 import java.util.Date;
-
 import WiFi_data.Network;
-import WiFi_data.WIFI;
 
-public class FilterDate {
+public class FilterDate implements filterCSV{
 	private Date start, end;
 
 	/**
-	 * 
 	 * @param x from date
 	 * @param y to date 
 	 */
@@ -22,10 +17,10 @@ public class FilterDate {
 	/**
 	 * filter
 	 * @param nt database for filter
-	 * @throws ParseException error parsing
 	 */
-	public void runOn(Network nt) throws ParseException
+	public Network runOn(Network nt)
 	{
+		Network temp=new Network();
 		for(int i=0;i<nt.getReal_size()&&nt.getHotspots()[i]!=null;i++)
 		{
 			if(nt.getHotspots()[i]!=null)
@@ -43,5 +38,42 @@ public class FilterDate {
 				}
 			}
 		}
+		for(int i=0;i<nt.getReal_size();i++)
+		{
+			if(nt.getHotspots()[i]!=null)
+			temp.add(nt.getHotspots()[i]);
+		}
+		return temp;
+	}
+	/**
+	 * filter
+	 * @param nt database for filter
+	 */
+	public Network runNot(Network nt)
+	{
+		Network temp=new Network();
+		for(int i=0;i<nt.getReal_size()&&nt.getHotspots()[i]!=null;i++)
+		{
+			if(nt.getHotspots()[i]!=null)
+			{ 
+				try {
+					if(nt.getHotspots()[i].getDataOfdot().getFirtseen().before(end)||
+							nt.getHotspots()[i].getDataOfdot().getFirtseen().after(start))
+					{
+						nt.getHotspots()[i]=null;
+					}
+				}
+				catch(NullPointerException e)
+				{
+					System.out.println("The date is null ");
+				}
+			}
+		}
+		for(int i=0;i<nt.getReal_size();i++)
+		{
+			if(nt.getHotspots()[i]!=null)
+			temp.add(nt.getHotspots()[i]);
+		}
+		return temp;
 	}
 }

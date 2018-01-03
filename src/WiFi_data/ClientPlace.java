@@ -1,6 +1,8 @@
 package WiFi_data;
 
-public class ClientPlace {
+import java.io.Serializable;
+
+public class ClientPlace implements Serializable {
 
 	private GeoModDat position;
 	private WIFI wifi;

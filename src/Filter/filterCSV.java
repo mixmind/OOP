@@ -1,13 +1,10 @@
 package Filter;
-import java.text.ParseException;
-import java.util.Date;
+import WiFi_data.*;
 
-import WiFi_data.Network;
-import WiFi_data.WIFI;
 
 public interface filterCSV
 {
-
-	
+	public Network runOn(Network nt);
+	public Network runNot(Network nt);
 }
 

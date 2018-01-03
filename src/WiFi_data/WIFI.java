@@ -1,8 +1,9 @@
 package WiFi_data;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Date;
 
-public class WIFI {
+public class WIFI implements Serializable{
 
 	/*Creating WIfi spot with all data for compare
 	 * 

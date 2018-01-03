@@ -1,7 +1,8 @@
 package WiFi_data;
+import java.io.Serializable;
 import java.util.Date;
 
-public class GeoModDat {
+public class GeoModDat implements Serializable{
 	private Date firtseen;
 	private String Id;
 	private double lat,lon,alt;

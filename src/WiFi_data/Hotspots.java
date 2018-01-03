@@ -1,7 +1,8 @@
 package WiFi_data;
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Hotspots {
+public class Hotspots implements Serializable{
 
 	private WIFI [] line;
 	private int real_size;

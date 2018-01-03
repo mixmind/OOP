@@ -1,8 +1,9 @@
 package WiFi_data;
 import java.io.Console;
+import java.io.Serializable;
 import java.util.Date;
 
-public class RouterPlace {
+public class RouterPlace implements Serializable{
 
 	private String mac,SSID;
 	private int signal,channel;
