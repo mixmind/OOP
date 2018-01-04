@@ -17,13 +17,15 @@ import de.micromata.opengis.kml.v_2_2_0.*;
 
 
 public class toKML {
+	Network nt;
 	/**
-	 * s
+	 * 
 	 * @param file Take file for convert to KML
 	 * @throws ParseException error of parsing
 	 * @throws IOException throws exception
 	 */
 	public toKML(String file) throws ParseException, IOException
+
 	{
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
@@ -31,6 +33,7 @@ public class toKML {
 		try{
 			fileT=new File(file);
 			Network nt=kmlBase.inputCsv(fileT);
+			this.nt=nt;
 			String id="";
 			Date dat=null;
 			Date dat1=null;
@@ -40,7 +43,7 @@ public class toKML {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			String line = "";
 			if(nt.getHotspots()[0]!=null) {
-				System.out.println("What filter do you want to do?\n1.Id\n2.Date\n3.Radius");
+				/*System.out.println("What filter do you want to do?\n1.Id\n2.Date\n3.Radius");
 				while (!sc.hasNextInt()) {
 					System.out.println("That's not a number!");
 					sc.next(); // this is important!
@@ -96,10 +99,12 @@ public class toKML {
 					break;
 				default :
 					System.out.println("Making without filter.");
-					sc.close();
+					
 				}
-				br.close();
+				;*/
 				try {
+					sc.close();
+					br.close();
 					//create document for kml with dot colors
 					Kml kml = KmlFactory.createKml();
 					Document doc=new Document();
@@ -178,4 +183,10 @@ public class toKML {
 			System.out.println("Function toKml ended.");
 		}
 	}
+
+public int size()
+{
+	return nt.getReal_size();
 }
+}
+

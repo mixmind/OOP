@@ -57,7 +57,7 @@ public class FilterDate implements filterCSV{
 			if(nt.getHotspots()[i]!=null)
 			{ 
 				try {
-					if(nt.getHotspots()[i].getDataOfdot().getFirtseen().before(end)||
+					if(nt.getHotspots()[i].getDataOfdot().getFirtseen().before(end)&&
 							nt.getHotspots()[i].getDataOfdot().getFirtseen().after(start))
 					{
 						nt.getHotspots()[i]=null;

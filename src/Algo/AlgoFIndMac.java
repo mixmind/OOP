@@ -17,42 +17,30 @@ import WiFi_data.Network;
 import WiFi_data.RouterPlace;
 import WiFi_data.WIFI;
 
-public class Algo {
+public class AlgoFIndMac {
 
-	/**
-	 * 
-	 * @param file File to find approx location of router
-	 */
-	public static void routerPlaceAlgo1(String file)
+	public static GeoModDat routerPlaceAlgo1(Network nt,String mac)
 	{
-		Network nt=new Network();
-		File t=new File(file);
-		FilenameFilter filter = new FilenameFilter() {
-			public boolean accept(File file, String name) {
-				return name.endsWith(".csv");
+		ArrayList<RouterPlace> rp=add(nt);
+		List<RouterPlace> list = rp;
+		Collections.sort(list, new Comparator<RouterPlace>() {
+			public int compare(RouterPlace router1, RouterPlace router2)
+			{
+				return  router1.getMac().compareTo(router2.getMac());
 			}
-
-		};
-		if(filter.accept(t, t.getAbsolutePath()))
+		});
+		ArrayList<ArrayList<RouterPlace>> routSorted=sortMac(list);
+		sortSignal(routSorted);
+		ArrayList<RouterPlace> alg=math(routSorted);
+		System.out.println("AlgoRouter ended");
+		for(int i=0;i<alg.size();i++)
 		{
-			System.out.println("Starting working on: "+t);
-			csvBase.check(t, nt);
-			ArrayList<RouterPlace> rp=add(nt);
-			List<RouterPlace> list = rp;
-			Collections.sort(list, new Comparator<RouterPlace>() {
-				public int compare(RouterPlace router1, RouterPlace router2)
-				{
-					return  router1.getMac().compareTo(router2.getMac());
-				}
-			});
-			ArrayList<ArrayList<RouterPlace>> routSorted=sortMac(list);
-			sortSignal(routSorted);
-			ArrayList<RouterPlace> alg=math(routSorted);
-			routerAsp(alg, t.getParent()+"/");
-			System.out.println("AlgoRouter ended");
+			if(alg.get(i).getMac().equals(mac))
+			{
+				return alg.get(i).getPosition();
+			}
 		}
-		else System.out.println("Invalid input");
-
+		return null;
 
 	}
 
@@ -237,39 +225,7 @@ public class Algo {
 				position.getAlt());
 		return temp;
 	}
-	/**
-	 * 
-	 * @param temp Routers data
-	 * @param folder place to print
-	 */
-	private static void routerAsp(ArrayList<RouterPlace> temp,String folder)
-	{
-		try {
-			StringBuilder sb = new StringBuilder();
-			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
-			PrintWriter pw = new PrintWriter(new File(folder+currTime+"-wCenter.csv"));
-			sb.append("Time,ID,LAT,LON,ALT,Number of similar WiFis,SSID,Mac,Frequncy\n");
-			for(int i=0;i<temp.size();i++)
-			{
-				sb.append(format.format(temp.get(i).getPosition().getFirtseen())+","
-						+temp.get(i).getPosition().getId()+","
-						+temp.get(i).getPosition().getLat()+","
-						+temp.get(i).getPosition().getLon()+","
-						+temp.get(i).getPosition().getAlt()+","
-						+temp.get(i).getNum_of_macs()+","
-						+temp.get(i).getSSID()+","
-						+temp.get(i).getMac()+","
-						+temp.get(i).getChannel());
-				sb.append("\n");
-			}
-			pw.append(sb.toString());
-			pw.close();
-		}
-		catch(FileNotFoundException e1)
-		{
-			System.out.println(e1.getMessage());
-		}
 
-	}
 }
+
+

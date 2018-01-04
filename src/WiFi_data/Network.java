@@ -39,6 +39,17 @@ public class Network implements Serializable{
 		}
 		real_size=a.length;
 	}
+	public Network(Network a)
+	{
+		line=new Hotspots[a.getReal_size()];
+		real_size=a.getReal_size();
+		for(int i=0;i<a.getReal_size();i++)
+		{
+			line[i]=new Hotspots(a.getHotspots()[i]);
+			line[i].setDataOfdot(a.getHotspots()[i].getDataOfdot());
+		}
+
+	}
 	/**
 	 * @param dot Input Wifi into Arrays
 	 * @param geo input geo
@@ -100,6 +111,19 @@ public class Network implements Serializable{
 			line[real_size++]=new Hotspots(a);
 			line[real_size-1].setDataOfdot(a.getDataOfdot());
 
+		}
+	}
+	public void add(Network a)
+	{
+		if(a!=null) {
+				for(int i=0;i<a.getReal_size();i++) {
+					if(real_size==line.length)
+					{
+						resize();
+					}
+					line[real_size++]=new Hotspots(a.getHotspots()[i]);
+					line[real_size-1].setDataOfdot(a.getHotspots()[i].getDataOfdot());
+				}
 		}
 	}
 	/**

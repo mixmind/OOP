@@ -15,20 +15,21 @@ import WiFi_data.Sort;
 import WiFi_data.WIFI;
 
 public class toCSV {
+	Network nt;
 	/**
 	 * 
 	 * @param folder Receive folder of csv's to check and merge
 	 */
-	public toCSV(String folder) 	{
-		Network nt;int count=0;
+	public toCSV(Network nt) 	{
+		int count=0;
+		this.nt=nt;
 		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			nt = csvBase.readCSV(folder);
 			nt= new Network(Sort.mergeSort(nt));
 			if(nt.getReal_size()!=0) {
 				System.out.println("Read csv complete.");
-				PrintWriter pw = new PrintWriter(new File(folder+currTime+".csv"));
+				PrintWriter pw = new PrintWriter(new File(currTime+".csv"));
 				StringBuilder sb = new StringBuilder();
 				sb.append("Time,ID,LAT,LON,ALT,#WiFi networks,");
 				try 

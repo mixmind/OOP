@@ -90,17 +90,15 @@ public class RouterPlace implements Serializable{
 	 * @param firstseen set date
 	 * @param mac set mac
 	 * @param signal set signal
- 	 * @param channel set channel
 	 * @param lat set lat
 	 * @param lon set lon
 	 * @param alt set alt
 	 */
-	public RouterPlace(String id,String SSID,Date firstseen,String mac,int signal,int channel,double lat,double lon,double alt)
+	public RouterPlace(String id,String SSID,Date firstseen,String mac,int signal,double lat,double lon,double alt)
 	{	
 		this.mac=mac;
 		this.signal=signal;
 		this.SSID=SSID;
-		this.channel=channel;
 		position=new GeoModDat(firstseen,lat,lon,alt,id);
 
 

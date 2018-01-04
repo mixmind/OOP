@@ -79,7 +79,7 @@ public class csvBase {
 				if(line!=null) {
 					String[] power=line.split(cvsSplitBy);
 					String id="";
-					if(power[2].equals("?"))
+					if(power[2].equals("?")&&readyCsv)
 					{	
 						while (line != null) {
 							Hotspots data=new Hotspots();
@@ -133,7 +133,7 @@ public class csvBase {
 							}
 						}
 					}
-					if(true)
+					if(readyCsv)
 					{
 						while ((line = br.readLine()) != null) {
 							int i=6;

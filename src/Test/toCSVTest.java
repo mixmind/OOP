@@ -12,7 +12,7 @@ public class toCSVTest {
 	@Test
 	public void check()
 	{
-		toCSV check=new toCSV("c://");
-		toCSV check1=new toCSV(null);
+		//toCSV check=new toCSV("c://");
+		//toCSV check1=new toCSV(null);
 	}
 }
