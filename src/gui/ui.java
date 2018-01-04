@@ -19,6 +19,7 @@ import Filter.FilterId;
 import Filter.FilterRadius;
 import WiFi_data.GeoModDat;
 import WiFi_data.Network;
+import WiFi_data.RouterPlace;
 import de.micromata.opengis.kml.v_2_2_0.Folder;
 
 import javax.swing.JList;
@@ -43,6 +44,7 @@ import javax.swing.event.MenuKeyListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Algo.AlgoFIndMac;
+import Algo.AlgoFindMyPlace;
 import Convert.toCSV;
 import Convert.toKML;
 
@@ -64,6 +66,8 @@ import javax.swing.JProgressBar;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
 
 public class ui {
 
@@ -84,6 +88,12 @@ public class ui {
 	private JLabel labelAlt = new JLabel("");
 	private Filter temp=new Filter();
 	private boolean filterTest=false;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
 
 	/**
 	 * Launch the application.
@@ -173,7 +183,10 @@ public class ui {
 		JLabel label_2 = new JLabel("Lat");
 		JLabel label = new JLabel("Lon");
 		JLabel label_1 = new JLabel("Alt");
-
+		JLabel lblMac_2 = new JLabel("Mac 1");
+		JLabel lblMac = new JLabel("Mac 2");
+		JLabel lblMac_1 = new JLabel("Mac 3");
+		JLabel lblSignal = new JLabel("Signal < 0");
 
 		textFieldFmac = new JTextField();
 		TextFieldID = new JTextField();
@@ -182,6 +195,13 @@ public class ui {
 		textFieldLon = new JTextField();
 		textFieldBefore = new JTextField();
 		textFieldAfter = new JTextField();
+		textField = new JTextField();
+		textField_1 = new JTextField();
+		textField_2 = new JTextField();
+
+		textField_3 = new JTextField();
+		textField_4 = new JTextField();
+		textField_5 = new JTextField();
 
 		btnClear.setBounds(569, 353, 105, 37);
 		frame.getContentPane().add(btnClear);
@@ -189,8 +209,8 @@ public class ui {
 		menuBar.setBounds(0, 0, 31, 45);
 		frame.getContentPane().add(menuBar);
 		menuBar.add(mnInputoutput);
-		btnOpenFile.setBounds(272, 150, 135, 37);
-		btnOpenFolder.setBounds(458, 150, 135, 37);
+		btnOpenFile.setBounds(272, 150, 140, 37);
+		btnOpenFolder.setBounds(458, 150, 140, 37);
 		btnIo.setBounds(17, 69, 103, 37);
 		btnFilters.setBounds(17, 122, 103, 37);
 		btnAlgoritms.setBounds(17, 175, 103, 37);
@@ -198,65 +218,65 @@ public class ui {
 		frame.getContentPane().add(lblID);
 
 
-		TextFieldID.setBounds(360, 147, 206, 35);
+		TextFieldID.setBounds(275, 140, 130, 27);
 		frame.getContentPane().add(TextFieldID);
 		TextFieldID.setColumns(10);
 
-		lblID.setBounds(306, 150, 31, 29);
-		lblRadius.setBounds(329, 191, 70, 29);
+		lblID.setBounds(327, 112, 24, 29);
+		lblRadius.setBounds(583, 238, 47, 29);
 		frame.getContentPane().add(lblRadius);
 
 
-		textFieldRadius.setBounds(421, 188, 206, 35);
+		textFieldRadius.setBounds(544, 267, 130, 27);
 		frame.getContentPane().add(textFieldRadius);
 		textFieldRadius.setColumns(10);
 
 
-		lblLat.setBounds(272, 230, 33, 29);
+		lblLat.setBounds(332, 238, 25, 29);
 		frame.getContentPane().add(lblLat);
 
 
-		lblLon.setBounds(507, 230, 38, 29);
+		lblLon.setBounds(464, 238, 31, 29);
 		frame.getContentPane().add(lblLon);
 
 
-		textFieldLat.setBounds(184, 259, 206, 35);
+		textFieldLat.setBounds(275, 267, 130, 27);
 		frame.getContentPane().add(textFieldLat);
 		textFieldLat.setColumns(10);
 
 
-		textFieldLon.setBounds(417, 259, 206, 35);
+		textFieldLon.setBounds(408, 267, 130, 27);
 		frame.getContentPane().add(textFieldLon);
 		textFieldLon.setColumns(10);
 
-		lblFormatOfDate.setBounds(260, 111, 206, 29);
+		lblFormatOfDate.setBounds(369, 215, 206, 29);
 		frame.getContentPane().add(lblFormatOfDate);
 		frame.getContentPane().add(btnFilters);
 		frame.getContentPane().add(chckbxDate);
 		frame.getContentPane().add(chckbxRadius);
 		frame.getContentPane().add(chckbxID);
 
-		chckbxRadius.setBounds(163, 187, 70, 37);
-		chckbxDate.setBounds(163, 65, 54, 37);
+		chckbxRadius.setBounds(202, 234, 70, 37);
+		chckbxDate.setBounds(202, 184, 54, 37);
 
-		chckbxID.setBounds(163, 146, 54, 37);
+		chckbxID.setBounds(203, 135, 54, 37);
 		lblDateBefore.setBackground(Color.DARK_GRAY);
-		lblDateBefore.setBounds(323, 40, 76, 29);
+		lblDateBefore.setBounds(356, 165, 76, 29);
 		frame.getContentPane().add(lblDateBefore);
 
-		lblDateAfter.setBounds(491, 40, 62, 29);
+		lblDateAfter.setBounds(549, 165, 62, 29);
 		frame.getContentPane().add(lblDateAfter);
 
 		btnFilter.setBounds(260, 307, 73, 39);
 		frame.getContentPane().add(btnFilter);
 
 
-		textFieldBefore.setBounds(285, 65, 176, 35);
+		textFieldBefore.setBounds(318, 190, 130, 27);
 		frame.getContentPane().add(textFieldBefore);
 		textFieldBefore.setColumns(10);
 
 
-		textFieldAfter.setBounds(473, 65, 176, 35);
+		textFieldAfter.setBounds(515, 189, 130, 27);
 		frame.getContentPane().add(textFieldAfter);
 		textFieldAfter.setColumns(10);
 
@@ -278,6 +298,9 @@ public class ui {
 		btnAlgo_1.setVisible(false);
 		btnSaveFilter.setVisible(false);
 		btnLoadFilter.setVisible(false);
+		lblMac_2.setVisible(false);
+		lblMac_1.setVisible(false);
+		lblMac.setVisible(false);
 
 
 		lblDateBefore.setVisible(false);
@@ -308,7 +331,13 @@ public class ui {
 		textFieldBefore.setVisible(false);
 		textFieldAfter.setVisible(false);
 		textFieldFmac.setVisible(false);
-
+		textField.setVisible(false);
+		textField_1.setVisible(false);
+		textField_2.setVisible(false);
+		textField_3.setVisible(false);
+		textField_4.setVisible(false);
+		textField_5.setVisible(false);
+		
 		chckbxRadius.setVisible(false);
 		chckbxDate.setVisible(false);
 		chckbxID.setVisible(false);
@@ -316,6 +345,7 @@ public class ui {
 		rdbtnAnd.setVisible(false);
 		rdbtnNot.setVisible(false);
 		rdbtnOr.setVisible(false);
+		lblSignal.setVisible(false);
 
 		btnFilter.setEnabled(false);
 		mntmSaveBase.setEnabled(false);
@@ -880,56 +910,74 @@ public class ui {
 				else JOptionPane.showMessageDialog(null, "Input mac to find his plase");
 			}
 		});
-		btnAlgo.setBounds(163, 101, 70, 25);
+		btnAlgo.setBounds(174, 67, 70, 25);
 		frame.getContentPane().add(btnAlgo);
 
 
 		btnAlgo_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				try {
+					if(!textField.getText().isEmpty()&&!textField_1.getText().isEmpty()&&!textField_2.getText().isEmpty()
+							&&!textField_3.getText().isEmpty()
+							&&!textField_4.getText().isEmpty()&&!textField_5.getText().isEmpty()) {
+						Integer.parseInt(textField_3.getText());Integer.parseInt(textField_4.getText());
+						Integer.parseInt(textField_5.getText());
+						GeoModDat temp=AlgoFindMyPlace.clientPlaceAlgo2(textField.getText(), textField_1.getText(),
+								textField_2.getText(), textField_3.getText(), textField_4.getText(), textField_5.getText()
+								, nt);
+						labelLat.setText(Double.toString(temp.getLat()));
+						labelLon.setText(Double.toString(temp.getLon()));
+						labelAlt.setText(Double.toString(temp.getAlt()));
+						if(temp!=null) JOptionPane.showMessageDialog(null, "Found place!");
+					}
+					else JOptionPane.showMessageDialog(null, "Input mac's and signal to find his plase");
+				}
+				catch (Exception e1) {
+					JOptionPane.showMessageDialog(null, "Input correct signal");
+				}
 			}
 		});
-		btnAlgo_1.setBounds(163, 128, 70, 25);
+		btnAlgo_1.setBounds(174, 109, 70, 25);
 		frame.getContentPane().add(btnAlgo_1);
 
 		textFieldFmac.setColumns(10);
-		textFieldFmac.setBounds(260, 102, 116, 22);
+		textFieldFmac.setBounds(270, 68, 116, 22);
 		frame.getContentPane().add(textFieldFmac);
 
 
-		lblMacToFind.setBounds(401, 105, 127, 16);
+		lblMacToFind.setBounds(411, 71, 127, 16);
 		frame.getContentPane().add(lblMacToFind);
 
-		labelLat.setBounds(269, 46, 116, 16);
+		labelLat.setBounds(262, 13, 116, 16);
 		frame.getContentPane().add(labelLat);
 
 
-		labelLon.setBounds(405, 46, 116, 16);
+		labelLon.setBounds(398, 13, 116, 16);
 		frame.getContentPane().add(labelLon);
 
 
-		labelAlt.setBounds(551, 46, 116, 16);
+		labelAlt.setBounds(544, 13, 116, 16);
 		frame.getContentPane().add(labelAlt);
 
 
-		label.setBounds(404, 26, 56, 16);
+		label.setBounds(442, 29, 31, 16);
 		frame.getContentPane().add(label);
 
 
-		label_1.setBounds(550, 26, 56, 16);
+		label_1.setBounds(588, 29, 31, 16);
 		frame.getContentPane().add(label_1);
 
 
-		label_2.setBounds(268, 26, 56, 16);
+		label_2.setBounds(306, 29, 31, 16);
 		frame.getContentPane().add(label_2);
 
 
-		btnSaveFilter.setBounds(272, 8, 140, 37);
+		btnSaveFilter.setBounds(310, 55, 140, 37);
 		frame.getContentPane().add(btnSaveFilter);
 
 
 
-		btnLoadFilter.setBounds(466, 8, 140, 37);
+		btnLoadFilter.setBounds(504, 55, 140, 37);
 		frame.getContentPane().add(btnLoadFilter);
 
 		
@@ -967,6 +1015,52 @@ public class ui {
 		});
 		btnSizeOfData.setBounds(365, 307, 140, 39);
 		frame.getContentPane().add(btnSizeOfData);
+		
+	
+		
+		lblMac.setBounds(285, 153, 38, 16);
+		frame.getContentPane().add(lblMac);
+		
+		
+		lblMac_1.setBounds(285, 181, 38, 16);
+		frame.getContentPane().add(lblMac_1);
+		
+		
+		lblMac_2.setBounds(285, 124, 38, 16);
+		frame.getContentPane().add(lblMac_2);
+		
+	
+		textField.setBounds(334, 125, 116, 22);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		
+		textField_1.setBounds(334, 149, 116, 22);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		
+		textField_2.setBounds(334, 176, 116, 22);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3.setBounds(458, 125, 24, 22);
+		frame.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
+		
+		
+		textField_4.setBounds(458, 149, 24, 22);
+		frame.getContentPane().add(textField_4);
+		textField_4.setColumns(10);
+		
+		
+		textField_5.setBounds(458, 176, 24, 22);
+		frame.getContentPane().add(textField_5);
+		textField_5.setColumns(10);
+		
+		
+		lblSignal.setBounds(439, 100, 75, 16);
+		frame.getContentPane().add(lblSignal);
 
 
 
@@ -1130,6 +1224,16 @@ public class ui {
 
 					btnSaveFilter.setVisible(false);
 					btnLoadFilter.setVisible(false);
+					lblMac_2.setVisible(false);
+					lblMac_1.setVisible(false);
+					lblMac.setVisible(false);
+					textField.setVisible(false);
+					textField_1.setVisible(false);
+					textField_2.setVisible(false);
+					textField_3.setVisible(false);
+					textField_4.setVisible(false);
+					textField_5.setVisible(false);
+					lblSignal.setVisible(false);
 				}
 
 			}
@@ -1149,6 +1253,16 @@ public class ui {
 					labelLat.setVisible(true);
 					labelAlt.setVisible(true);
 					labelLon.setVisible(true);
+					lblMac_2.setVisible(true);
+					lblMac_1.setVisible(true);
+					lblMac.setVisible(true);
+					textField.setVisible(true);
+					textField_1.setVisible(true);
+					textField_2.setVisible(true);
+					textField_3.setVisible(true);
+					textField_4.setVisible(true);
+					textField_5.setVisible(true);
+					lblSignal.setVisible(true);
 
 				}
 				if(chckbxDate.isVisible()||chckbxID.isVisible()||chckbxRadius.isVisible()||rdbtnAnd.isVisible()||
@@ -1208,6 +1322,16 @@ public class ui {
 					labelLat.setVisible(false);
 					labelAlt.setVisible(false);
 					labelLon.setVisible(false);
+					lblMac_2.setVisible(false);
+					lblMac_1.setVisible(false);
+					lblMac.setVisible(false);
+					textField.setVisible(false);
+					textField_1.setVisible(false);
+					textField_2.setVisible(false);
+					textField_3.setVisible(false);
+					textField_4.setVisible(false);
+					textField_5.setVisible(false);
+					lblSignal.setVisible(false);
 				}
 				if((!chckbxDate.isVisible()&&!chckbxID.isVisible()
 						&&!chckbxRadius.isVisible()&&!rdbtnAnd.isVisible()
