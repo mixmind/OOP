@@ -68,7 +68,7 @@ public class csvBase {
 		String cvsSplitBy = ",";
 		String csvFile = file.toString();
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		DateFormat parseFormat = new SimpleDateFormat("mm/dd/yy hh:mm aa",Locale.getDefault());
+		DateFormat parseFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		boolean readyCsv=false;
 		boolean wigleCsv=false;
 		try {
@@ -76,37 +76,43 @@ public class csvBase {
 			line = br.readLine();
 			try
 			{
+
 				if(line!=null) {
+
 					String[] power=line.split(cvsSplitBy);
+					if(power.length==46) readyCsv=true;
 					String id="";
-					if(power[2].equals("?")&&readyCsv)
+					if(readyCsv)
 					{	
-						while (line != null) {
-							Hotspots data=new Hotspots();
-							int i=6;
-							power = line.split(cvsSplitBy);
-							while(i<power.length) {
-								if(power[i]!=null) {
-									WIFI temp=new WIFI();
-									temp.setSsid(power[i]);
-									temp.setMac(power[i+1]);
-									temp.setFreq(power[i+2]);
-									temp.setId(power[1]);
-									temp.setFirtseen(parseFormat.parse(power[0]));
-									temp.setRssi((int)Double.parseDouble(power[i+3]));
-									GeoModDat pos=new GeoModDat();
-									pos.setFirtseen(parseFormat.parse(power[0]));
-									pos.setId(power[1]);
-									data.setDataOfdot(pos);
-									data.add(temp);
-									i+=4;
+						line = br.readLine();
+						power = line.split(cvsSplitBy);
+						if(power[2].equals("?")) {
+							while (line!=null) {
+								Hotspots data=new Hotspots();
+								int i=6;
+								power = line.split(cvsSplitBy);
+								while(i<power.length) {
+									if(power[i]!=null) {
+										WIFI temp=new WIFI();
+										temp.setSsid(power[i]);
+										temp.setMac(power[i+1]);
+										temp.setFreq(power[i+2]);
+										temp.setId(power[1]);
+										temp.setFirtseen(parseFormat.parse(power[0]));
+										temp.setRssi((int)Double.parseDouble(power[i+3]));
+										GeoModDat pos=new GeoModDat();
+										pos.setFirtseen(parseFormat.parse(power[0]));
+										pos.setId(power[1]);
+										data.setDataOfdot(pos);
+										data.add(temp);
+										i+=4;
+									}
 								}
+								nt.add(data);;
+								line = br.readLine();
 							}
-							line= br.readLine();
-							nt.add(data);;
 						}
 					}
-					if(power.length==46) readyCsv=true;
 					if(power.length==8)
 					{
 						wigleCsv=true;

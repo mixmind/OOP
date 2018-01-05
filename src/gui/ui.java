@@ -43,6 +43,7 @@ import javax.swing.JMenuItem;
 import javax.swing.event.MenuKeyListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import Algo.Algo2;
 import Algo.AlgoFIndMac;
 import Algo.AlgoFindMyPlace;
 import Convert.toCSV;
@@ -94,6 +95,7 @@ public class ui {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	FileWatcher keep;
 
 	/**
 	 * Launch the application.
@@ -121,7 +123,7 @@ public class ui {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize()  {
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 699, 443);
@@ -168,7 +170,7 @@ public class ui {
 		JCheckBox chckbxDate = new JCheckBox("Date");
 		JCheckBox chckbxRadius = new JCheckBox("Radius");
 		JCheckBox chckbxID = new JCheckBox("ID");
-
+		JButton btnLoadFileFor = new JButton("Load file for fix GPS");
 
 
 		JLabel lblDateBefore = new JLabel("Date before");
@@ -301,6 +303,7 @@ public class ui {
 		lblMac_2.setVisible(false);
 		lblMac_1.setVisible(false);
 		lblMac.setVisible(false);
+		btnLoadFileFor.setVisible(false);
 
 
 		lblDateBefore.setVisible(false);
@@ -1061,6 +1064,25 @@ public class ui {
 		
 		lblSignal.setBounds(439, 100, 75, 16);
 		frame.getContentPane().add(lblSignal);
+		
+		btnLoadFileFor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				fileChooser.setFileFilter(new FileNameExtensionFilter("CSV files", "csv"));
+				fileChooser.showOpenDialog(null);
+				if(fileChooser.getSelectedFile()!=null&&nt.getReal_size()>0) {
+					Algo2.clientPlaceAlgo2(nt, fileChooser.getSelectedFile().getPath());
+					csvBase.check(fileChooser.getSelectedFile(),nt);
+					//if(nt.getReal_size())
+						JOptionPane.showMessageDialog(null, "Fixed data place where corrupted ");
+					}
+				else JOptionPane.showMessageDialog(null, "The base is empty or the file is corrupted");
+				
+
+
+			}
+		});
+		btnLoadFileFor.setBounds(323, 218, 161, 25);
+		frame.getContentPane().add(btnLoadFileFor);
 
 
 
@@ -1094,8 +1116,20 @@ public class ui {
 				if(fileChooser.getSelectedFile()!=null) {
 					int size=nt.getReal_size();
 					csvBase.check(fileChooser.getSelectedFile(),nt);
-					if(size!=nt.getReal_size())
+					
+					keep=new FileWatcher(fileChooser.getSelectedFile()) {
+						
+						@Override
+						protected void onChange(File file) {
+							// TODO Auto-generated method stub
+							JOptionPane.showMessageDialog(null, "The file changed");
+						}
+					};
+					
+					
+					if(size!=nt.getReal_size()) {
 						JOptionPane.showMessageDialog(null, "Imported "+(nt.getReal_size()-size)+" lines");
+						keep.run();}
 					else JOptionPane.showMessageDialog(null, "Imported nothing");
 				}
 
@@ -1103,6 +1137,9 @@ public class ui {
 
 			}
 		});
+		
+		
+		
 
 		btnOpenFolder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1234,6 +1271,7 @@ public class ui {
 					textField_4.setVisible(false);
 					textField_5.setVisible(false);
 					lblSignal.setVisible(false);
+					btnLoadFileFor.setVisible(false);
 				}
 
 			}
@@ -1263,6 +1301,7 @@ public class ui {
 					textField_4.setVisible(true);
 					textField_5.setVisible(true);
 					lblSignal.setVisible(true);
+					btnLoadFileFor.setVisible(true);
 
 				}
 				if(chckbxDate.isVisible()||chckbxID.isVisible()||chckbxRadius.isVisible()||rdbtnAnd.isVisible()||
@@ -1332,6 +1371,7 @@ public class ui {
 					textField_4.setVisible(false);
 					textField_5.setVisible(false);
 					lblSignal.setVisible(false);
+					btnLoadFileFor.setVisible(false);
 				}
 				if((!chckbxDate.isVisible()&&!chckbxID.isVisible()
 						&&!chckbxRadius.isVisible()&&!rdbtnAnd.isVisible()
@@ -1525,7 +1565,9 @@ public class ui {
 					JOptionPane.showMessageDialog(null, "The file is empty");
 
 				}
+				
 			}
 		});
+		
 	}
 }

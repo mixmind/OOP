@@ -34,9 +34,9 @@ public class Algo2 {
 	 * @param file1 File of Base
 	 * @param file2 File to fix
 	 */
-	public static void clientPlaceAlgo2(String file1,String file2)
+	public static void clientPlaceAlgo2(Network nt,String file2)
 	{
-		File base=new File(file1);
+		//File base=new File(file1);
 		File test=new File(file2);
 		Network fixGeo =new Network();
 		FilenameFilter filter = new FilenameFilter() {
@@ -45,15 +45,13 @@ public class Algo2 {
 			}
 
 		};
-		if(filter.accept(base, base.getAbsolutePath())&&filter.accept(test, test.getAbsolutePath())) {
-			Network data= new Network();
-			csvBase.check(base, data);
+		if(filter.accept(test, test.getAbsolutePath())) {
 			fixGeo =new Network();
 			csvBase.check(test, fixGeo);
-			System.out.println("Start working on base: "+base
+			System.out.println("Start working on base: "
 					+"\nStart working on test: "+test);
-			math(data,fixGeo);
-			toCSV(fixGeo, test.getAbsolutePath());
+			math(nt,fixGeo);
+			toCSV(fixGeo, test.getParentFile());
 			System.out.println("AlgoPlace ended.");
 		}
 		else {
@@ -72,6 +70,7 @@ public class Algo2 {
 	{
 		for(int i=0;i<fix.getReal_size();i++)
 		{
+			if(fix.getHotspots()[i].getReal_size()>0)
 			checkSim(data, fix.getHotspots()[i]);
 		}
 	}
@@ -221,14 +220,14 @@ public class Algo2 {
 	 * @param nt Fixed wifis
 	 * @param folder Output folder
 	 */
-	private static void toCSV(Network nt,String folder) 	{
+	private static void toCSV(Network nt,File folder) 	{
 		int count=0;
 		String currTime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new java.util.Date());
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		File t=new File(folder);
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		
 		try {
 			if(nt.getReal_size()!=0) {
-				PrintWriter pw = new PrintWriter(new File(t.getParent()+"/"+currTime+"-CLientPlace.csv"));
+				PrintWriter pw = new PrintWriter(folder+"/"+currTime+"-CLientPlace.csv");
 				StringBuilder sb = new StringBuilder();
 				sb.append("Time,ID,LAT,LON,ALT,#WiFi networks,");
 				try 
