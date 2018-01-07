@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.print.attribute.standard.JobMessageFromOperator;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+
+import static org.junit.Assert.assertNotNull;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -36,6 +39,9 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
@@ -95,7 +101,10 @@ public class ui {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-	FileWatcher keep;
+	TimerTask taskFile;
+	TimerTask taskFolder;
+	Timer timerFolder;
+	Timer timerFile;
 
 	/**
 	 * Launch the application.
@@ -124,7 +133,7 @@ public class ui {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize()  {
-		
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 699, 443);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -340,7 +349,7 @@ public class ui {
 		textField_3.setVisible(false);
 		textField_4.setVisible(false);
 		textField_5.setVisible(false);
-		
+
 		chckbxRadius.setVisible(false);
 		chckbxDate.setVisible(false);
 		chckbxID.setVisible(false);
@@ -983,7 +992,7 @@ public class ui {
 		btnLoadFilter.setBounds(504, 55, 140, 37);
 		frame.getContentPane().add(btnLoadFilter);
 
-		
+
 		btnUndoLastFilter.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\undo.png"));
 		btnUndoLastFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1018,53 +1027,53 @@ public class ui {
 		});
 		btnSizeOfData.setBounds(365, 307, 140, 39);
 		frame.getContentPane().add(btnSizeOfData);
-		
-	
-		
+
+
+
 		lblMac.setBounds(285, 153, 38, 16);
 		frame.getContentPane().add(lblMac);
-		
-		
+
+
 		lblMac_1.setBounds(285, 181, 38, 16);
 		frame.getContentPane().add(lblMac_1);
-		
-		
+
+
 		lblMac_2.setBounds(285, 124, 38, 16);
 		frame.getContentPane().add(lblMac_2);
-		
-	
+
+
 		textField.setBounds(334, 125, 116, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-		
-		
+
+
 		textField_1.setBounds(334, 149, 116, 22);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
-		
-		
+
+
 		textField_2.setBounds(334, 176, 116, 22);
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
-		
+
 		textField_3.setBounds(458, 125, 24, 22);
 		frame.getContentPane().add(textField_3);
 		textField_3.setColumns(10);
-		
-		
+
+
 		textField_4.setBounds(458, 149, 24, 22);
 		frame.getContentPane().add(textField_4);
 		textField_4.setColumns(10);
-		
-		
+
+
 		textField_5.setBounds(458, 176, 24, 22);
 		frame.getContentPane().add(textField_5);
 		textField_5.setColumns(10);
-		
-		
+
+
 		lblSignal.setBounds(439, 100, 75, 16);
 		frame.getContentPane().add(lblSignal);
-		
+
 		btnLoadFileFor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				fileChooser.setFileFilter(new FileNameExtensionFilter("CSV files", "csv"));
@@ -1073,10 +1082,10 @@ public class ui {
 					Algo2.clientPlaceAlgo2(nt, fileChooser.getSelectedFile().getPath());
 					csvBase.check(fileChooser.getSelectedFile(),nt);
 					//if(nt.getReal_size())
-						JOptionPane.showMessageDialog(null, "Fixed data place where corrupted ");
-					}
+					JOptionPane.showMessageDialog(null, "Fixed data place where corrupted ");
+				}
 				else JOptionPane.showMessageDialog(null, "The base is empty or the file is corrupted");
-				
+
 
 
 			}
@@ -1087,12 +1096,7 @@ public class ui {
 
 
 
-		btnClear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				nt=new Network();
-				JOptionPane.showMessageDialog(null, "All cleared");
-			}
-		});
+
 
 		mntmNewBase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1116,20 +1120,22 @@ public class ui {
 				if(fileChooser.getSelectedFile()!=null) {
 					int size=nt.getReal_size();
 					csvBase.check(fileChooser.getSelectedFile(),nt);
-					
-					keep=new FileWatcher(fileChooser.getSelectedFile()) {
-						
+
+					taskFile = new FileWatcher(fileChooser.getSelectedFile()) {
+
 						@Override
 						protected void onChange(File file) {
-							// TODO Auto-generated method stub
-							JOptionPane.showMessageDialog(null, "The file changed");
+							JOptionPane.showMessageDialog(null, "The file "+file.getName()+" changed");
+							nt=new Network();
+							csvBase.check(fileChooser.getSelectedFile(),nt);
+
 						}
 					};
-					
-					
+					timerFile = new Timer();
+					timerFile.schedule( taskFile , new Date(), 1000 );
 					if(size!=nt.getReal_size()) {
 						JOptionPane.showMessageDialog(null, "Imported "+(nt.getReal_size()-size)+" lines");
-						keep.run();}
+					}
 					else JOptionPane.showMessageDialog(null, "Imported nothing");
 				}
 
@@ -1137,15 +1143,22 @@ public class ui {
 
 			}
 		});
-		
-		
-		
 
 		btnOpenFolder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				fileChooser.showOpenDialog(null);
 				String folder="";
+				taskFolder = new DirWatcher(fileChooser.getSelectedFile().getPath(),"csv") {
+
+					@Override
+					protected void onChange(File file, String action) {
+						JOptionPane.showMessageDialog(null, "The file "+file.getName()+" changed");
+						nt=csvBase.readCSV(file.getParent());
+					}
+				};
+				timerFolder = new Timer();
+				timerFolder.schedule( taskFolder , new Date(), 1000 );
 				if(fileChooser.getSelectedFile()!=null) {
 					folder=fileChooser.getSelectedFile().getAbsolutePath();
 					Network temp=csvBase.readCSV(folder);
@@ -1155,6 +1168,26 @@ public class ui {
 						JOptionPane.showMessageDialog(null, "Imported "+size+" lines");
 					else JOptionPane.showMessageDialog(null, "Imported nothing");
 				}
+			}
+		});
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				nt=new Network();
+				if(taskFile!=null) 
+				{
+					taskFile=null;
+					timerFile.cancel();;
+
+				}
+				else if(taskFolder!=null)
+				{
+					taskFolder=null;
+					timerFolder.cancel();
+
+				}
+				JOptionPane.showMessageDialog(null, "All cleared");
+
 			}
 		});
 
@@ -1565,9 +1598,9 @@ public class ui {
 					JOptionPane.showMessageDialog(null, "The file is empty");
 
 				}
-				
+
 			}
 		});
-		
+
 	}
 }
