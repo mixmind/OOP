@@ -1,4 +1,4 @@
-package Test;
+package test.java;
 import org.junit.Test;
 
 import Convert.toCSV;

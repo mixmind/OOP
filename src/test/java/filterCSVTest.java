@@ -1,4 +1,4 @@
-package Test;
+package test.java;
 
 import java.text.ParseException;
 import java.util.Date;

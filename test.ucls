@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="main.main" project="OOP matala" file="/OOP matala/src/main/main.java" 
+  <class id="4" language="java" name="main.java.Main" project="OOP matala" file="/OOP matala/src/main/java/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="953" y="268"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

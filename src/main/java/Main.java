@@ -1,4 +1,4 @@
-package main;
+package main.java;
 
 import java.awt.EventQueue;
 import java.awt.FileDialog;
@@ -79,7 +79,7 @@ import javax.swing.UIManager;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 
-public class main {
+public class Main {
 
 	private JFrame frame;
 	private Network nt=new Network();
@@ -116,7 +116,7 @@ public class main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					main window = new main();
+					Main window = new Main();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -128,7 +128,7 @@ public class main {
 	/**
 	 * Create the application.
 	 */
-	public main() {
+	public Main() {
 		initialize();
 	}
 
