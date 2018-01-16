@@ -1,4 +1,4 @@
-package gui;
+package Thread;
 
 import java.io.*;
 

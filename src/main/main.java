@@ -1,4 +1,4 @@
-package gui;
+package main;
 
 import java.awt.EventQueue;
 import java.awt.FileDialog;
@@ -17,9 +17,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 
 import DataBase.csvBase;
+import Filter.Filter;
 import Filter.FilterDate;
 import Filter.FilterId;
 import Filter.FilterRadius;
+import Thread.DirWatcher;
+import Thread.FileWatcher;
 import WiFi_data.GeoModDat;
 import WiFi_data.Network;
 import WiFi_data.RouterPlace;
@@ -76,7 +79,7 @@ import javax.swing.UIManager;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 
-public class ui {
+public class main {
 
 	private JFrame frame;
 	private Network nt=new Network();
@@ -113,7 +116,7 @@ public class ui {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ui window = new ui();
+					main window = new main();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -125,7 +128,7 @@ public class ui {
 	/**
 	 * Create the application.
 	 */
-	public ui() {
+	public main() {
 		initialize();
 	}
 
@@ -148,27 +151,27 @@ public class ui {
 		JMenuItem mntmOpenBase = new JMenuItem("Open Base");
 
 		JButton btnClear = new JButton("Clear");
-		btnClear.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\clear.png"));
+		btnClear.setIcon(new ImageIcon("C:\\Users\\mixmind\\git\\OOP\\src\\images\\clear.png"));
 		JButton btnAlgoritms = new JButton("Algoritms");
 		JButton btnOpenFile = new JButton("Load file");
-		btnOpenFile.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\file.png"));
+		btnOpenFile.setIcon(new ImageIcon("C:\\Users\\mixmind\\git\\OOP\\src\\images\\file.png"));
 		JButton btnOpenFolder = new JButton("Load folder");
-		btnOpenFolder.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\folder.png"));
+		btnOpenFolder.setIcon(new ImageIcon("C:\\Users\\mixmind\\git\\OOP\\src\\images\\folder.png"));
 		JButton btnIo = new JButton("I/O");
 		JButton btnFilters = new JButton("Filters");
-		btnFilters.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\filter.png"));
+		btnFilters.setIcon(new ImageIcon("C:\\Users\\mixmind\\git\\OOP\\src\\images\\filter.png"));
 		JButton btnFilter = new JButton("Filter it");
 		JButton btnTokml = new JButton("toKml");
 		JButton btnUndoLastFilter = new JButton("Undo last filter");
 		btnTokml.setHorizontalAlignment(SwingConstants.LEFT);
-		btnTokml.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\kml.png"));
+		btnTokml.setIcon(new ImageIcon("C:\\Users\\mixmind\\git\\OOP\\src\\images\\kml.png"));
 		JButton btnTocsv = new JButton("toCsv");
-		btnTocsv.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\csv_icon.png"));
+		btnTocsv.setIcon(new ImageIcon("C:\\Users\\mixmind\\git\\OOP\\src\\images\\csv_icon.png"));
 		JButton btnAlgo = new JButton("Algo 1");
 		JButton btnAlgo_1 = new JButton("Algo 2");
 		JButton btnSaveFilter = new JButton("Save filter");
 		btnSaveFilter.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSaveFilter.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\save.png"));
+		btnSaveFilter.setIcon(new ImageIcon("C:\\Users\\mixmind\\git\\OOP\\src\\images\\save.png"));
 
 		JButton btnLoadFilter = new JButton("Load filter");
 
@@ -993,7 +996,7 @@ public class ui {
 		frame.getContentPane().add(btnLoadFilter);
 
 
-		btnUndoLastFilter.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\undo.png"));
+		btnUndoLastFilter.setIcon(new ImageIcon("C:\\Users\\mixmind\\git\\OOP\\src\\images\\undo.png"));
 		btnUndoLastFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(undo.getReal_size()>0)
@@ -1017,7 +1020,7 @@ public class ui {
 		frame.getContentPane().add(btnUndoLastFilter);
 
 		JButton btnSizeOfData = new JButton("Size of data");
-		btnSizeOfData.setIcon(new ImageIcon("C:\\Users\\mixmind\\eclipse-workspace\\OOP matala\\src\\gui\\db.png"));
+		btnSizeOfData.setIcon(new ImageIcon("C:\\Users\\mixmind\\git\\OOP\\src\\images\\db.png"));
 		btnSizeOfData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(nt!=null)

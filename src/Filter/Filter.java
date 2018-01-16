@@ -1,4 +1,4 @@
-package gui;
+package Filter;
 
 import java.io.Serializable;
 

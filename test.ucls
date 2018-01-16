@@ -19,16 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="WiFi_data.test" project="OOP matala" file="/OOP matala/src/WiFi_data/test.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-118" y="808"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="WiFi_data.Sort" project="OOP matala" file="/OOP matala/src/WiFi_data/Sort.java" 
+  <class id="3" language="java" name="WiFi_data.Sort" project="OOP matala" file="/OOP matala/src/WiFi_data/Sort.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="95" y="817"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="gui.ui" project="OOP matala" file="/OOP matala/src/gui/ui.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="main.main" project="OOP matala" file="/OOP matala/src/main/main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="953" y="268"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="Algo.Algo2" project="OOP matala" file="/OOP matala/src/Algo/Algo2.java" 
+  <class id="5" language="java" name="Algo.Algo2" project="OOP matala" file="/OOP matala/src/Algo/Algo2.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-66" y="523"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="Algo.AlgoFindMyPlace" project="OOP matala" 
+  <class id="6" language="java" name="Algo.AlgoFindMyPlace" project="OOP matala" 
     file="/OOP matala/src/Algo/AlgoFindMyPlace.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="361" y="508"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="DataBase.csvBase" project="OOP matala" 
+  <class id="7" language="java" name="DataBase.csvBase" project="OOP matala" 
     file="/OOP matala/src/DataBase/csvBase.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="389" y="806"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="Convert.toCSV" project="OOP matala" file="/OOP matala/src/Convert/toCSV.java" 
+  <class id="8" language="java" name="Convert.toCSV" project="OOP matala" file="/OOP matala/src/Convert/toCSV.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1143" y="70"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="Algo.AlgoFIndMac" project="OOP matala" 
+  <class id="9" language="java" name="Algo.AlgoFIndMac" project="OOP matala" 
     file="/OOP matala/src/Algo/AlgoFIndMac.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-76" y="160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -91,7 +82,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="WiFi_data.Hotspots" project="OOP matala" 
+  <class id="10" language="java" name="WiFi_data.Hotspots" project="OOP matala" 
     file="/OOP matala/src/WiFi_data/Hotspots.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1187" y="1550"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -100,7 +91,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="Convert.toKML" project="OOP matala" file="/OOP matala/src/Convert/toKML.java" 
+  <class id="11" language="java" name="Convert.toKML" project="OOP matala" file="/OOP matala/src/Convert/toKML.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1296" y="79"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="WiFi_data.GeoModDat" project="OOP matala" 
+  <class id="12" language="java" name="WiFi_data.GeoModDat" project="OOP matala" 
     file="/OOP matala/src/WiFi_data/GeoModDat.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="777" y="2985"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -118,7 +109,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="WiFi_data.WIFI" project="OOP matala" file="/OOP matala/src/WiFi_data/WIFI.java" 
+  <class id="13" language="java" name="WiFi_data.WIFI" project="OOP matala" file="/OOP matala/src/WiFi_data/WIFI.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="904" y="2272"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -127,7 +118,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="WiFi_data.Network" project="OOP matala" 
+  <class id="14" language="java" name="WiFi_data.Network" project="OOP matala" 
     file="/OOP matala/src/WiFi_data/Network.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1197" y="765"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -136,7 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="16" language="java" name="Filter.filterCSV" project="OOP matala" 
+  <interface id="15" language="java" name="Filter.filterCSV" project="OOP matala" 
     file="/OOP matala/src/Filter/filterCSV.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1684" y="603"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -145,7 +136,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="17" language="java" name="gui.Filter" project="OOP matala" file="/OOP matala/src/gui/Filter.java" 
+  <class id="16" language="java" name="Filter.Filter" project="OOP matala" file="/OOP matala/src/Filter/Filter.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="930" y="918"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -154,7 +145,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="Filter.FilterRadius" project="OOP matala" 
+  <class id="17" language="java" name="Filter.FilterRadius" project="OOP matala" 
     file="/OOP matala/src/Filter/FilterRadius.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1711" y="115"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -163,7 +154,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="Algo.Algo" project="OOP matala" file="/OOP matala/src/Algo/Algo.java" 
+  <class id="18" language="java" name="Algo.Algo" project="OOP matala" file="/OOP matala/src/Algo/Algo.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="406" y="169"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -172,7 +163,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="Filter.FilterId" project="OOP matala" file="/OOP matala/src/Filter/FilterId.java" 
+  <class id="19" language="java" name="Filter.FilterId" project="OOP matala" file="/OOP matala/src/Filter/FilterId.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1949" y="97"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -181,7 +172,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="WiFi_data.RouterPlace" project="OOP matala" 
+  <class id="20" language="java" name="WiFi_data.RouterPlace" project="OOP matala" 
     file="/OOP matala/src/WiFi_data/RouterPlace.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="510" y="2074"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -190,7 +181,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="DataBase.kmlBase" project="OOP matala" 
+  <class id="21" language="java" name="DataBase.kmlBase" project="OOP matala" 
     file="/OOP matala/src/DataBase/kmlBase.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="744" y="79"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -199,162 +190,162 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="23">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="24" name="line">        
+  <association id="22">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="23" name="temp">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </attribute>      
-      <multiplicity id="25" minimum="0" maximum="2147483647">        
+      <multiplicity id="24" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-1834" y="52"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="26" name="undo">        
+        <position height="0" width="0" x="-1834" y="52"/>      
+      </attribute>      
+      <multiplicity id="27" minimum="0" maximum="1">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="27" name="position">        
+  <association id="28">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="29" name="line">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </attribute>      
-      <multiplicity id="28" minimum="0" maximum="1">        
+      <multiplicity id="30" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="30" name="nt">        
+  <association id="31">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="32" name="nt">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </attribute>      
-      <multiplicity id="31" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1834" y="52"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="33" name="line">        
-        <position height="0" width="0" x="-1834" y="52"/>      
-      </attribute>      
-      <multiplicity id="34" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-1834" y="52"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="36" name="wifi">        
-        <position height="0" width="0" x="-1834" y="52"/>      
-      </attribute>      
-      <multiplicity id="37" minimum="0" maximum="1">        
+      <multiplicity id="33" minimum="0" maximum="1">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="39" name="undo">        
+  <realization id="34">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <realization id="35">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="36">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="37" name="wifi">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </attribute>      
-      <multiplicity id="40" minimum="0" maximum="1">        
+      <multiplicity id="38" minimum="0" maximum="1">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="42" name="nt">        
-        <position height="0" width="0" x="-1834" y="52"/>      
-      </attribute>      
-      <multiplicity id="43" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1834" y="52"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
+  <association id="39">    
     <bendpoint x="284" y="1814"/>    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="45" name="position">        
+      <attribute id="40" name="position">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </attribute>      
-      <multiplicity id="46" minimum="0" maximum="1">        
+      <multiplicity id="41" minimum="0" maximum="1">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
+    <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="47">    
-    <bendpoint x="1093" y="1814"/>    
+  <association id="42">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="43" name="nt">        
+        <position height="0" width="0" x="-1834" y="52"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-1834" y="52"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="46" name="position">        
+        <position height="0" width="0" x="-1834" y="52"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-1834" y="52"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="48" name="dataOfdot">        
+      <attribute id="49" name="nt">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </attribute>      
-      <multiplicity id="49" minimum="0" maximum="1">        
+      <multiplicity id="50" minimum="0" maximum="1">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="50">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="16"/>  
-  </realization>  
   <association id="51">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="52" name="nt">        
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="52" name="line">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </attribute>      
-      <multiplicity id="53" minimum="0" maximum="1">        
+      <multiplicity id="53" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="54">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="16"/>  
-  </realization>  
-  <realization id="55">    
+  <association id="54">    
+    <bendpoint x="1093" y="1814"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="55" name="dataOfdot">        
+        <position height="0" width="0" x="-1834" y="52"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-1834" y="52"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="57">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="16"/>  
+    <end type="TARGET" refId="15"/>  
   </realization>  
-  <association id="56">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="57" name="position">        
+  <association id="58">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="59" name="position">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </attribute>      
-      <multiplicity id="58" minimum="0" maximum="1">        
+      <multiplicity id="60" minimum="0" maximum="1">        
         <position height="0" width="0" x="-1834" y="52"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="60" name="temp">        
-        <position height="0" width="0" x="-1834" y="52"/>      
-      </attribute>      
-      <multiplicity id="61" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1834" y="52"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

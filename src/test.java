@@ -9,7 +9,7 @@ import javax.xml.transform.TransformerException;
 import Algo.*;
 import Convert.*;
 import DataBase.*;
-import gui.DirWatcher;
+import Thread.DirWatcher;
 
 public class test {
 
