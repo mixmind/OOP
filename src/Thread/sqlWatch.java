@@ -47,8 +47,4 @@ public abstract class sqlWatch {
 		       
 		    }
 		 protected abstract void onRun();
-		
-		
-		
-	
 }
