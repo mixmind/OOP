@@ -21,8 +21,10 @@ import Filter.Filter;
 import Filter.FilterDate;
 import Filter.FilterId;
 import Filter.FilterRadius;
+import SQL.mySql;
 import Thread.DirWatcher;
 import Thread.FileWatcher;
+import Thread.sqlWatch;
 import WiFi_data.GeoModDat;
 import WiFi_data.Network;
 import WiFi_data.RouterPlace;
@@ -31,6 +33,8 @@ import de.micromata.opengis.kml.v_2_2_0.Folder;
 import javax.swing.JList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -51,6 +55,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.event.MenuKeyListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import org.omg.PortableServer.POA;
+
+import com.sun.corba.se.spi.orb.Operation;
+import com.sun.glass.events.WindowEvent;
+import com.sun.org.apache.bcel.internal.util.Class2HTML;
 
 import Algo.Algo2;
 import Algo.AlgoFIndMac;
@@ -76,8 +86,10 @@ import javax.swing.JProgressBar;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
+import javax.swing.JPanel;
 
 public class Main {
 
@@ -104,10 +116,15 @@ public class Main {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-	TimerTask taskFile;
-	TimerTask taskFolder;
-	Timer timerFolder;
-	Timer timerFile;
+	private TimerTask taskFile;
+	private TimerTask taskFolder;
+	private Timer timerFolder;
+	private Timer timerFile; 
+	private JTextField IP;
+	private JTextField User;
+	private JTextField Password;
+	private JTextField Port;
+	private JTextField BASE;
 
 	/**
 	 * Launch the application.
@@ -201,6 +218,7 @@ public class Main {
 		JLabel lblMac = new JLabel("Mac 2");
 		JLabel lblMac_1 = new JLabel("Mac 3");
 		JLabel lblSignal = new JLabel("Signal < 0");
+		JButton btnConnect = new JButton("Import from SQL");
 
 		textFieldFmac = new JTextField();
 		TextFieldID = new JTextField();
@@ -223,11 +241,11 @@ public class Main {
 		menuBar.setBounds(0, 0, 31, 45);
 		frame.getContentPane().add(menuBar);
 		menuBar.add(mnInputoutput);
-		btnOpenFile.setBounds(272, 150, 140, 37);
-		btnOpenFolder.setBounds(458, 150, 140, 37);
-		btnIo.setBounds(17, 69, 103, 37);
-		btnFilters.setBounds(17, 122, 103, 37);
-		btnAlgoritms.setBounds(17, 175, 103, 37);
+		btnOpenFile.setBounds(305, 49, 140, 37);
+		btnOpenFolder.setBounds(491, 49, 140, 37);
+		btnIo.setBounds(17, 67, 103, 37);
+		btnFilters.setBounds(17, 120, 103, 37);
+		btnAlgoritms.setBounds(17, 173, 103, 37);
 
 		frame.getContentPane().add(lblID);
 
@@ -369,6 +387,69 @@ public class Main {
 		mnInputoutput.add(mntmNewBase);
 		mnInputoutput.add(mntmOpenBase);
 		mnInputoutput.add(mntmSaveBase);
+
+		JLabel lblPort = new JLabel("Port");
+		JLabel lblIp = new JLabel("IP");
+		JLabel lblUser = new JLabel("User");
+		JLabel lblPassword = new JLabel("Password");
+		JLabel lblDb = new JLabel("DB");
+		IP = new JTextField();
+		User = new JTextField();
+		Password = new JTextField();
+		Port = new JTextField();
+		BASE = new JTextField();
+		lblPort.setVisible(false);
+		lblIp.setVisible(false);
+		lblUser.setVisible(false);
+		lblPassword.setVisible(false);
+		lblDb.setVisible(false);
+		IP.setVisible(false);
+		User.setVisible(false);
+		Password.setVisible(false);
+		Port.setVisible(false);
+		BASE.setVisible(false);
+		btnConnect.setVisible(false);
+		lblIp.setBounds(252, 115, 22, 16);
+		frame.getContentPane().add(lblIp);
+
+
+		lblUser.setBounds(465, 115, 31, 16);
+		frame.getContentPane().add(lblUser);
+
+		lblPassword.setBounds(455, 147, 62, 16);
+		frame.getContentPane().add(lblPassword);
+
+		lblPort.setBounds(244, 146, 31, 16);
+		frame.getContentPane().add(lblPort);
+
+
+
+		lblDb.setBounds(363, 183, 22, 16);
+		frame.getContentPane().add(lblDb);
+
+		IP.setBounds(307, 112, 116, 22);
+		frame.getContentPane().add(IP);
+		IP.setColumns(10);
+
+		User.setBounds(529, 112, 116, 22);
+		frame.getContentPane().add(User);
+		User.setColumns(10);
+
+		Password.setBounds(529, 144, 116, 22);
+		frame.getContentPane().add(Password);
+		Password.setColumns(10);
+
+		Port.setBounds(307, 143, 116, 22);
+		frame.getContentPane().add(Port);
+		Port.setColumns(10);
+
+		BASE.setBounds(418, 180, 116, 22);
+		frame.getContentPane().add(BASE);
+		BASE.setColumns(10);
+
+
+		btnConnect.setBounds(405, 217, 140, 25);
+		frame.getContentPane().add(btnConnect);
 
 		btnFilter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1256,6 +1337,17 @@ public class Main {
 				if(!btnOpenFile.isVisible()&&!btnOpenFolder.isVisible()) {
 					btnOpenFile.setVisible(true);
 					btnOpenFolder.setVisible(true);
+					lblPort.setVisible(true);
+					lblIp.setVisible(true);
+					lblUser.setVisible(true);
+					lblPassword.setVisible(true);
+					lblDb.setVisible(true);
+					IP.setVisible(true);
+					User.setVisible(true);
+					Password.setVisible(true);
+					Port.setVisible(true);
+					BASE.setVisible(true);
+					btnConnect.setVisible(true);
 				}
 				if(chckbxDate.isVisible()||chckbxID.isVisible()||chckbxRadius.isVisible()||rdbtnAnd.isVisible()||
 						rdbtnNot.isVisible()||rdbtnOr.isVisible()||btnAlgo.isVisible())
@@ -1372,7 +1464,17 @@ public class Main {
 
 					btnSaveFilter.setVisible(false);
 					btnLoadFilter.setVisible(false);
-
+					lblPort.setVisible(false);
+					lblIp.setVisible(false);
+					lblUser.setVisible(false);
+					lblPassword.setVisible(false);
+					lblDb.setVisible(false);
+					IP.setVisible(false);
+					User.setVisible(false);
+					Password.setVisible(false);
+					Port.setVisible(false);
+					BASE.setVisible(false);
+					btnConnect.setVisible(false);
 
 
 				}
@@ -1408,6 +1510,17 @@ public class Main {
 					textField_5.setVisible(false);
 					lblSignal.setVisible(false);
 					btnLoadFileFor.setVisible(false);
+					lblPort.setVisible(false);
+					lblIp.setVisible(false);
+					lblUser.setVisible(false);
+					lblPassword.setVisible(false);
+					lblDb.setVisible(false);
+					IP.setVisible(false);
+					User.setVisible(false);
+					Password.setVisible(false);
+					Port.setVisible(false);
+					BASE.setVisible(false);
+					btnConnect.setVisible(false);
 				}
 				if((!chckbxDate.isVisible()&&!chckbxID.isVisible()
 						&&!chckbxRadius.isVisible()&&!rdbtnAnd.isVisible()
@@ -1604,6 +1717,45 @@ public class Main {
 
 			}
 		});
-
+		btnConnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!User.getText().isEmpty()&&!Password.getText().isEmpty()&&!Port.getText().isEmpty()
+						&&!IP.getText().isEmpty()&&!BASE.getText().isEmpty())
+				{
+					mySql._ip=IP.getText();
+					mySql._urld=BASE.getText();
+					mySql._user=User.getText();
+					mySql._password=Password.getText();
+					mySql._port=Port.getText();
+					sqlWatch upsql = new sqlWatch() {
+						@Override
+						protected void onRun() {
+							JOptionPane.showMessageDialog(null,  "SQL changed");
+							try {
+								nt=new Network();
+								try {
+									nt.add(mySql.connect());
+								} catch (NumberFormatException | IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							} catch (ParseException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}	
+						}};
+						try {
+							nt.add(mySql.connect());
+						} catch (NumberFormatException | IOException | ParseException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Enter all parameters");
+				}
+			}
+		});
 	}
 }

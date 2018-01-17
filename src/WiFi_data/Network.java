@@ -163,7 +163,7 @@ public class Network implements Serializable{
 	private boolean checkFS(WIFI dot)//check date
 	{
 		if(line[0]==null) return false;
-		else if(line[real_size-1].getWIFI()[0].getFirtseen().equals(dot.getFirtseen())&&real_size>0) 
+		else if(line[real_size-1].getDataOfdot().getFirtseen().equals(dot.getFirtseen())&&real_size>0) 
 			return true;
 		return false;
 	}
