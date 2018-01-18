@@ -1,9 +1,6 @@
-package test.java;
-import static org.junit.Assert.*;
-import org.junit.Test;
-
 import WiFi_data.Network;
 import WiFi_data.WIFI;
+import org.junit.Test;
 
 public class NetworkTest {
 

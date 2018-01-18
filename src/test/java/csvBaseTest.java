@@ -1,8 +1,5 @@
-package test.java;
-import org.junit.Test;
-import WiFi_data.*;
-
 import DataBase.csvBase;
+import org.junit.Test;
 
 public class csvBaseTest {
 

@@ -1,11 +1,51 @@
-apply plugin:'java'
+group 'OOP'
+//version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+println("For compile jar just use command: gradle fatJar\nFor javadoc: gradle javadoc\nFor tests: gradle test\n" +
+        "All of data will be in the build folder!!!")
+
+
+sourceCompatibility = 1.8
+
+
 repositories {
-    jcenter()
+    mavenCentral()
+}
+task execute(type: JavaExec) {
+    main = 'main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+    manifest {
+
+        attributes 'Main-Class': 'main'
+    }
+}
+//create javadoc
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+}
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/java/IMages"]
+            includes = ["**/*.png"]
+        }
+    }
 }
 
-// In this section you declare the dependencies for your production and test code
 dependencies {
-    // JUnit and Mockito
-    testCompile "junit:junit:4.11"
-    apiElements "javaapiforkml-2.2.0.jar"
+    compile files('libs/javaapiforkml-2.2.0.jar','libs/jaxb-api-2.2.jar','libs/jaxb-impl-2.2.5.jar',
+          'libs/mysql-connector-java-5.1.45-bin.jar')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+

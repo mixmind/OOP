@@ -1,8 +1,6 @@
-package test.java;
-import org.junit.Test;
-
 import WiFi_data.Hotspots;
 import WiFi_data.WIFI;
+import org.junit.Test;
 
 public class HotspotsTest {
 

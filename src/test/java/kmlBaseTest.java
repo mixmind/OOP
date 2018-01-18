@@ -1,9 +1,7 @@
-package test.java;
-import java.io.File;
-
+import DataBase.kmlBase;
 import org.junit.Test;
 
-import DataBase.kmlBase;
+import java.io.File;
 
 public class kmlBaseTest {
 	
