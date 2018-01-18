@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="csvBaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-01-18T01:07:02" hostname="notebook" time="0.007">
+  <properties/>
+  <testcase name="add" classname="csvBaseTest" time="0.007"/>
+  <system-out><![CDATA[null
+I cant reach a files.
+Function csvBase ended.
+Trying to make csv.
+null
+I cant reach a files.
+Function csvBase ended.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

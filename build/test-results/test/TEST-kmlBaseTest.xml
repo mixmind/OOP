@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="kmlBaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-01-18T01:07:02" hostname="notebook" time="0.019">
+  <properties/>
+  <testcase name="add" classname="kmlBaseTest" time="0.019"/>
+  <system-out><![CDATA[C:\gmon\complete.kml (The system cannot find the path specified) error!
+null error!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

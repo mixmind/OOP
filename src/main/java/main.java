@@ -1,4 +1,3 @@
-
 import Algo.Algo2;
 import Algo.AlgoFIndMac;
 import Algo.AlgoFindMyPlace;
@@ -1667,7 +1666,12 @@ public class main {
 					mySql._password=Password.getText();
 					mySql._port=Port.getText();
 					try {
+						int size=nt.getReal_size();
 						nt.add(mySql.connect());
+						if(size!=nt.getReal_size())
+							JOptionPane.showMessageDialog(null, "Imported "+(nt.getReal_size()-size)+" lines");
+						else JOptionPane.showMessageDialog(null, "Imported nothing");
+						
 					} catch (NumberFormatException | IOException | ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
