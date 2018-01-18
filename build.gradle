@@ -27,6 +27,10 @@ task fatJar(type: Jar) {
 
         attributes 'Main-Class': 'main'
     }
+    copy{
+    from "Images"
+    into "build/libs/Images"
+    }
 }
 //create javadoc
 javadoc {
