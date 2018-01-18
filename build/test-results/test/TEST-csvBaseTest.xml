@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="csvBaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-01-18T01:07:02" hostname="notebook" time="0.007">
+<testsuite name="csvBaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-01-18T09:54:31" hostname="notebook" time="0.006">
   <properties/>
-  <testcase name="add" classname="csvBaseTest" time="0.007"/>
+  <testcase name="add" classname="csvBaseTest" time="0.006"/>
   <system-out><![CDATA[null
 I cant reach a files.
 Function csvBase ended.
