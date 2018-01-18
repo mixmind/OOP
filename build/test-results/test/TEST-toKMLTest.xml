@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="toKMLTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-01-18T14:32:50" hostname="notebook" time="0.011">
+<testsuite name="toKMLTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-01-18T21:58:39" hostname="notebook" time="0.015">
   <properties/>
-  <testcase name="check" classname="toKMLTest" time="0.011"/>
+  <testcase name="check" classname="toKMLTest" time="0.015"/>
   <system-out><![CDATA[c:\ (The system cannot find the path specified) error!
 Function toKml ended.
 null exception

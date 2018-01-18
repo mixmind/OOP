@@ -5,7 +5,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 println("For compile jar just use command: gradle fatJar\nFor javadoc: gradle javadoc\nFor tests: gradle test\n" +
-        "All of data will be in the build folder!!!")
+        "For zip: gradle zip\nFor clean build folder: gradle clean\nAll of data will be in the build folder!!!")
 
 
 sourceCompatibility = 1.8
@@ -45,7 +45,27 @@ sourceSets {
         }
     }
 }
+task zip(type: Zip) {
+    from('files/') {
+	into('files')        
+	}
 
+    from('src/') {
+	into('src')        
+	}
+    from('libs/') {
+        include '**/*.jar'
+        into('libs')
+    }
+    from('Images/') {
+        into('Images')
+
+    }
+	from('/'){
+	include 'build.gradle','.classpath','.project','.gitignore','settings.gradle'
+		into('')
+	}
+}
 dependencies {
     compile files('libs/javaapiforkml-2.2.0.jar','libs/jaxb-api-2.2.jar','libs/jaxb-impl-2.2.5.jar',
           'libs/mysql-connector-java-5.1.45-bin.jar')
