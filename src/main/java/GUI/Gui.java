@@ -1682,7 +1682,6 @@ public class Gui {
 						e1.printStackTrace();
 					}
 					sqlWatch upsql = new sqlWatch() {
-
 						@Override
 						protected void onRun() {
 							JOptionPane.showMessageDialog(null,  "SQL changed");

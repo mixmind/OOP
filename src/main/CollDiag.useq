@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" automaticImage="JPEG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="main" project="OOP" file="/OOP/src/main/java/main.java" binary="false" 
+    label="main" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="224" y="0"/>    
+    <execution id="2">      
+      <position height="216" width="0" x="0" y="203"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="java.lang.Runnable" project="OOP" 
+    file="C:/Program Files/Java/jre1.8.0_162/lib/rt.jar" binary="true" label="runnable" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="4">      
+      <position height="168" width="0" x="0" y="227"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="120" width="91" x="111" y="251"/>    
+    </execution>  
+  </object>  
+  <object id="10" language="java" name="GUI.Gui" project="OOP" file="/OOP/src/main/java/GUI/Gui.java" binary="false" 
+    label="gui" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="9">      
+      <position height="72" width="48" x="206" y="275"/>    
+    </execution>    
+    <execution id="13">      
+      <position height="96" width="0" x="0" y="231"/>    
+    </execution>    
+    <execution id="15">      
+      <position height="24" width="0" x="0" y="279"/>    
+    </execution>  
+  </object>  
+  <object id="16" language="java" name="java.awt.event.ActionListener" project="OOP" 
+    file="C:/Program Files/Java/jre1.8.0_162/lib/rt.jar" binary="true" label="actionListener1" type="interface" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="12">      
+      <position height="24" width="0" x="0" y="299"/>    
+    </execution>  
+  </object>  
+  <object id="17" language="java" name="WiFi_data.WIFI" project="OOP" file="/OOP/src/main/java/WiFi_data/WIFI.java" 
+    binary="false" label="wifi" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="18">      
+      <position height="255" width="0" x="0" y="184"/>    
+    </execution>    
+    <execution id="20">      
+      <position height="24" width="0" x="0" y="232"/>    
+    </execution>    
+    <execution id="24">      
+      <position height="24" width="0" x="0" y="298"/>    
+    </execution>    
+    <execution id="26">      
+      <position height="24" width="0" x="0" y="391"/>    
+    </execution>    
+    <execution id="27">      
+      <position height="96" width="0" x="0" y="484"/>    
+    </execution>    
+    <execution id="29">      
+      <position height="24" width="0" x="0" y="532"/>    
+    </execution>    
+    <execution id="22">      
+      <position height="24" width="62" x="388" y="232"/>    
+    </execution>    
+    <execution id="30">      
+      <position height="96" width="0" x="0" y="604"/>    
+    </execution>    
+    <execution id="32">      
+      <position height="24" width="0" x="0" y="652"/>    
+    </execution>    
+    <execution id="33">      
+      <position height="96" width="0" x="0" y="122"/>    
+    </execution>    
+    <execution id="35">      
+      <position height="24" width="0" x="0" y="170"/>    
+    </execution>    
+    <execution id="36">      
+      <position height="24" width="62" x="388" y="447"/>    
+    </execution>  
+  </object>  
+  <object id="37" language="java" name="WiFi_data.Sort" project="OOP" file="/OOP/src/main/java/WiFi_data/Sort.java" 
+    binary="false" label="sort" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="38">      
+      <position height="96" width="0" x="0" y="177"/>    
+    </execution>    
+    <execution id="42">      
+      <position height="24" width="0" x="0" y="225"/>    
+    </execution>    
+    <execution id="43">      
+      <position height="96" width="0" x="0" y="89"/>    
+    </execution>    
+    <execution id="45">      
+      <position height="24" width="0" x="0" y="137"/>    
+    </execution>  
+  </object>  
+  <object id="46" language="java" name="WiFi_data.Network" project="OOP" 
+    file="/OOP/src/main/java/WiFi_data/Network.java" binary="false" label="network" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="40">      
+      <position height="24" width="82" x="520" y="201"/>    
+    </execution>    
+    <execution id="47">      
+      <position height="96" width="0" x="0" y="155"/>    
+    </execution>    
+    <execution id="49">      
+      <position height="24" width="0" x="0" y="203"/>    
+    </execution>    
+    <execution id="50">      
+      <position height="96" width="0" x="0" y="301"/>    
+    </execution>    
+    <execution id="52">      
+      <position height="24" width="0" x="0" y="349"/>    
+    </execution>    
+    <execution id="53">      
+      <position height="96" width="0" x="0" y="448"/>    
+    </execution>    
+    <execution id="55">      
+      <position height="24" width="0" x="0" y="496"/>    
+    </execution>    
+    <execution id="56">      
+      <position height="96" width="0" x="0" y="589"/>    
+    </execution>    
+    <execution id="58">      
+      <position height="24" width="0" x="0" y="637"/>    
+    </execution>    
+    <execution id="59">      
+      <position height="146" width="0" x="0" y="373"/>    
+    </execution>    
+    <execution id="63">      
+      <position height="24" width="0" x="0" y="461"/>    
+    </execution>    
+    <execution id="61">      
+      <position height="74" width="82" x="520" y="421"/>    
+    </execution>    
+    <execution id="65">      
+      <position height="24" width="82" x="520" y="145"/>    
+    </execution>  
+  </object>  
+  <object id="66" language="java" name="WiFi_data.RouterPlace" project="OOP" 
+    file="/OOP/src/main/java/WiFi_data/RouterPlace.java" binary="false" label="routerPlace" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="67">      
+      <position height="96" width="0" x="0" y="117"/>    
+    </execution>    
+    <execution id="69">      
+      <position height="24" width="0" x="0" y="165"/>    
+    </execution>    
+    <execution id="70">      
+      <position height="144" width="0" x="0" y="248"/>    
+    </execution>    
+    <execution id="72">      
+      <position height="72" width="0" x="0" y="296"/>    
+    </execution>    
+    <execution id="75">      
+      <position height="96" width="0" x="0" y="528"/>    
+    </execution>    
+    <execution id="77">      
+      <position height="24" width="0" x="0" y="576"/>    
+    </execution>    
+    <execution id="78">      
+      <position height="96" width="0" x="0" y="482"/>    
+    </execution>    
+    <execution id="80">      
+      <position height="24" width="0" x="0" y="530"/>    
+    </execution>  
+  </object>  
+  <object id="81" language="java" name="WiFi_data.Hotspots" project="OOP" 
+    file="/OOP/src/main/java/WiFi_data/Hotspots.java" binary="false" label="hotspots" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="82">      
+      <position height="96" width="0" x="0" y="201"/>    
+    </execution>    
+    <execution id="84">      
+      <position height="24" width="0" x="0" y="249"/>    
+    </execution>    
+    <execution id="85">      
+      <position height="303" width="0" x="0" y="160"/>    
+    </execution>    
+    <execution id="90">      
+      <position height="24" width="0" x="0" y="408"/>    
+    </execution>    
+    <execution id="88">      
+      <position height="24" width="7" x="761" y="381"/>    
+    </execution>    
+    <execution id="91">      
+      <position height="96" width="0" x="0" y="597"/>    
+    </execution>    
+    <execution id="93">      
+      <position height="24" width="0" x="0" y="645"/>    
+    </execution>    
+    <execution id="94">      
+      <position height="96" width="0" x="0" y="514"/>    
+    </execution>    
+    <execution id="96">      
+      <position height="24" width="0" x="0" y="562"/>    
+    </execution>  
+  </object>  
+  <object id="97" language="java" name="WiFi_data.GeoModDat" project="OOP" 
+    file="/OOP/src/main/java/WiFi_data/GeoModDat.java" binary="false" label="geoModDat" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="74">      
+      <position height="24" width="108" x="812" y="320"/>    
+    </execution>    
+    <execution id="98">      
+      <position height="96" width="0" x="0" y="167"/>    
+    </execution>    
+    <execution id="100">      
+      <position height="24" width="0" x="0" y="215"/>    
+    </execution>    
+    <execution id="101">      
+      <position height="96" width="0" x="0" y="422"/>    
+    </execution>    
+    <execution id="103">      
+      <position height="24" width="0" x="0" y="470"/>    
+    </execution>    
+    <execution id="104">      
+      <position height="96" width="0" x="0" y="386"/>    
+    </execution>    
+    <execution id="106">      
+      <position height="24" width="0" x="0" y="434"/>    
+    </execution>    
+    <execution id="107">      
+      <position height="24" width="7" x="869" y="476"/>    
+    </execution>  
+  </object>  
+  <object id="108" language="java" name="WiFi_data.ClientPlace" project="OOP" 
+    file="/OOP/src/main/java/WiFi_data/ClientPlace.java" binary="false" label="clientPlace" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="109">      
+      <position height="144" width="0" x="0" y="98"/>    
+    </execution>    
+    <execution id="112">      
+      <position height="24" width="0" x="0" y="165"/>    
+    </execution>    
+    <execution id="113">      
+      <position height="96" width="0" x="0" y="286"/>    
+    </execution>    
+    <execution id="115">      
+      <position height="24" width="0" x="0" y="334"/>    
+    </execution>    
+    <execution id="116">      
+      <position height="96" width="0" x="0" y="502"/>    
+    </execution>    
+    <execution id="118">      
+      <position height="24" width="0" x="0" y="550"/>    
+    </execution>    
+    <execution id="119">      
+      <position height="96" width="0" x="0" y="616"/>    
+    </execution>    
+    <execution id="121">      
+      <position height="24" width="0" x="0" y="664"/>    
+    </execution>    
+    <execution id="122">      
+      <position height="76" width="0" x="0" y="452"/>    
+    </execution>    
+    <execution id="125">      
+      <position height="24" width="0" x="0" y="480"/>    
+    </execution>  
+  </object>  
+  <object id="126" language="java" name="Thread.sqlWatch.RemindTask" project="OOP" 
+    file="/OOP/src/main/java/Thread/sqlWatch.java" binary="false" label="remindTask" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="127">      
+      <position height="24" width="110" x="1032" y="217"/>    
+    </execution>    
+    <execution id="128">      
+      <position height="96" width="0" x="0" y="176"/>    
+    </execution>    
+    <execution id="130">      
+      <position height="24" width="0" x="0" y="224"/>    
+    </execution>  
+  </object>  
+  <object id="131" language="java" name="Thread.sqlWatch" project="OOP" file="/OOP/src/main/java/Thread/sqlWatch.java" 
+    binary="false" label="sqlWatch" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="132">      
+      <position height="87" width="0" x="0" y="193"/>    
+    </execution>    
+    <execution id="135">      
+      <position height="24" width="0" x="0" y="232"/>    
+    </execution>    
+    <execution id="136">      
+      <position height="96" width="0" x="0" y="301"/>    
+    </execution>    
+    <execution id="138">      
+      <position height="24" width="0" x="0" y="349"/>    
+    </execution>  
+  </object>  
+  <object id="139" language="java" name="Thread.FileWatcher" project="OOP" 
+    file="/OOP/src/main/java/Thread/FileWatcher.java" binary="false" label="fileWatcher" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="140">      
+      <position height="96" width="0" x="0" y="106"/>    
+    </execution>    
+    <execution id="142">      
+      <position height="24" width="0" x="0" y="154"/>    
+    </execution>    
+    <execution id="143">      
+      <position height="96" width="0" x="0" y="260"/>    
+    </execution>    
+    <execution id="145">      
+      <position height="24" width="0" x="0" y="308"/>    
+    </execution>    
+    <execution id="146">      
+      <position height="96" width="0" x="0" y="394"/>    
+    </execution>    
+    <execution id="148">      
+      <position height="24" width="0" x="0" y="442"/>    
+    </execution>  
+  </object>  
+  <object id="149" language="java" name="Thread.DirWatcher" project="OOP" 
+    file="/OOP/src/main/java/Thread/DirWatcher.java" binary="false" label="dirWatcher" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="150">      
+      <position height="96" width="0" x="0" y="158"/>    
+    </execution>    
+    <execution id="152">      
+      <position height="24" width="0" x="0" y="206"/>    
+    </execution>    
+    <execution id="153">      
+      <position height="96" width="0" x="0" y="325"/>    
+    </execution>    
+    <execution id="155">      
+      <position height="24" width="0" x="0" y="373"/>    
+    </execution>    
+    <execution id="156">      
+      <position height="96" width="0" x="0" y="483"/>    
+    </execution>    
+    <execution id="158">      
+      <position height="24" width="0" x="0" y="531"/>    
+    </execution>    
+    <execution id="159">      
+      <position height="96" width="0" x="0" y="613"/>    
+    </execution>    
+    <execution id="161">      
+      <position height="24" width="0" x="0" y="661"/>    
+    </execution>  
+  </object>  
+  <object id="162" language="java" name="Thread.DirFilterWatcher" project="OOP" 
+    file="/OOP/src/main/java/Thread/DirFilterWatcher.java" binary="false" label="dirFilterWatcher" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="163">      
+      <position height="96" width="0" x="0" y="239"/>    
+    </execution>    
+    <execution id="165">      
+      <position height="24" width="0" x="0" y="287"/>    
+    </execution>    
+    <execution id="166">      
+      <position height="96" width="0" x="0" y="183"/>    
+    </execution>    
+    <execution id="168">      
+      <position height="24" width="0" x="0" y="231"/>    
+    </execution>    
+    <execution id="169">      
+      <position height="96" width="0" x="0" y="394"/>    
+    </execution>    
+    <execution id="171">      
+      <position height="24" width="0" x="0" y="442"/>    
+    </execution>  
+  </object>  
+  <object id="172" language="java" name="SQL.mySql" project="OOP" file="/OOP/src/main/java/SQL/mySql.java" 
+    binary="false" label="mySql" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="173">      
+      <position height="96" width="0" x="0" y="125"/>    
+    </execution>    
+    <execution id="175">      
+      <position height="24" width="0" x="0" y="173"/>    
+    </execution>    
+    <execution id="176">      
+      <position height="147" width="0" x="0" y="277"/>    
+    </execution>    
+    <execution id="179">      
+      <position height="24" width="0" x="0" y="376"/>    
+    </execution>    
+    <execution id="180">      
+      <position height="96" width="0" x="0" y="492"/>    
+    </execution>    
+    <execution id="182">      
+      <position height="24" width="0" x="0" y="540"/>    
+    </execution>  
+  </object>  
+  <object id="183" language="java" name="Filter.FilterRadius" project="OOP" 
+    file="/OOP/src/main/java/Filter/FilterRadius.java" binary="false" label="filterRadius" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="184">      
+      <position height="72" width="0" x="0" y="270"/>    
+    </execution>    
+    <execution id="187">      
+      <position height="96" width="0" x="0" y="209"/>    
+    </execution>    
+    <execution id="189">      
+      <position height="24" width="0" x="0" y="257"/>    
+    </execution>    
+    <execution id="190">      
+      <position height="96" width="0" x="0" y="444"/>    
+    </execution>    
+    <execution id="192">      
+      <position height="24" width="0" x="0" y="492"/>    
+    </execution>  
+  </object>  
+  <object id="193" language="java" name="Filter.FilterId" project="OOP" file="/OOP/src/main/java/Filter/FilterId.java" 
+    binary="false" label="filterId1" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="186">      
+      <position height="24" width="0" x="0" y="294"/>    
+    </execution>    
+    <execution id="194">      
+      <position height="96" width="0" x="0" y="248"/>    
+    </execution>    
+    <execution id="196">      
+      <position height="24" width="0" x="0" y="296"/>    
+    </execution>    
+    <execution id="197">      
+      <position height="96" width="0" x="0" y="422"/>    
+    </execution>    
+    <execution id="199">      
+      <position height="24" width="0" x="0" y="470"/>    
+    </execution>  
+  </object>  
+  <object id="200" language="java" name="Filter.FilterId" project="OOP" file="/OOP/src/main/java/Filter/FilterId.java" 
+    binary="false" label="filterId" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>  
+  </object>  
+  <object id="201" language="java" name="Filter.FilterDate" project="OOP" 
+    file="/OOP/src/main/java/Filter/FilterDate.java" binary="false" label="filterDate" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="202">      
+      <position height="96" width="0" x="0" y="337"/>    
+    </execution>    
+    <execution id="204">      
+      <position height="24" width="0" x="0" y="385"/>    
+    </execution>    
+    <execution id="205">      
+      <position height="96" width="0" x="0" y="278"/>    
+    </execution>    
+    <execution id="209">      
+      <position height="24" width="0" x="0" y="326"/>    
+    </execution>    
+    <execution id="210">      
+      <position height="82" width="0" x="0" y="183"/>    
+    </execution>    
+    <execution id="214">      
+      <position height="24" width="0" x="0" y="217"/>    
+    </execution>  
+  </object>  
+  <object id="215" language="java" name="Filter.filterCSV" project="OOP" file="/OOP/src/main/java/Filter/filterCSV.java" 
+    binary="false" label="filterCSV" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="212">      
+      <position height="24" width="86" x="2029" y="207"/>    
+    </execution>    
+    <execution id="207">      
+      <position height="24" width="7" x="2069" y="302"/>    
+    </execution>  
+  </object>  
+  <object id="216" language="java" name="Filter.Filter" project="OOP" file="/OOP/src/main/java/Filter/Filter.java" 
+    binary="false" label="filter" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="217">      
+      <position height="72" width="0" x="0" y="207"/>    
+    </execution>    
+    <execution id="220">      
+      <position height="96" width="0" x="0" y="444"/>    
+    </execution>    
+    <execution id="222">      
+      <position height="24" width="0" x="0" y="492"/>    
+    </execution>    
+    <execution id="223">      
+      <position height="96" width="0" x="0" y="377"/>    
+    </execution>    
+    <execution id="225">      
+      <position height="24" width="0" x="0" y="425"/>    
+    </execution>    
+    <execution id="226">      
+      <position height="96" width="0" x="0" y="141"/>    
+    </execution>    
+    <execution id="228">      
+      <position height="24" width="0" x="0" y="189"/>    
+    </execution>    
+    <execution id="229">      
+      <position height="96" width="0" x="0" y="584"/>    
+    </execution>    
+    <execution id="231">      
+      <position height="24" width="0" x="0" y="632"/>    
+    </execution>  
+  </object>  
+  <object id="232" language="java" name="Filter.filterCSV" project="OOP" file="/OOP/src/main/java/Filter/filterCSV.java" 
+    binary="false" label="filterCSV1" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="219">      
+      <position height="24" width="0" x="0" y="231"/>    
+    </execution>    
+    <execution id="233">      
+      <position height="241" width="0" x="0" y="178"/>    
+    </execution>    
+    <execution id="235">      
+      <position height="24" width="0" x="0" y="226"/>    
+    </execution>    
+    <execution id="237">      
+      <position height="24" width="86" x="2183" y="371"/>    
+    </execution>  
+  </object>  
+  <object id="238" language="java" name="DataBase.kmlBase" project="OOP" file="/OOP/src/main/java/DataBase/kmlBase.java" 
+    binary="false" label="kmlBase" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="239">      
+      <position height="86" width="0" x="0" y="121"/>    
+    </execution>    
+    <execution id="242">      
+      <position height="24" width="0" x="0" y="159"/>    
+    </execution>  
+  </object>  
+  <object id="243" language="java" name="DataBase.csvBase" project="OOP" file="/OOP/src/main/java/DataBase/csvBase.java" 
+    binary="false" label="csvBase" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="244">      
+      <position height="96" width="0" x="0" y="281"/>    
+    </execution>    
+    <execution id="246">      
+      <position height="24" width="0" x="0" y="329"/>    
+    </execution>    
+    <execution id="247">      
+      <position height="96" width="0" x="0" y="212"/>    
+    </execution>    
+    <execution id="249">      
+      <position height="24" width="0" x="0" y="260"/>    
+    </execution>    
+    <execution id="250">      
+      <position height="96" width="0" x="0" y="166"/>    
+    </execution>    
+    <execution id="252">      
+      <position height="24" width="0" x="0" y="214"/>    
+    </execution>    
+    <execution id="253">      
+      <position height="96" width="0" x="0" y="93"/>    
+    </execution>    
+    <execution id="255">      
+      <position height="24" width="0" x="0" y="141"/>    
+    </execution>  
+  </object>  
+  <object id="256" language="java" name="Convert.toKML" project="OOP" file="/OOP/src/main/java/Convert/toKML.java" 
+    binary="false" label="toKML" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="257">      
+      <position height="96" width="0" x="0" y="471"/>    
+    </execution>    
+    <execution id="259">      
+      <position height="24" width="0" x="0" y="519"/>    
+    </execution>    
+    <execution id="260">      
+      <position height="96" width="0" x="0" y="380"/>    
+    </execution>    
+    <execution id="262">      
+      <position height="24" width="0" x="0" y="428"/>    
+    </execution>  
+  </object>  
+  <object id="263" language="java" name="Convert.toCSV" project="OOP" file="/OOP/src/main/java/Convert/toCSV.java" 
+    binary="false" label="toCSV" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="264">      
+      <position height="96" width="0" x="0" y="100"/>    
+    </execution>    
+    <execution id="266">      
+      <position height="24" width="0" x="0" y="148"/>    
+    </execution>  
+  </object>  
+  <object id="267" language="java" name="Algo.AlgoFindMyPlace" project="OOP" 
+    file="/OOP/src/main/java/Algo/AlgoFindMyPlace.java" binary="false" label="algoFindMyPlace" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="268">      
+      <position height="96" width="0" x="0" y="182"/>    
+    </execution>    
+    <execution id="270">      
+      <position height="24" width="0" x="0" y="230"/>    
+    </execution>    
+    <execution id="271">      
+      <position height="96" width="0" x="0" y="344"/>    
+    </execution>    
+    <execution id="273">      
+      <position height="24" width="0" x="0" y="392"/>    
+    </execution>    
+    <execution id="274">      
+      <position height="96" width="0" x="0" y="502"/>    
+    </execution>    
+    <execution id="276">      
+      <position height="24" width="0" x="0" y="550"/>    
+    </execution>    
+    <execution id="277">      
+      <position height="96" width="0" x="0" y="471"/>    
+    </execution>    
+    <execution id="279">      
+      <position height="24" width="0" x="0" y="519"/>    
+    </execution>  
+  </object>  
+  <object id="280" language="java" name="Algo.AlgoFIndMac" project="OOP" file="/OOP/src/main/java/Algo/AlgoFIndMac.java" 
+    binary="false" label="algoFIndMac" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="281">      
+      <position height="96" width="0" x="0" y="279"/>    
+    </execution>    
+    <execution id="283">      
+      <position height="24" width="0" x="0" y="327"/>    
+    </execution>    
+    <execution id="284">      
+      <position height="96" width="0" x="0" y="237"/>    
+    </execution>    
+    <execution id="286">      
+      <position height="24" width="0" x="0" y="285"/>    
+    </execution>    
+    <execution id="287">      
+      <position height="96" width="0" x="0" y="105"/>    
+    </execution>    
+    <execution id="289">      
+      <position height="24" width="0" x="0" y="153"/>    
+    </execution>  
+  </object>  
+  <object id="290" language="java" name="Algo.Algo2" project="OOP" file="/OOP/src/main/java/Algo/Algo2.java" 
+    binary="false" label="algo2" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="291">      
+      <position height="96" width="0" x="0" y="130"/>    
+    </execution>    
+    <execution id="293">      
+      <position height="24" width="0" x="0" y="178"/>    
+    </execution>    
+    <execution id="294">      
+      <position height="96" width="0" x="0" y="386"/>    
+    </execution>    
+    <execution id="296">      
+      <position height="24" width="0" x="0" y="434"/>    
+    </execution>    
+    <execution id="297">      
+      <position height="96" width="0" x="0" y="553"/>    
+    </execution>    
+    <execution id="299">      
+      <position height="24" width="0" x="0" y="601"/>    
+    </execution>  
+  </object>  
+  <object id="300" language="java" name="Algo.Algo" project="OOP" file="/OOP/src/main/java/Algo/Algo.java" 
+    binary="false" label="algo" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="418" y="0"/>    
+    <execution id="301">      
+      <position height="96" width="0" x="0" y="201"/>    
+    </execution>    
+    <execution id="303">      
+      <position height="24" width="0" x="0" y="249"/>    
+    </execution>    
+    <execution id="304">      
+      <position height="96" width="0" x="0" y="327"/>    
+    </execution>    
+    <execution id="306">      
+      <position height="24" width="0" x="0" y="375"/>    
+    </execution>    
+    <execution id="307">      
+      <position height="96" width="0" x="0" y="509"/>    
+    </execution>    
+    <execution id="309">      
+      <position height="24" width="0" x="0" y="557"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="run():void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="8" asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="11" operation="actionPerformed(java.awt.event.ActionEvent):void" asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="14" operation="initialize():void" asynchronous="false">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="19" 
+    operation="WIFI(java.lang.String,java.lang.String,java.lang.String,int,int,double,java.lang.String,java.util.Date)" 
+    asynchronous="false" x="339" y="261">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="21" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="23" operation="getAccm():double" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="25" operation="getAlt():double" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="26"/>  
+  </message>  
+  <message id="28" operation="getAuthmode():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="31" operation="getFreq():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="32"/>  
+  </message>  
+  <message id="34" operation="getid():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="35"/>  
+  </message>  
+  <message id="39" asynchronous="false">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="40"/>  
+  </message>  
+  <message id="41" operation="mergeSort(WiFi_data.Hotspots[],int,int):void" asynchronous="false" x="460" y="221">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="42"/>  
+  </message>  
+  <message id="44" operation="mergeSort(WiFi_data.Network):WiFi_data.Hotspots[]" asynchronous="false">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="45"/>  
+  </message>  
+  <message id="48" operation="Network(WiFi_data.Hotspots[])" asynchronous="false">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="49"/>  
+  </message>  
+  <message id="51" operation="Network(WiFi_data.Network)" asynchronous="false" x="507" y="309">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="52"/>  
+  </message>  
+  <message id="54" operation="add(WiFi_data.Hotspots,WiFi_data.GeoModDat):void" asynchronous="false">    
+    <end type="SOURCE" refId="53"/>    
+    <end type="TARGET" refId="55"/>  
+  </message>  
+  <message id="57" operation="getReal_size():int" asynchronous="false">    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="58"/>  
+  </message>  
+  <message id="60" asynchronous="false">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="61"/>  
+  </message>  
+  <message id="62" operation="add(WiFi_data.WIFI):void" asynchronous="false">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="63"/>  
+  </message>  
+  <message id="64" asynchronous="false">    
+    <end type="SOURCE" refId="61"/>    
+    <end type="TARGET" refId="36"/>  
+  </message>  
+  <message id="68" operation="RouterPlace(WiFi_data.RouterPlace,java.lang.String,java.util.Date)" asynchronous="false">    
+    <end type="SOURCE" refId="67"/>    
+    <end type="TARGET" refId="69"/>  
+  </message>  
+  <message id="71" operation="getPosition():WiFi_data.GeoModDat" asynchronous="false">    
+    <end type="SOURCE" refId="70"/>    
+    <end type="TARGET" refId="72"/>  
+  </message>  
+  <message id="73" asynchronous="false">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="74"/>  
+  </message>  
+  <message id="76" operation="setChannel(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="75"/>    
+    <end type="TARGET" refId="77"/>  
+  </message>  
+  <message id="79" operation="getSSID():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="78"/>    
+    <end type="TARGET" refId="80"/>  
+  </message>  
+  <message id="83" operation="Hotspots(WiFi_data.Hotspots)" asynchronous="false">    
+    <end type="SOURCE" refId="82"/>    
+    <end type="TARGET" refId="84"/>  
+  </message>  
+  <message id="86" asynchronous="false">    
+    <end type="SOURCE" refId="85"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="87" asynchronous="false">    
+    <end type="SOURCE" refId="85"/>    
+    <end type="TARGET" refId="88"/>  
+  </message>  
+  <message id="89" operation="add(WiFi_data.WIFI):void" asynchronous="false">    
+    <end type="SOURCE" refId="85"/>    
+    <end type="TARGET" refId="90"/>  
+  </message>  
+  <message id="92" operation="checkSignal(WiFi_data.WIFI):int" asynchronous="false">    
+    <end type="SOURCE" refId="91"/>    
+    <end type="TARGET" refId="93"/>  
+  </message>  
+  <message id="95" operation="getReal_size():int" asynchronous="false">    
+    <end type="SOURCE" refId="94"/>    
+    <end type="TARGET" refId="96"/>  
+  </message>  
+  <message id="99" operation="GeoModDat()" asynchronous="false">    
+    <end type="SOURCE" refId="98"/>    
+    <end type="TARGET" refId="100"/>  
+  </message>  
+  <message id="102" operation="getLat():double" asynchronous="false">    
+    <end type="SOURCE" refId="101"/>    
+    <end type="TARGET" refId="103"/>  
+  </message>  
+  <message id="105" operation="toString():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="104"/>    
+    <end type="TARGET" refId="106"/>  
+  </message>  
+  <message id="110" asynchronous="false">    
+    <end type="SOURCE" refId="109"/>    
+    <end type="TARGET" refId="33"/>  
+  </message>  
+  <message id="111" operation="ClientPlace(WiFi_data.GeoModDat,WiFi_data.WIFI)" asynchronous="false">    
+    <end type="SOURCE" refId="109"/>    
+    <end type="TARGET" refId="112"/>  
+  </message>  
+  <message id="114" operation="getPosition():WiFi_data.GeoModDat" asynchronous="false">    
+    <end type="SOURCE" refId="113"/>    
+    <end type="TARGET" refId="115"/>  
+  </message>  
+  <message id="117" operation="setPosition(WiFi_data.GeoModDat):void" asynchronous="false">    
+    <end type="SOURCE" refId="116"/>    
+    <end type="TARGET" refId="118"/>  
+  </message>  
+  <message id="120" operation="setWifi(WiFi_data.WIFI):void" asynchronous="false">    
+    <end type="SOURCE" refId="119"/>    
+    <end type="TARGET" refId="121"/>  
+  </message>  
+  <message id="123" asynchronous="false">    
+    <end type="SOURCE" refId="122"/>    
+    <end type="TARGET" refId="107"/>  
+  </message>  
+  <message id="124" operation="setPosition(WiFi_data.GeoModDat):void" asynchronous="false">    
+    <end type="SOURCE" refId="122"/>    
+    <end type="TARGET" refId="125"/>  
+  </message>  
+  <message id="129" operation="run():void" asynchronous="false">    
+    <end type="SOURCE" refId="128"/>    
+    <end type="TARGET" refId="130"/>  
+  </message>  
+  <message id="133" asynchronous="false">    
+    <end type="SOURCE" refId="132"/>    
+    <end type="TARGET" refId="127"/>  
+  </message>  
+  <message id="134" operation="sqlWatch()" asynchronous="false">    
+    <end type="SOURCE" refId="132"/>    
+    <end type="TARGET" refId="135"/>  
+  </message>  
+  <message id="137" operation="onRun():void" asynchronous="false">    
+    <end type="SOURCE" refId="136"/>    
+    <end type="TARGET" refId="138"/>  
+  </message>  
+  <message id="141" operation="FileWatcher(java.io.File)" asynchronous="false">    
+    <end type="SOURCE" refId="140"/>    
+    <end type="TARGET" refId="142"/>  
+  </message>  
+  <message id="144" operation="onChange(java.io.File):void" asynchronous="false">    
+    <end type="SOURCE" refId="143"/>    
+    <end type="TARGET" refId="145"/>  
+  </message>  
+  <message id="147" operation="run():void" asynchronous="false">    
+    <end type="SOURCE" refId="146"/>    
+    <end type="TARGET" refId="148"/>  
+  </message>  
+  <message id="151" operation="DirWatcher(java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="150"/>    
+    <end type="TARGET" refId="152"/>  
+  </message>  
+  <message id="154" operation="DirWatcher(java.lang.String,java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="153"/>    
+    <end type="TARGET" refId="155"/>  
+  </message>  
+  <message id="157" operation="onChange(java.io.File,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="156"/>    
+    <end type="TARGET" refId="158"/>  
+  </message>  
+  <message id="160" operation="run():void" asynchronous="false">    
+    <end type="SOURCE" refId="159"/>    
+    <end type="TARGET" refId="161"/>  
+  </message>  
+  <message id="164" operation="DirFilterWatcher()" asynchronous="false">    
+    <end type="SOURCE" refId="163"/>    
+    <end type="TARGET" refId="165"/>  
+  </message>  
+  <message id="167" operation="DirFilterWatcher(java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="166"/>    
+    <end type="TARGET" refId="168"/>  
+  </message>  
+  <message id="170" operation="accept(java.io.File):boolean" asynchronous="false">    
+    <end type="SOURCE" refId="169"/>    
+    <end type="TARGET" refId="171"/>  
+  </message>  
+  <message id="174" operation="connect():WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="173"/>    
+    <end type="TARGET" refId="175"/>  
+  </message>  
+  <message id="177" asynchronous="false">    
+    <end type="SOURCE" refId="176"/>    
+    <end type="TARGET" refId="50"/>  
+  </message>  
+  <message id="178" operation="getData():WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="176"/>    
+    <end type="TARGET" refId="179"/>  
+  </message>  
+  <message id="181" operation="getUpdate():java.util.Date" asynchronous="false">    
+    <end type="SOURCE" refId="180"/>    
+    <end type="TARGET" refId="182"/>  
+  </message>  
+  <message id="185" operation="FilterId(java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="184"/>    
+    <end type="TARGET" refId="186"/>  
+  </message>  
+  <message id="188" operation="runNot(WiFi_data.Network):WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="187"/>    
+    <end type="TARGET" refId="189"/>  
+  </message>  
+  <message id="191" operation="runOn(WiFi_data.Network):WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="190"/>    
+    <end type="TARGET" refId="192"/>  
+  </message>  
+  <message id="195" operation="runNot(WiFi_data.Network):WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="194"/>    
+    <end type="TARGET" refId="196"/>  
+  </message>  
+  <message id="198" operation="runOn(WiFi_data.Network):WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="197"/>    
+    <end type="TARGET" refId="199"/>  
+  </message>  
+  <message id="203" operation="FilterDate(java.util.Date,java.util.Date)" asynchronous="false">    
+    <end type="SOURCE" refId="202"/>    
+    <end type="TARGET" refId="204"/>  
+  </message>  
+  <message id="206" asynchronous="false">    
+    <end type="SOURCE" refId="205"/>    
+    <end type="TARGET" refId="207"/>  
+  </message>  
+  <message id="208" operation="runOn(WiFi_data.Network):WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="205"/>    
+    <end type="TARGET" refId="209"/>  
+  </message>  
+  <message id="211" asynchronous="false">    
+    <end type="SOURCE" refId="210"/>    
+    <end type="TARGET" refId="212"/>  
+  </message>  
+  <message id="213" operation="runNot(WiFi_data.Network):WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="210"/>    
+    <end type="TARGET" refId="214"/>  
+  </message>  
+  <message id="218" operation="runNot(WiFi_data.Network):WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="217"/>    
+    <end type="TARGET" refId="219"/>  
+  </message>  
+  <message id="221" operation="getTextFieldLon():javax.swing.JTextField" asynchronous="false">    
+    <end type="SOURCE" refId="220"/>    
+    <end type="TARGET" refId="222"/>  
+  </message>  
+  <message id="224" operation="setchckbxID(javax.swing.JCheckBox):void" asynchronous="false">    
+    <end type="SOURCE" refId="223"/>    
+    <end type="TARGET" refId="225"/>  
+  </message>  
+  <message id="227" operation="getTextFieldAfter():javax.swing.JTextField" asynchronous="false">    
+    <end type="SOURCE" refId="226"/>    
+    <end type="TARGET" refId="228"/>  
+  </message>  
+  <message id="230" operation="getRdbtnAnd():javax.swing.JRadioButton" asynchronous="false">    
+    <end type="SOURCE" refId="229"/>    
+    <end type="TARGET" refId="231"/>  
+  </message>  
+  <message id="234" operation="runOn(WiFi_data.Network):WiFi_data.Network" asynchronous="false" x="2168" y="174">    
+    <end type="SOURCE" refId="233"/>    
+    <end type="TARGET" refId="235"/>  
+  </message>  
+  <message id="236" asynchronous="false">    
+    <end type="SOURCE" refId="233"/>    
+    <end type="TARGET" refId="237"/>  
+  </message>  
+  <message id="240" asynchronous="false">    
+    <end type="SOURCE" refId="239"/>    
+    <end type="TARGET" refId="65"/>  
+  </message>  
+  <message id="241" operation="inputCsv(java.io.File):WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="239"/>    
+    <end type="TARGET" refId="242"/>  
+  </message>  
+  <message id="245" operation="check(java.io.File,WiFi_data.Network):void" asynchronous="false">    
+    <end type="SOURCE" refId="244"/>    
+    <end type="TARGET" refId="246"/>  
+  </message>  
+  <message id="248" operation="readCSV(java.lang.String):WiFi_data.Network" asynchronous="false">    
+    <end type="SOURCE" refId="247"/>    
+    <end type="TARGET" refId="249"/>  
+  </message>  
+  <message id="251" operation="addGeo(java.lang.String[]):WiFi_data.GeoModDat" asynchronous="false">    
+    <end type="SOURCE" refId="250"/>    
+    <end type="TARGET" refId="252"/>  
+  </message>  
+  <message id="254" operation="add(java.lang.String[]):WiFi_data.WIFI" asynchronous="false">    
+    <end type="SOURCE" refId="253"/>    
+    <end type="TARGET" refId="255"/>  
+  </message>  
+  <message id="258" operation="toKML(java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="257"/>    
+    <end type="TARGET" refId="259"/>  
+  </message>  
+  <message id="261" operation="size():int" asynchronous="false">    
+    <end type="SOURCE" refId="260"/>    
+    <end type="TARGET" refId="262"/>  
+  </message>  
+  <message id="265" operation="toCSV(WiFi_data.Network)" asynchronous="false">    
+    <end type="SOURCE" refId="264"/>    
+    <end type="TARGET" refId="266"/>  
+  </message>  
+  <message id="269" operation="checkSim(WiFi_data.Network,WiFi_data.Hotspots):void" asynchronous="false">    
+    <end type="SOURCE" refId="268"/>    
+    <end type="TARGET" refId="270"/>  
+  </message>  
+  <message id="272" operation="maxInd(java.util.ArrayList&lt;WiFi_data.ClientPlace&gt;,int):int" asynchronous="false">    
+    <end type="SOURCE" refId="271"/>    
+    <end type="TARGET" refId="273"/>  
+  </message>  
+  <message id="275" operation="find(WiFi_data.Hotspots,WiFi_data.Hotspots):WiFi_data.ClientPlace" asynchronous="false">    
+    <end type="SOURCE" refId="274"/>    
+    <end type="TARGET" refId="276"/>  
+  </message>  
+  <message id="278" operation="swap(java.util.ArrayList&lt;WiFi_data.ClientPlace&gt;,int,int):void" asynchronous="false">    
+    <end type="SOURCE" refId="277"/>    
+    <end type="TARGET" refId="279"/>  
+  </message>  
+  <message id="282" operation="routerPlaceAlgo1(WiFi_data.Network,java.lang.String):WiFi_data.GeoModDat" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="281"/>    
+    <end type="TARGET" refId="283"/>  
+  </message>  
+  <message id="285" 
+    operation="math(java.util.ArrayList&lt;java.util.ArrayList&lt;WiFi_data.RouterPlace&gt;&gt;):java.util.ArrayList&lt;RouterPlace&gt;" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="284"/>    
+    <end type="TARGET" refId="286"/>  
+  </message>  
+  <message id="288" operation="addRouter(WiFi_data.WIFI,WiFi_data.GeoModDat):WiFi_data.RouterPlace" asynchronous="false">    
+    <end type="SOURCE" refId="287"/>    
+    <end type="TARGET" refId="289"/>  
+  </message>  
+  <message id="292" operation="clientPlaceAlgo2(WiFi_data.Network,java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="291"/>    
+    <end type="TARGET" refId="293"/>  
+  </message>  
+  <message id="295" operation="math(WiFi_data.Network,WiFi_data.Network):void" asynchronous="false">    
+    <end type="SOURCE" refId="294"/>    
+    <end type="TARGET" refId="296"/>  
+  </message>  
+  <message id="298" operation="maxInd(java.util.ArrayList&lt;WiFi_data.ClientPlace&gt;,int):int" asynchronous="false">    
+    <end type="SOURCE" refId="297"/>    
+    <end type="TARGET" refId="299"/>  
+  </message>  
+  <message id="302" operation="routerPlaceAlgo1(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="301"/>    
+    <end type="TARGET" refId="303"/>  
+  </message>  
+  <message id="305" operation="solve(java.util.ArrayList&lt;WiFi_data.RouterPlace&gt;):WiFi_data.RouterPlace" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="304"/>    
+    <end type="TARGET" refId="306"/>  
+  </message>  
+  <message id="308" 
+    operation="sortSignal(java.util.ArrayList&lt;java.util.ArrayList&lt;WiFi_data.RouterPlace&gt;&gt;):java.util.ArrayList&lt;RouterPlace&gt;" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="307"/>    
+    <end type="TARGET" refId="309"/>  
+  </message>
+</sequence-diagram>
